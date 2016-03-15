@@ -18,13 +18,13 @@ import com.google.gerrit.sshd.PluginCommandModule;
 
 import com.googlesource.gerrit.plugins.verifystatus.commands.VerifyStatusAdminQueryShell;
 import com.googlesource.gerrit.plugins.verifystatus.commands.VerifyStatusQueryShell;
-import com.googlesource.gerrit.plugins.verifystatus.commands.VerifyCommand;
+import com.googlesource.gerrit.plugins.verifystatus.commands.SaveCommand;
 
 class SshModule extends PluginCommandModule {
   @Override
   protected void configureCommands() {
     command(VerifyStatusAdminQueryShell.class);
-    command(VerifyCommand.class);
+    command(SaveCommand.class);
     factory(VerifyStatusQueryShell.Factory.class);
   }
 }
