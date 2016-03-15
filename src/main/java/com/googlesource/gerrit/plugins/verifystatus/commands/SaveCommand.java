@@ -48,10 +48,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@CommandMetaData(name = "verify", description = "Verify one or more patch sets")
-public class VerifyCommand extends SshCommand {
+@CommandMetaData(name = "save", description = "Save patchset verification data")
+public class SaveCommand extends SshCommand {
   private static final Logger log =
-      LoggerFactory.getLogger(VerifyCommand.class);
+      LoggerFactory.getLogger(SaveCommand.class);
 
   private final Set<PatchSet> patchSets = new HashSet<>();
 
@@ -86,7 +86,7 @@ public class VerifyCommand extends SshCommand {
 
   private void parseWithEquals(String text) {
     log.debug("processing verification: " + text);
-    checkArgument(!Strings.isNullOrEmpty(text), "Empty verification vote");
+    checkArgument(!Strings.isNullOrEmpty(text), "Empty verification data");
     Map<String, String> params = null;
     try {
       params = Splitter.on("|").withKeyValueSeparator("=").split(text);
