@@ -22,6 +22,7 @@ DESCRIPTION
 CI data is stored in a [CI database](#supported-dbs) which can be in the Gerrit
 review database or a completely separate database.
  
+### <a id="schema-initialization"> @PLUGIN@ schema initialization
 
 Schema initialization
 ---------------------
@@ -45,6 +46,8 @@ Database server type           [h2]: h2
 Initialized <gerrit-site>
 ```
 
+### <a id="schema-upgrade"> @PLUGIN@ schema upgrade
+
 Schema upgrade
 --------------
 
@@ -60,7 +63,8 @@ Upgrading schema to 2 ...
 Migrating data to schema 2 ...
 ```
 
-<a id="configure-db">
+### <a id="configure-db"> @PLUGIN@ configure-db
+
 Configuration
 -------------
 
@@ -111,12 +115,27 @@ If a unit suffix is not specified, `milliseconds` is assumed.
 
 Default is `30 seconds`.
 
+
+### <a id="access-database"> @PLUGIN@ access-database
+
+Acccesing Database
+------------------
+
+@PLUGIN@ provides an administrative interface to the database.
+
+'ssh' -p <port> <host> '@PLUGIN@ gsql' [--format {PRETTY | JSON | JSON_SINGLE}] [-c QUERY]
+
+
+> ssh -p 29418 localhost verify-status gsql -c "'show tables;'"
+
+
 SEE ALSO
 --------
 
 * [Database Setup](../../../Documentation/database-setup.html)
 * [Automatic Site Initialization](../../../Documentation/config-auto-site-initialization.html)
 * [Database Settings](../../../Documentation/config-gerrit.html#database)
+* [Gerrit gsql Command](../../../Documentation/cmd-gsql.html)
 
 
 GERRIT
