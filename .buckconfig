@@ -1,6 +1,6 @@
 [alias]
-  ci = //:gerrit-ci-plugin
-  plugin = //:gerrit-ci-plugin
+  ci = //:verify-status
+  plugin = //:verify-status
 
 [java]
   src_roots = java, resources
