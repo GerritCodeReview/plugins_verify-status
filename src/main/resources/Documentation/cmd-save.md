@@ -1,14 +1,14 @@
 
-@PLUGIN@ verify
+@PLUGIN@ save
 =====================
 
 NAME
 ----
-@PLUGIN@ verify - Apply verification to one or more patch sets
+@PLUGIN@ save - Apply verification to one or more patch sets
 
 SYNOPSIS
 --------
->     ssh -p <port> <host> @PLUGIN@ verify
+>     ssh -p <port> <host> @PLUGIN@ save
 >      [--project <PROJECT> | -p <PROJECT>]
 >      [--branch <BRANCH> | -b <BRANCH>]
 >      [--verification <PARAMETERS> | -v <PARAMETERS>]
@@ -76,7 +76,7 @@ __Notice__ two levels of quoting are required, one for the local shell, and
 another for the argument parser inside the Gerrit server.
 
 
->     $ ssh -p 29418 review.example.com @PLUGIN@ verify --verification
+>     $ ssh -p 29418 review.example.com @PLUGIN@ save --verification
 >      "'category=gate-horizon-pep8
 >      |value=1
 >      |url=https://ci.host.com/jobs/pep8/4711
