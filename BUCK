@@ -1,12 +1,16 @@
 include_defs('//bucklets/gerrit_plugin.bucklet')
 
+MODULE = 'com.googlesource.gerrit.plugins.ci.CiForm'
+
 gerrit_plugin(
   name = 'gerrit-ci-plugin',
   srcs = glob(['src/main/java/**/*.java']),
   resources = glob(['src/main/**/*']),
+  gwt_module = MODULE,
   manifest_entries = [
     'Gerrit-PluginName: ci',
     'Gerrit-Module: com.googlesource.gerrit.plugins.ci.GlobalModule',
+    'Gerrit-HttpModule: com.googlesource.gerrit.plugins.ci.HttpModule',
     'Gerrit-SshModule: com.googlesource.gerrit.plugins.ci.SshModule',
     'Gerrit-InitStep: com.googlesource.gerrit.plugins.ci.init.InitPlugin',
     'Implementation-Title: CI plugin',

@@ -19,4 +19,5 @@ public class VerificationInfo {
   public Short value;
   public String verifier;
   public String comment;
+  public String granted;
 }

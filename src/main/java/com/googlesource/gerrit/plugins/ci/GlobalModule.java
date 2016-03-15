@@ -15,8 +15,10 @@
 package com.googlesource.gerrit.plugins.ci;
 
 import static com.google.inject.Scopes.SINGLETON;
+import static com.google.gerrit.server.change.RevisionResource.REVISION_KIND;
 
 import com.google.gerrit.extensions.config.FactoryModule;
+import com.google.gerrit.extensions.restapi.RestApiModule;
 import com.google.gerrit.lifecycle.LifecycleModule;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -24,6 +26,8 @@ import com.google.inject.Key;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
+import com.googlesource.gerrit.plugins.ci.server.GetVerifications;
+import com.googlesource.gerrit.plugins.ci.server.PostVerification;
 import com.googlesource.gerrit.plugins.ci.server.schema.CiDataSourceModule;
 import com.googlesource.gerrit.plugins.ci.server.schema.CiDataSourceProvider;
 import com.googlesource.gerrit.plugins.ci.server.schema.CiDataSourceType;
@@ -35,8 +39,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-public class GlobalModule extends FactoryModule {
-
+class GlobalModule extends FactoryModule {
   private final Injector injector;
 
   @Inject
@@ -74,5 +77,12 @@ public class GlobalModule extends FactoryModule {
     for (Module module : modules) {
       install(module);
     }
+    install(new RestApiModule() {
+      @Override
+      protected void configure() {
+        get(REVISION_KIND, "verifications").to(GetVerifications.class);
+        post(REVISION_KIND, "verifications").to(PostVerification.class);
+      }
+    });
   }
 }
