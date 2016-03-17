@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.verifystatus.client;
 import com.google.gerrit.client.GerritUiExtensionPoint;
 import com.google.gerrit.client.info.ChangeInfo;
 import com.google.gerrit.client.rpc.NativeMap;
+import com.google.gerrit.client.rpc.Natives;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.extension.Panel;
 import com.google.gerrit.plugin.client.rpc.RestApi;
@@ -28,6 +29,8 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.InlineLabel;
+
+import java.util.List;
 
 /**
  * Extension for change screen that displays a status in the header bar.
@@ -42,15 +45,19 @@ public class BuildsDropDownPanel extends FlowPanel {
   BuildsDropDownPanel(final Panel panel) {
     ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
-    new RestApi("config")
-      .id("server")
+    ChangeInfo rev =
+        panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+    new RestApi("changes")
+      .id(change.id())
+      .view("revisions")
+      .id(rev.id())
       .view(Plugin.get().getPluginName(), "verifications")
       .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
         @Override
         public void onSuccess(NativeMap<VerificationInfo> map) {
-          map.copyKeysIntoChildren("category");
           // TODO only rendern when not empty
-          panel.setWidget(new BuildsDropDownPanel());
+          map.copyKeysIntoChildren("category");
+          panel.setWidget(new BuildsDropDownPanel(map));
         }
 
         @Override
@@ -60,7 +67,11 @@ public class BuildsDropDownPanel extends FlowPanel {
       });
   }
 
-  BuildsDropDownPanel() {
+  BuildsDropDownPanel(NativeMap<VerificationInfo> m) {
+    List<VerificationInfo> list = Natives.asList(m.values());
+    for (VerificationInfo v : list) {
+      // TODO: fill the grid here instead of hard code it below
+    }
     Grid g = new Grid(3, 4);
     g.addStyleName("infoBlock");
     CellFormatter fmt = g.getCellFormatter();
