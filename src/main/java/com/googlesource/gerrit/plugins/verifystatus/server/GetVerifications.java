@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.verifystatus.server;
 
 import com.google.common.collect.Maps;
 import com.google.gerrit.extensions.restapi.RestReadView;
+import com.google.gerrit.plugin.client.FormatUtil;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gwtorm.server.OrmException;
 import com.google.gwtorm.server.SchemaFactory;
@@ -25,14 +26,10 @@ import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerificationInfo;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.Map;
 
 @Singleton
 public class GetVerifications implements RestReadView<RevisionResource> {
-  private static final SimpleDateFormat DATE_FORMAT =
-      new SimpleDateFormat("d MMM yyyy HH:mm:ss", Locale.US);
   private final SchemaFactory<CiDb> schemaFactory;
 
   @Inject
@@ -48,11 +45,12 @@ public class GetVerifications implements RestReadView<RevisionResource> {
       for (PatchSetVerification v : db.patchSetVerifications()
           .byPatchSet(rsrc.getPatchSet().getId())) {
         VerificationInfo info = new VerificationInfo();
+        info.label = v.getLabel();
         info.value = v.getValue();
         info.url = v.getUrl();
         info.verifier = v.getVerifier();
         info.comment = v.getComment();
-        info.granted = DATE_FORMAT.format(v.getGranted());
+        info.granted = FormatUtil.shortFormat(v.getGranted());
         out.put(v.getLabelId().get(), info);
       }
     }
