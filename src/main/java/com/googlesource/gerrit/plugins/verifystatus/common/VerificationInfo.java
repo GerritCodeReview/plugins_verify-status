@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.verifystatus.common;
 
 public class VerificationInfo {
+  public String label;
   public String url;
   public Short value;
   public String verifier;
