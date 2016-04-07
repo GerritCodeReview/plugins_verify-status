@@ -77,11 +77,14 @@ another for the argument parser inside the Gerrit server.
 
 
 >     $ ssh -p 29418 review.example.com @PLUGIN@ save --verification
->      "'category=gate-horizon-pep8
+>      "'job=gate-horizon-pep8
 >      |value=1
+>      |voting=true
 >      |url=https://ci.host.com/jobs/pep8/4711
->      |verifier=Jenkins
->      |comment=Non Voting'"
+>      |reporter=Jenkins CI
+>      |comment=Passed
+>      |category=gate
+>      |duration=1m 30s'"
 >      14a95001c
 
 

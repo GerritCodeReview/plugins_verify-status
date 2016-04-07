@@ -31,16 +31,16 @@ public class PatchSetVerification {
     protected PatchSet.Id patchSetId;
 
     @Column(id = 2)
-    protected LabelId categoryId;
+    protected LabelId jobId;
 
     protected Key() {
       patchSetId = new PatchSet.Id();
-      categoryId = new LabelId();
+      jobId = new LabelId();
     }
 
     public Key(PatchSet.Id ps, LabelId c) {
       this.patchSetId = ps;
-      this.categoryId = c;
+      this.jobId = c;
     }
 
     @Override
@@ -49,12 +49,12 @@ public class PatchSetVerification {
     }
 
     public LabelId getLabelId() {
-      return categoryId;
+      return jobId;
     }
 
     @Override
     public com.google.gwtorm.client.Key<?>[] members() {
-      return new com.google.gwtorm.client.Key<?>[] {categoryId};
+      return new com.google.gwtorm.client.Key<?>[] {jobId};
     }
   }
 
@@ -71,10 +71,19 @@ public class PatchSetVerification {
   protected String url;
 
   @Column(id = 5, notNull = false, length = 255)
-  protected String verifier;
+  protected String reporter;
 
   @Column(id = 6, notNull = false, length = 255)
   protected String comment;
+
+  @Column(id = 7)
+  protected boolean voting;
+
+  @Column(id = 8, notNull = false, length = 255)
+  protected String category;
+
+  @Column(id = 9, notNull = false, length = 255)
+  protected String duration;
 
   protected PatchSetVerification() {
   }
@@ -94,8 +103,8 @@ public class PatchSetVerification {
     return key.patchSetId;
   }
 
-  public LabelId getLabelId() {
-    return key.categoryId;
+  public LabelId getJobId() {
+    return key.jobId;
   }
 
   public short getValue() {
@@ -114,8 +123,8 @@ public class PatchSetVerification {
     granted = ts;
   }
 
-  public String getLabel() {
-    return getLabelId().get();
+  public String getJob() {
+    return getJobId().get();
   }
 
   public String getUrl() {
@@ -127,11 +136,11 @@ public class PatchSetVerification {
   }
 
   public String getVerifier() {
-    return verifier;
+    return reporter;
   }
 
   public void setVerifier(String reporter) {
-    this.verifier = reporter;
+    this.reporter = reporter;
   }
 
   public String getComment() {
@@ -140,6 +149,30 @@ public class PatchSetVerification {
 
   public void setComment(String comment) {
     this.comment = comment;
+  }
+
+  public boolean getVoting() {
+    return voting;
+  }
+
+  public void setVoting(boolean voting) {
+    this.voting = voting;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  public String getDuration() {
+    return duration;
+  }
+
+  public void setDuration(String duration) {
+    this.duration = duration;
   }
 
   @Override
