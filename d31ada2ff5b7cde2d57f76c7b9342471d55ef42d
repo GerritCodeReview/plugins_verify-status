@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e8f587d_2fada9aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-07T02:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef294a8_0e89ab18",
+      "revId": "d31ada2ff5b7cde2d57f76c7b9342471d55ef42d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ef294a8_2e846702",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-04-04T05:52:33Z",
       "side": 1,
       "message": "There a FormatUtil in gerrit-plugin-gwtui, can\u0027t it be used?",
+      "range": {
+        "startLine": 36,
+        "startChar": 27,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "d31ada2ff5b7cde2d57f76c7b9342471d55ef42d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e8e1443_ae1b1756",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-07T02:48:42Z",
+      "side": 1,
+      "message": "I tried to do this in PS 3 but it didn\u0027t work for me and I have no idea why.  I get a runtime error with NoClassDefFound for FormatUtil.  full stack trace here: http://paste.openstack.org/show/493254/   \n\nI did run \u0027buck build api_install\u0027 to get the latest api but still did not work.\nMaybe you take a look?",
+      "parentUuid": "4ef294a8_2e846702",
       "range": {
         "startLine": 36,
         "startChar": 27,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4e8e1443_8ef57b33",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-07T02:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed09ce3_4cdaff09",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "d31ada2ff5b7cde2d57f76c7b9342471d55ef42d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ef294a8_ce2963c8",
         "filename": "src/main/resources/Documentation/about.md",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2016-04-04T05:52:33Z",
       "side": 1,
       "message": "Call it build result?",
+      "revId": "d31ada2ff5b7cde2d57f76c7b9342471d55ef42d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e8e1443_6ef12f45",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-07T02:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef294a8_ce2963c8",
       "revId": "d31ada2ff5b7cde2d57f76c7b9342471d55ef42d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
