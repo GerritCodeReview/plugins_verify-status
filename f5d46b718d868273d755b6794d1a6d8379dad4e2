@@ -62,6 +62,46 @@
       "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce6be468_aa33cfed",
+        "filename": "src/main/resources/Documentation/cmd-save.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T21:22:53Z",
+      "side": 1,
+      "message": "This information is provided twice. When value is present and !\u003d 0 then it\u0027s voting, otherwise it\u0027s not.",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7a6832_0b23fd9a",
+        "filename": "src/main/resources/Documentation/cmd-save.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T21:22:53Z",
+      "side": 1,
+      "message": "Ah, I see now why you want it to be string.",
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
