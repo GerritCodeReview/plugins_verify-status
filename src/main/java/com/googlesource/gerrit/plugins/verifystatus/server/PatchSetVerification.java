@@ -31,16 +31,16 @@ public class PatchSetVerification {
     protected PatchSet.Id patchSetId;
 
     @Column(id = 2)
-    protected LabelId categoryId;
+    protected LabelId jobId;
 
     protected Key() {
       patchSetId = new PatchSet.Id();
-      categoryId = new LabelId();
+      jobId = new LabelId();
     }
 
     public Key(PatchSet.Id ps, LabelId c) {
       this.patchSetId = ps;
-      this.categoryId = c;
+      this.jobId = c;
     }
 
     @Override
@@ -49,12 +49,12 @@ public class PatchSetVerification {
     }
 
     public LabelId getLabelId() {
-      return categoryId;
+      return jobId;
     }
 
     @Override
     public com.google.gwtorm.client.Key<?>[] members() {
-      return new com.google.gwtorm.client.Key<?>[] {categoryId};
+      return new com.google.gwtorm.client.Key<?>[] {jobId};
     }
   }
 
@@ -71,10 +71,19 @@ public class PatchSetVerification {
   protected String url;
 
   @Column(id = 5, notNull = false, length = 255)
-  protected String verifier;
+  protected String reporter;
 
   @Column(id = 6, notNull = false, length = 255)
   protected String comment;
+
+  @Column(id = 7, notNull = false, length = 255)
+  protected String category;
+
+  @Column(id = 8, notNull = false, length = 255)
+  protected String duration;
+
+  @Column(id = 9)
+  protected boolean abstain;
 
   protected PatchSetVerification() {
   }
@@ -94,8 +103,8 @@ public class PatchSetVerification {
     return key.patchSetId;
   }
 
-  public LabelId getLabelId() {
-    return key.categoryId;
+  public LabelId getJobId() {
+    return key.jobId;
   }
 
   public short getValue() {
@@ -106,6 +115,14 @@ public class PatchSetVerification {
     value = v;
   }
 
+  public boolean getAbstain() {
+    return abstain;
+  }
+
+  public void setAbstain(boolean a) {
+    abstain = a;
+  }
+
   public Timestamp getGranted() {
     return granted;
   }
@@ -114,8 +131,8 @@ public class PatchSetVerification {
     granted = ts;
   }
 
-  public String getLabel() {
-    return getLabelId().get();
+  public String getJob() {
+    return getJobId().get();
   }
 
   public String getUrl() {
@@ -126,12 +143,12 @@ public class PatchSetVerification {
     this.url = url;
   }
 
-  public String getVerifier() {
-    return verifier;
+  public String getReporter() {
+    return reporter;
   }
 
-  public void setVerifier(String reporter) {
-    this.verifier = reporter;
+  public void setReporter(String reporter) {
+    this.reporter = reporter;
   }
 
   public String getComment() {
@@ -140,6 +157,22 @@ public class PatchSetVerification {
 
   public void setComment(String comment) {
     this.comment = comment;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  public String getDuration() {
+    return duration;
+  }
+
+  public void setDuration(String duration) {
+    this.duration = duration;
   }
 
   @Override
@@ -152,8 +185,7 @@ public class PatchSetVerification {
   public boolean equals(Object o) {
     if (o instanceof PatchSetVerification) {
       PatchSetVerification p = (PatchSetVerification) o;
-      return Objects.equals(key, p.key)
-          && Objects.equals(value, p.value)
+      return Objects.equals(key, p.key) && Objects.equals(value, p.value)
           && Objects.equals(granted, p.granted);
     }
     return false;
