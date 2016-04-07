@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "ce6be468_2aad9faa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T06:45:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4e8e1443_ae1b1756",
+      "range": {
+        "startLine": 36,
+        "startChar": 27,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "d31ada2ff5b7cde2d57f76c7b9342471d55ef42d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ed09ce3_4cdaff09",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
         "patchSetId": 2
