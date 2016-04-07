@@ -49,26 +49,33 @@ for additional info on this request.
 
   )]}'
   {
-    "gate-horizon-pep8": {
+    "check-horizon-pep8": {
       "url": "https://ci.host.com/jobs/gate-horizon-pep8/1711",
       "value": 1,
-      "verifier": "Jenkins",
-      "comment": "Non Voting",
-      "granted": "15 Mar 2016 08:10:41"
+      "reporter": "Jenkins CI",
+      "comment": "Experimental",
+      "granted": "15 Mar 2016 08:10:41",
+      "category": "check",
+      "duration": "1m 30s"
     },
     "gate-horizon-python27": {
       "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
       "value": 1,
-      "verifier": "Jenkins",
-      "comment": "Passed",
+      "abstain": true,
+      "reporter": "Acme CI",
+      "comment": "Informational only",
       "granted": "15 Mar 2016 08:30:16"
+      "category": "gate",
+      "duration": "2m 40s",
     }
     "gate-horizon-python34": {
       "url": "https://ci.host.com/jobs/gate-horizon-python34/1711",
       "value": -1,
-      "verifier": "Jenkins",
-      "comment": "Failed",
-      "granted": "15 Mar 2016 08:40:23"
+      "reporter": "Drone CI",
+      "comment": "RuntimeError: File was not found",
+      "granted": "15 Mar 2016 08:40:23",
+      "category": "gate",
+      "duration": "12m 20s"
     }
   }
 ```
@@ -107,14 +114,20 @@ $ cat verification_data.txt
     "gate-horizon-python27": {
       "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
       "value": 1,
-      "verifier": "Jenkins",
-      "comment": "Passed"
+      "abstain": true,
+      "reporter": "Acme CI",
+      "comment": "Informational only",
+      "category": "gate",
+      "duration": "2m 40s"
     },
     "gate-horizon-python34": {
       "url": "https://ci.host.com/jobs/gate-horizon-python34/1711",
       "value": -1,
-      "verifier": "Jenkins",
-      "comment": "Failed"
+      "abstain": false,
+      "reporter": "Drone CI",
+      "comment": "RuntimeError: File was not found",
+      "category": "gate",
+      "duration": "12m 20s"
     }
   }
 }
@@ -132,12 +145,13 @@ to a revision.
 
 |Field Name  |     |Description|
 |:-----------|:----|:----------|
-|category    |required|The name of the category to be added as a verification|
-|value       |required|The value associated with the category|
-|comment     |optional|The comment associated with the category|
-|url         |optional|The url associated with the category|
-|verifier    |optional|The user that verified the revision|
-
+|value       |required|The pass/fail result for this job|
+|abstain     |optional|Whether the value counts as a vote (defaults to false)|
+|comment     |optional|A short comment about this job|
+|url         |optional|The url link to more info about this job|
+|reporter    |optional|The user that verified this job|
+|category    |optional|A category for this job|
+|duration    |optional|The time it took to run this job|
 
 
 ### <a id="revision-info"></a>RevisionInfo
@@ -158,10 +172,14 @@ The `VerificationInfo` entity describes a verification on a patch set.
 
 |Field Name |Description|
 |:----------|:----------|
-|comment    |A short comment about about this verification|
-|url        |The URL for this verification|
-|value      |The value for this verification|
-|verifier   |The user that reported this verification|
+|value      |The pass/fail result for this job|
+|abstain    |Whether the value counts as a vote|
+|comment    |A short comment about this job|
+|url        |The url link to more info about this job|
+|reporter   |The user that verified this job|
+|category   |A category for this job|
+|duration   |The time it took to run this job|
+|granted    |The date this verification was recorded|
 
 
 

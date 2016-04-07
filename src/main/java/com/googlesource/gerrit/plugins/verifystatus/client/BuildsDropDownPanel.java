@@ -48,7 +48,7 @@ public class BuildsDropDownPanel extends FlowPanel {
       .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
         @Override
         public void onSuccess(NativeMap<VerificationInfo> map) {
-          map.copyKeysIntoChildren("category");
+          map.copyKeysIntoChildren("job");
           // TODO only rendern when not empty
           panel.setWidget(new BuildsDropDownPanel());
         }
