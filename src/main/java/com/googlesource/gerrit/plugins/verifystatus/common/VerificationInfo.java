@@ -14,10 +14,14 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.common;
 
+import java.sql.Timestamp;
+
 public class VerificationInfo {
   public String url;
   public Short value;
-  public String verifier;
+  public String reporter;
   public String comment;
-  public String granted;
+  public Timestamp granted;
+  public String category;
+  public String duration;
 }
