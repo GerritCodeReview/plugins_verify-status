@@ -96,19 +96,29 @@ public class PostVerification
       if (c != null) {
         c.setGranted(ts);
         c.setValue(value);
+        Boolean abstain = ent.getValue().abstain;
+        c.setAbstain(abstain);
         String url = ent.getValue().url;
         if (url != null) {
           c.setUrl(url);
         }
-        String verifier = ent.getValue().verifier;
-        if (verifier != null) {
-          c.setVerifier(verifier);
+        String reporter = ent.getValue().reporter;
+        if (reporter != null) {
+          c.setReporter(reporter);
         }
         String comment = ent.getValue().comment;
         if (comment != null) {
           c.setComment(comment);
         }
-        log.info("Updating job " + c.getLabel() + " for change "
+        String category = ent.getValue().category;
+        if (category != null) {
+          c.setCategory(category);
+        }
+        String duration = ent.getValue().duration;
+        if (duration != null) {
+          c.setDuration(duration);
+        }
+        log.info("Updating job " + c.getJob() + " for change "
             + c.getPatchSetId());
         ups.add(c);
       } else {
@@ -116,11 +126,13 @@ public class PostVerification
                 resource.getPatchSet().getId(),
                 new LabelId(name)),
             value, TimeUtil.nowTs());
-        c.setGranted(ts);
+        c.setAbstain(ent.getValue().abstain);
         c.setUrl(ent.getValue().url);
-        c.setVerifier(ent.getValue().verifier);
+        c.setReporter(ent.getValue().reporter);
         c.setComment(ent.getValue().comment);
-        log.info("Adding job " + c.getLabel() + " for change "
+        c.setCategory(ent.getValue().category);
+        c.setDuration(ent.getValue().duration);
+        log.info("Adding job " + c.getJob() + " for change "
             + c.getPatchSetId());
         ups.add(c);
       }
@@ -136,7 +148,7 @@ public class PostVerification
     Map<String, PatchSetVerification> current = Maps.newHashMap();
     for (PatchSetVerification v : db.patchSetVerifications()
         .byPatchSet(resource.getPatchSet().getId())) {
-      current.put(v.getLabelId().get(), v);
+      current.put(v.getJobId().get(), v);
     }
     return current;
   }
