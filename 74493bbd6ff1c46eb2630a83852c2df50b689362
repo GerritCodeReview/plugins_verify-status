@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ce6be468_cabac3e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T06:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6be468_ea96a76b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "74493bbd6ff1c46eb2630a83852c2df50b689362",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce6be468_4aa6d3d4",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
         "patchSetId": 4
