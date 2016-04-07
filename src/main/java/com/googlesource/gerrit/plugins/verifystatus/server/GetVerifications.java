@@ -25,14 +25,10 @@ import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerificationInfo;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.Map;
 
 @Singleton
 public class GetVerifications implements RestReadView<RevisionResource> {
-  private static final SimpleDateFormat DATE_FORMAT =
-      new SimpleDateFormat("d MMM yyyy HH:mm:ss", Locale.US);
   private final SchemaFactory<CiDb> schemaFactory;
 
   @Inject
@@ -50,10 +46,13 @@ public class GetVerifications implements RestReadView<RevisionResource> {
         VerificationInfo info = new VerificationInfo();
         info.value = v.getValue();
         info.url = v.getUrl();
-        info.verifier = v.getVerifier();
+        info.reporter = v.getReporter();
         info.comment = v.getComment();
-        info.granted = DATE_FORMAT.format(v.getGranted());
-        out.put(v.getLabelId().get(), info);
+        info.granted = v.getGranted();
+        info.category = v.getCategory();
+        info.voting = v.getVoting();
+        info.duration = v.getDuration();
+        out.put(v.getJobId().get(), info);
       }
     }
     return out;
