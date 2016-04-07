@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee7a6832_4ba6e5d4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerificationInfo.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T06:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee7a6832_eb96b16b",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "ee24d851991108f13c1f066f2d382802f72fd923",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee7a6832_8b9b6d92",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerificationInfo.java",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-07T06:43:38Z",
       "side": 1,
       "message": "private",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "ee24d851991108f13c1f066f2d382802f72fd923",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7a6832_6ba3a1c3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerificationInfo.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T06:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee7a6832_8b9b6d92",
       "range": {
         "startLine": 28,
         "startChar": 2,
