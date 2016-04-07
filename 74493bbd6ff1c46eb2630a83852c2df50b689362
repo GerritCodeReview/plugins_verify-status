@@ -39,6 +39,29 @@
       "revId": "74493bbd6ff1c46eb2630a83852c2df50b689362",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce6be468_4aa6d3d4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T06:06:16Z",
+      "side": 1,
+      "message": "Hm. There is some mismatch here. Have we agreed upon renaming the category to label? I see you are changing in this change some places to label and in PatchSetVerification it\u0027s already called getLabel(), even though, the underlying LabelId class still has the column named category:\n\n  @Column(id \u003d 2)\n  protected LabelId categoryId;\n\nThis should be consistently renamed. Label should be OK, although it\u0027s overloaded in Gerrit already: you are voting on label Verified, and then user would see a table with a column label, where she will see the values like:\n\n* Label\n* gate-horizon-pep8\n* gate-horizon-python27\n* gate-horizon-python34\n* [...]\n\nRight now the name in the UI is job. Not sure if it\u0027s better as category or label.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "74493bbd6ff1c46eb2630a83852c2df50b689362",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
