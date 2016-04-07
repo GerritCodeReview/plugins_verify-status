@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce6be468_ea39c7cf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/common/VerificationInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T21:20:49Z",
+      "side": 1,
+      "message": "This should be Boolean and be nulified when returned back. But is this really needed? when value is not set or 0 it\u0027s not voting. Isn\u0027t it?",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7a6832_6b2641ac",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T21:20:49Z",
+      "side": 1,
+      "message": "You havn\u0027t migrated the data and bump the schema version because nobody is using this plugin in production yet? I think this is OK.",
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7a6832_4b290579",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-07T21:20:49Z",
+      "side": 1,
+      "message": "Can this be int?",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
