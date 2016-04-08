@@ -10,7 +10,7 @@ public class VerificationInfo extends JavaScriptObject {
   public final native String url() /*-{ return this.url; }-*/;
   public final native String comment() /*-{ return this.comment; }-*/;
   public final native short value() /*-{ return this.value; }-*/;
-  public final native Boolean abstain() /*-{ return this.abstain; }-*/;
+  public final native boolean abstain() /*-{ return this.abstain; }-*/;
   public final native String category() /*-{ return this.category; }-*/;
   public final native String duration() /*-{ return this.duration; }-*/;
   public final native String reporter() /*-{ return this.reporter; }-*/;

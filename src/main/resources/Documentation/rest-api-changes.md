@@ -71,7 +71,8 @@ for additional info on this request.
 
 __POST__ /changes/{change-id}/revisions/{revision-id}/@PLUGIN@~verifications
 
-Posts a verification result to a patchset.
+Posts a verification result to a patchset.  Results can be updated by posting
+with the same job name.
 
 The verification must be provided in the request body as a
 [VerifyInput](#verify-input) entity.

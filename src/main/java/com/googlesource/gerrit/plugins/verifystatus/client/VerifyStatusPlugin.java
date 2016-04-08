@@ -27,6 +27,9 @@ public class VerifyStatusPlugin extends PluginEntryPoint {
   public void onPluginLoad() {
     Plugin.get().panel(
         GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
-        new BuildsDropDownPanel.Factory());
+        new JobsDropDownPanel.Factory());
+    Plugin.get().panel(
+        GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
+        new JobsPanel.Factory());
   }
 }
