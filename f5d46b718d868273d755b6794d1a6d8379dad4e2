@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e90d4ca_9eba9de3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/commands/SaveCommand.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-08T05:50:04Z",
+      "side": 1,
+      "message": "I see there is one source for potential confusion here: the \"vote\" argument to this command is *not* neccesarily the CI vote on gerrit change (it can be but it not *must* to), but rather an out come of one particular job execution. This is very subtle but important different. So may be it would make sense to change the vote with say job-outcome? Build-result? etc.\n\nI got already questions why we need this plugin, when the CI vote is visible from the change message/History?\n\nThere are two answers here:\n\n* Combined votes: this plugin allows to visualize the build results on job level\n* The build result is seamlessly retrieved on patch set level\n\nI wonder if we can emphasite these two advantages in the interface, so those advantages are immediately clear?",
+      "parentUuid": "8e864c95_a091fa76",
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce6be468_ea39c7cf",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/common/VerificationInfo.java",
         "patchSetId": 2
