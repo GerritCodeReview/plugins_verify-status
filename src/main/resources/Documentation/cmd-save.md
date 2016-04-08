@@ -71,8 +71,10 @@ This command is intended to be used in scripts.
 EXAMPLES
 --------
 
-Verified gate-horizon-pep8 test with vote=+1 on the change with commit 14a95001c.
-__Notice__ two levels of quoting are required, one for the local shell, and
+Report results for 'gate-horizon-pep8' job with score=+1 on the patchset with
+commit 14a95001c.  Results can be updated by posting with the same job name.
+
+*__Notice__ two levels of quoting are required, one for the local shell, and
 another for the argument parser inside the Gerrit server.
 
 
