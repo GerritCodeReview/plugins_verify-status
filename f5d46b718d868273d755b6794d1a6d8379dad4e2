@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "8e864c95_a0df3a27",
+        "filename": "src/main/resources/Documentation/cmd-save.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-08T07:30:23Z",
+      "side": 1,
+      "message": "Thinking about this again.  I am seeing that there are more conditions for non-voting results.  Non-voting jobs can have pass/fail results as well so how can we persist that info?  \n\nShould there be another column, a `non-voting-value`?\n value can be: -1,0,1\n if 0 (Non-voting) then value for non-voting-value job can be -1,0,1 (pass/fail)\n\n\nthe other option is to map value as:\n -2 Fail\n -1 Non-voting Fail\n  0  non-voting\n +1 Non-voting Pass\n +2 Pass\n\nI\u0027m leaning towards 2nd option but that will tightly couple value to results.  What if we need a new job result like `incomplete`?  then option 1 might be better?",
+      "parentUuid": "ae7f904b_a191fe76",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "f5d46b718d868273d755b6794d1a6d8379dad4e2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee7a6832_0b23fd9a",
         "filename": "src/main/resources/Documentation/cmd-save.md",
         "patchSetId": 2
