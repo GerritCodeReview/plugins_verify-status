@@ -16,18 +16,22 @@ package com.googlesource.gerrit.plugins.verifystatus.client;
 
 import com.google.gerrit.client.GerritUiExtensionPoint;
 import com.google.gerrit.client.info.ChangeInfo;
+import com.google.gerrit.client.info.ChangeInfo.RevisionInfo;
 import com.google.gerrit.client.rpc.NativeMap;
+import com.google.gerrit.plugin.client.FormatUtil;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.extension.Panel;
 import com.google.gerrit.plugin.client.rpc.RestApi;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.InlineLabel;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Extension for change screen that displays a status in the header bar.
@@ -36,65 +40,66 @@ public class BuildsDropDownPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
     @Override
     public void onLoad(Panel panel) {
+      panel.setWidget(new BuildsDropDownPanel(panel));
     }
   }
 
-  BuildsDropDownPanel(final Panel panel) {
+  BuildsDropDownPanel(Panel panel) {
     ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
-    new RestApi("config")
-      .id("server")
+    RevisionInfo rev =
+        panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+    new RestApi("changes")
+      .id(change.id())
+      .view("revisions")
+      .id(rev.id())
       .view(Plugin.get().getPluginName(), "verifications")
       .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
         @Override
-        public void onSuccess(NativeMap<VerificationInfo> map) {
-          map.copyKeysIntoChildren("job");
-          // TODO only rendern when not empty
-          panel.setWidget(new BuildsDropDownPanel());
+        public void onSuccess(NativeMap<VerificationInfo> result) {
+          if (!result.isEmpty()) {
+            Map<String, VerificationInfo> jobs = new HashMap<>();
+            for (String key : result.keySet()) {
+              jobs.put(key, result.get(key));
+            }
+            display(jobs);
+          }
         }
 
         @Override
         public void onFailure(Throwable caught) {
           // never invoked
         }
-      });
+    });
   }
 
-  BuildsDropDownPanel() {
-    Grid g = new Grid(3, 4);
-    g.addStyleName("infoBlock");
-    CellFormatter fmt = g.getCellFormatter();
-
-    g.setText(0, 0, "State");
-    fmt.addStyleName(0, 0, "header");
-    g.setText(0, 1, "PS");
-    fmt.addStyleName(0, 1, "header");
-    g.setText(0, 2, "Date");
-    fmt.addStyleName(0, 2, "header");
-    g.setText(0, 3, "Log");
-    fmt.addStyleName(0, 3, "header");
-
-    HorizontalPanel p = new HorizontalPanel();
-    p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
-    p.add(new InlineLabel("OK"));
-    g.setWidget(1, 0, p);
-    g.setWidget(1, 1, new InlineLabel("2"));
-    g.setWidget(1, 2, new InlineLabel("2015-07-09 11:06:13"));
-    g.setWidget(1, 3, new InlineHyperlink("Build Log", "TODO"));
-
-    p = new HorizontalPanel();
-    p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
-    p.add(new InlineLabel("FAILED"));
-    g.setWidget(2, 0, p);
-    g.setWidget(2, 1, new InlineLabel("1"));
-    g.setWidget(2, 2, new InlineLabel("2015-07-09 09:17:28"));
-    g.setWidget(2, 3, new InlineHyperlink("Build Log", "TODO"));
-
-    fmt.addStyleName(0, 0, "topmost");
-    fmt.addStyleName(0, 1, "topmost");
-    fmt.addStyleName(0, 2, "topmost");
-    fmt.addStyleName(0, 3, "topmost");
-
-    add(new PopDownButton("Builds", g));
+  private void display(Map<String, VerificationInfo> jobs) {
+    int row = 0;
+    int column = 4;
+    Grid grid = new Grid(row, column);
+    for (Map.Entry<String, VerificationInfo> job : jobs.entrySet()) {
+      grid.insertRow(row);
+      grid.setWidget(row, 0, new InlineLabel(job.getKey()));
+      grid.setWidget(row, 1, new InlineLabel(job.getValue().reporter()));
+      grid.setWidget(row, 2, new InlineLabel(FormatUtil.shortFormat(
+          job.getValue().granted())));
+      HorizontalPanel p = new HorizontalPanel();
+      short vote = job.getValue().value();
+      // if job has no vote or vote is 0 then it's a non-voting job
+      if (vote > 0) {
+          p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
+          p.add(new InlineHyperlink("Passed", job.getValue().url()));
+      } else if (vote < 0) {
+          p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
+          p.add(new InlineHyperlink("Failed", job.getValue().url()));
+      } else {
+        p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
+        p.add(new InlineHyperlink("Non-Voting", job.getValue().url()));
+      }
+      p.add(new InlineLabel(" ("+job.getValue().duration()+")"));
+      grid.setWidget(row, 3, p);
+      row++;
+     }
+    add(new PopDownButton("Jobs", grid));
   }
 }
