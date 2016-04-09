@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab8782d0_41f2b2b8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/BuildsDropDownPanel.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-09T14:41:54Z",
+      "side": 1,
+      "message": "My initial idea here is to setup a global or per-project \u0027voting\u0027 parameter that contains a list of reporters which the Gerrit admin can configure to tell this that those votes should count.  Any reporters not on that list will be considered non-voting.  Example:\n\n [verify-status]\n    voting \u003d HPE CI\n    voting \u003d Openstack CI",
+      "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
