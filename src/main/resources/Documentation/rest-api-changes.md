@@ -1,18 +1,4 @@
-<style>
-  table{
-      border-collapse: collapse;
-      border-spacing: 0;
-      border:2px solid #000000;
-  }
-  
-  th{
-      border:2px solid #000000;
-  }
-  
-  td{
-      border:1px solid #000000;
-  }
-</style>
+<link href="../com/googlesource/gerrit/plugins/verifystatus/public/verifystatus.css" rel="stylesheet"></link>
 
 @PLUGIN@ - /changes/ REST API
 ==============================
@@ -49,14 +35,14 @@ for additional info on this request.
 
   )]}'
   {
-    "check-horizon-pep8": {
-      "url": "https://ci.host.com/jobs/gate-horizon-pep8/1711",
-      "value": 1,
-      "reporter": "Jenkins CI",
-      "comment": "Experimental",
-      "granted": "15 Mar 2016 08:10:41",
+    "gate-horizon-pep8": {
+      "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
+      "value": -1,
+      "reporter": "HPE CI",
+      "comment": "Failed",
       "category": "check",
-      "duration": "1m 30s"
+      "duration": "3m 10s"
+      "granted": "15 Mar 2016 08:10:41",
     },
     "gate-horizon-python27": {
       "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
@@ -64,18 +50,19 @@ for additional info on this request.
       "abstain": true,
       "reporter": "Acme CI",
       "comment": "Informational only",
+      "category": "check",
+      "duration": "7m 40s"
       "granted": "15 Mar 2016 08:30:16"
-      "category": "gate",
-      "duration": "2m 40s",
     }
     "gate-horizon-python34": {
-      "url": "https://ci.host.com/jobs/gate-horizon-python34/1711",
-      "value": -1,
+      "url": "https://ci.host.com/jobs/gate-horizon-python34/9111",
+      "value": 1,
       "reporter": "Drone CI",
       "comment": "RuntimeError: File was not found",
       "granted": "15 Mar 2016 08:40:23",
       "category": "gate",
       "duration": "12m 20s"
+      "granted": "15 Mar 2016 08:40:23",
     }
   }
 ```
