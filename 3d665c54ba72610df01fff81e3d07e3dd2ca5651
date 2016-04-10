@@ -57,6 +57,24 @@
       "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e864c95_605b725f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/BuildsDropDownPanel.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-10T12:05:20Z",
+      "side": 1,
+      "message": "It\u0027s important to indicate to the user whether the build job was a voting/non-voting job.   I was trying to do it in here but thinking about this again i agree that it\u0027s not the responsibility of this plugin to determine whether a job is voting or not.  Next PS shifts that responsibility to the job reporter.   Now we will just display the  comment of the job so if reporter wants to indicate that the job Passed and is non voting then the job should contain comment\u003d\u0027Passed (Non-Voting)\u0027 similar to https://review.openstack.org/#/c/302499/",
+      "parentUuid": "ab7062c4_d9fd5380",
+      "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
