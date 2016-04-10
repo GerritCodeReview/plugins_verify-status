@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ab7062c4_f9fa9785",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/BuildsDropDownPanel.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-10T08:22:41Z",
+      "side": 1,
+      "message": "Yes. This is the correct (and obvious) condition. I didn\u0027t like that magic to try to encode voting/non voting aspect in vote value by parsing a vote with value +1 as success without voting and +2 as sucess with voting and the opposite for the negative votes, from the previous patch set.",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 7
+      },
+      "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab8782d0_41f2b2b8",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/BuildsDropDownPanel.java",
         "patchSetId": 13
@@ -13,6 +36,24 @@
       "writtenOn": "2016-04-09T14:41:54Z",
       "side": 1,
       "message": "My initial idea here is to setup a global or per-project \u0027voting\u0027 parameter that contains a list of reporters which the Gerrit admin can configure to tell this that those votes should count.  Any reporters not on that list will be considered non-voting.  Example:\n\n [verify-status]\n    voting \u003d HPE CI\n    voting \u003d Openstack CI",
+      "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab7062c4_d9fd5380",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/BuildsDropDownPanel.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-10T08:22:41Z",
+      "side": 1,
+      "message": "Voting vs. non voting on gerrit change is orthogonal to CI job verification outcome. There can be a single job, where there is a one to one relationship between the job outcome and vote. Then we may have combined votes (where all or only some of the jobs contribute to the combined vote) and we may have verifications that don\u0027t vote at all on gerrit changes, only publish the job outcome. Why it\u0027s essential for the users of this plugin to know if particular job contributed to a vote on gerrit change or not? We should try to make this plugin as general as possible.",
+      "parentUuid": "ab8782d0_41f2b2b8",
       "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
