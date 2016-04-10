@@ -1,18 +1,4 @@
-<style>
-  table{
-      border-collapse: collapse;
-      border-spacing: 0;
-      border:2px solid #000000;
-  }
-  
-  th{
-      border:2px solid #000000;
-  }
-  
-  td{
-      border:1px solid #000000;
-  }
-</style>
+<link href="../com/googlesource/gerrit/plugins/verifystatus/public/verifystatus.css" rel="stylesheet"></link>
 
 Database
 ========
@@ -21,7 +7,7 @@ DESCRIPTION
 -----------
 CI data is stored in a [CI database](#supported-dbs) which can be in the Gerrit
 review database or a completely separate database.
- 
+
 ### <a id="schema-initialization"> @PLUGIN@ schema initialization
 
 Schema initialization
