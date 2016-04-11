@@ -75,6 +75,24 @@
       "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab8782d0_610a567b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/BuildsDropDownPanel.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-11T00:18:17Z",
+      "side": 1,
+      "message": "It might even be better to add a `voting` column in the DB?  This would allow the job to report voting/non-voting instead of putting this info into in comments.",
+      "parentUuid": "8e864c95_605b725f",
+      "revId": "3d665c54ba72610df01fff81e3d07e3dd2ca5651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
