@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ab36a2c5_09d7490b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerificationInfo.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-13T23:19:53Z",
+      "side": 1,
+      "message": "type should be \u0027boolean\u0027 otherwise rest will return `undefined`",
+      "revId": "beccc729e8f3c8ff3f832abec7bcecfb0b58448a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab68629f_d99a738d",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
         "patchSetId": 5
