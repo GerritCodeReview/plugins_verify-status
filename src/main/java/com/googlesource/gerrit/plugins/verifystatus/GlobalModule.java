@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.verifystatus;
 
 import static com.google.inject.Scopes.SINGLETON;
 import static com.google.gerrit.server.change.RevisionResource.REVISION_KIND;
+import static com.google.gerrit.server.config.ConfigResource.CONFIG_KIND;
 
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.restapi.RestApiModule;
@@ -26,6 +27,8 @@ import com.google.inject.Key;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
+import com.googlesource.gerrit.plugins.verifystatus.server.PutConfig;
+import com.googlesource.gerrit.plugins.verifystatus.server.GetConfig;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetVerifications;
 import com.googlesource.gerrit.plugins.verifystatus.server.PostVerification;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceModule;
@@ -80,6 +83,8 @@ class GlobalModule extends FactoryModule {
     install(new RestApiModule() {
       @Override
       protected void configure() {
+        get(CONFIG_KIND, "config").to(GetConfig.class);
+        put(CONFIG_KIND, "config").to(PutConfig.class);
         get(REVISION_KIND, "verifications").to(GetVerifications.class);
         post(REVISION_KIND, "verifications").to(PostVerification.class);
       }
