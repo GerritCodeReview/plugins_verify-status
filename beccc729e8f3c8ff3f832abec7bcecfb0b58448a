@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab36a2c5_89097987",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerificationInfo.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-14T00:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab36a2c5_09d7490b",
+      "revId": "beccc729e8f3c8ff3f832abec7bcecfb0b58448a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab68629f_d99a738d",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2016-04-13T19:34:13Z",
       "side": 1,
       "message": "notNull \u003d false, because the defaul is true:\n\n  /**\n   * @return is a value required. Defaults to true (NOT NULL).\n   */\n  boolean notNull() default true;\n\nand the default should be voting, right?",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "beccc729e8f3c8ff3f832abec7bcecfb0b58448a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b2d5e79_88097787",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-14T00:45:19Z",
+      "side": 1,
+      "message": "done and yes, default is voting (or abstain\u003dfalse).",
+      "parentUuid": "ab68629f_d99a738d",
       "range": {
         "startLine": 85,
         "startChar": 2,
