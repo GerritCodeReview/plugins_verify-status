@@ -42,3 +42,30 @@ combined Verified vote.
 The light bulb is an indicator that a job has abstained from voting
 (or is a non-voting job).  Abstaining typically indicates that a job's
 score may not factor into determining the combined vote.
+
+
+### <a id="configure-panels"> @PLUGIN@ configure-panels
+
+Configuration
+-------------
+
+The @PLUGIN@ job panels can be configured in the [gerrit.config]
+(../../../Documentation/config-gerrit.html#_file_code_etc_gerrit_config_code)
+file.
+
+#### Parameters
+
+|Field Name             |Description|
+|:----------------------|:----------|
+|showJobsPanel          | Whether jobs panel should be displayed (default to true)|
+|showJobsDropDownPanel  | Whether jobs drop down panel should be displayed (default to true)|
+
+
+#### Example
+
+```
+[plugin "@PLUGIN@"]
+   showJobsPanel = false
+   showJobsDropDownPanel = false
+```
+
