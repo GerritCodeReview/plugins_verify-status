@@ -15,7 +15,7 @@
 package com.googlesource.gerrit.plugins.verifystatus.client;
 
 import com.google.gerrit.client.GerritUiExtensionPoint;
-import com.google.gerrit.client.Resources;
+import  com.googlesource.gerrit.plugins.verifystatus.client.Resources;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.PluginEntryPoint;
 import com.google.gwt.core.client.GWT;
