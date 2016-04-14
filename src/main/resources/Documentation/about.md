@@ -39,6 +39,6 @@ scores are independent of the Gerrit label (i.e. `Verified`) score. The
 reporter scores each build job and then (if given permission) scores the
 combined Verified vote.
 
-The light bulb is an indicator that a job has abstained from voting
+The information icon is an indicator that a job has abstained from voting
 (or is a non-voting job).  Abstaining typically indicates that a job's
 score may not factor into determining the combined vote.
