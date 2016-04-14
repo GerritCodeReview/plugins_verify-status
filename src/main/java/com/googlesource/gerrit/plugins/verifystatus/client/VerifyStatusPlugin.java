@@ -18,18 +18,36 @@ import com.google.gerrit.client.GerritUiExtensionPoint;
 import com.google.gerrit.client.Resources;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.PluginEntryPoint;
+import com.google.gerrit.plugin.client.rpc.RestApi;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class VerifyStatusPlugin extends PluginEntryPoint {
   public static final Resources RESOURCES = GWT.create(Resources.class);
 
   @Override
   public void onPluginLoad() {
-    Plugin.get().panel(
-        GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
-        new JobsDropDownPanel.Factory());
-    Plugin.get().panel(
-        GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
-        new JobsPanel.Factory());
+    new RestApi("config").view("server")
+        .view(Plugin.get().getPluginName(), "config")
+        .get(new AsyncCallback<ConfigInfo>() {
+          @Override
+          public void onSuccess(ConfigInfo info) {
+            if (info.showJobsPanel()) {
+              Plugin.get().panel(
+                  GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
+                  new JobsPanel.Factory());
+            }
+            if (info.showJobsDropDownPanel()) {
+              Plugin.get().panel(
+                  GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
+                  new JobsDropDownPanel.Factory());
+            }
+          }
+
+          @Override
+          public void onFailure(Throwable caught) {
+            // never invoked
+          }
+        });
   }
 }
