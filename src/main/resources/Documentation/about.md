@@ -34,10 +34,17 @@ Visualized based on the [job results](#job-results) info
 ### <a id="job-results"></a>
 ### `Job Results`
 
-Job result scores represent the results from the executed build.  These
-scores are independent of the Gerrit label (i.e. `Verified`) score. The
+The job score (or value) is the result from the executed build.  This
+score is independent of the Gerrit label (i.e. `Verified`) score. The
 reporter scores each build job and then (if given permission) scores the
 combined Verified vote.
+
+|Score          |Result  |
+|:------------- |:-------|
+|less than 0    |Failed  |
+|0              |Unstable|
+|greater than 0 |Passed  |
+
 
 The information icon is an indicator that a job has abstained from voting
 (or is a non-voting job).  Abstaining typically indicates that a job's
