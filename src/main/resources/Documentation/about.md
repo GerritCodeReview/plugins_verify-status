@@ -42,3 +42,10 @@ combined Verified vote.
 The information icon is an indicator that a job has abstained from voting
 (or is a non-voting job).  Abstaining typically indicates that a job's
 score may not factor into determining the combined vote.
+
+
+|Score          |Result  |
+|:------------- |:-------|
+|less than 0    |Failed  |
+|0              |Warning |
+|greater than 0 |Passed  |

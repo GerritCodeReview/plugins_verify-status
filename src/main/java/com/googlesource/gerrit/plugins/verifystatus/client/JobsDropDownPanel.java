@@ -82,6 +82,8 @@ public class JobsDropDownPanel extends FlowPanel {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
       } else if (vote < 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
+      } else if (vote == 0) {
+        p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
       p.add(new InlineHyperlink(job.getKey(), job.getValue().url()));
       p.add(new InlineLabel("(" + job.getValue().duration() + ")"));
