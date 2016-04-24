@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48d52c29_99353fd2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerificationInfo.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:17:57Z",
+      "side": 1,
+      "message": "abstain can be null. The usual idiom here is:\n\n  return this.abstain || false;",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d52c29_792b8375",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:17:57Z",
+      "side": 1,
+      "message": "Remove this? I\u0027m not sure, if this works in GWTORM. Just let store false in case abstain !\u003d true.",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d52c29_5928c776",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PatchSetVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:17:57Z",
+      "side": 1,
+      "message": "This conversion is only needed for JSON entity. On the database level it\u0027s normal boolean. So it should be:\n\n  public boolean getAbstain() {...\n  public void setAbstain(boolean a) {...",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d52c29_19224f97",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:17:57Z",
+      "side": 1,
+      "message": "Here we can handle null and only set if it\u0027s true, e.g.:\n\n  if (Boolean.TRUE.equals(ent.getValue().abstain)) {\n    c.setAbstain(true);\n  }\n\nor even:\n\n  c.setAbstain(Boolean.TRUE.equals(ent.getValue().abstain));",
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
