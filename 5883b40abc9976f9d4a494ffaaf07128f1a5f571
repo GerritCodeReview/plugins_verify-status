@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48d52c29_99ee5f64",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerifyStatusPlugin.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:31:59Z",
+      "side": 1,
+      "message": "Nit: wrong indentation.",
+      "revId": "5883b40abc9976f9d4a494ffaaf07128f1a5f571",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d0f83a_d83611c6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PutConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:31:59Z",
+      "side": 1,
+      "message": "Alternatively you could add plugin own capability.",
+      "revId": "5883b40abc9976f9d4a494ffaaf07128f1a5f571",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d0f83a_b83b55ac",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PutConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:31:59Z",
+      "side": 1,
+      "message": "showJobsPanel",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "5883b40abc9976f9d4a494ffaaf07128f1a5f571",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d0f83a_98409917",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PutConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-24T19:31:59Z",
+      "side": 1,
+      "message": "showJobsDropDownPanel",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "5883b40abc9976f9d4a494ffaaf07128f1a5f571",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
