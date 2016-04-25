@@ -175,6 +175,24 @@
       "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d52c29_d9b9770e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-25T13:29:13Z",
+      "side": 1,
+      "message": "Not done yet? This would produce a NPE if abstain is null.",
+      "parentUuid": "48d52c29_19224f97",
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
