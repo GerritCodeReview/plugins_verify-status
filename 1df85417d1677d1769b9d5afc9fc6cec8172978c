@@ -247,6 +247,24 @@
       "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a836a9dc_d29f845f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-25T16:23:07Z",
+      "side": 1,
+      "message": "Argh. I was looking on wrong patch set. Sorry.",
+      "parentUuid": "680bd118_f8a271a9",
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
