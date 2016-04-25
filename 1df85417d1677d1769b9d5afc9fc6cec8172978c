@@ -211,6 +211,24 @@
       "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a836a9dc_3299307f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-04-25T16:02:13Z",
+      "side": 1,
+      "message": "My suggestion was:\n\n  if (Boolean.TRUE.equals(ent.getValue().abstain)) {\n    c.setAbstain(true);\n  }\n\nor even:\n\n  c.setAbstain(Boolean.TRUE.equals(ent.getValue().abstain));",
+      "parentUuid": "88148534_39990f7f",
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
