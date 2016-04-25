@@ -70,6 +70,27 @@ public class JobsPanel extends FlowPanel {
   }
 
   private void display(Map<String, VerificationInfo> jobs) {
+
+    Map<String, VerificationInfo> visibleJobs = new TreeMap<>();
+    Map<String, VerificationInfo> moreJobs = new TreeMap<>();
+    int i = 0;
+    for (Map.Entry<String, VerificationInfo> job : jobs.entrySet()) {
+      if (i < 5) {
+        visibleJobs.put(job.getKey(), job.getValue());
+      } else {
+        moreJobs.put(job.getKey(), job.getValue());
+      }
+      i++;
+    }
+    if (!visibleJobs.isEmpty()) {
+      showInitial(visibleJobs);
+    }
+    if (!moreJobs.isEmpty()) {
+      showMore(moreJobs);
+    }
+  }
+
+  private void showInitial(Map<String, VerificationInfo> jobs) {
     int row = 0;
     int column = 1;
     Grid grid = new Grid(row, column);
@@ -93,5 +114,29 @@ public class JobsPanel extends FlowPanel {
       row++;
     }
     add(grid);
+  }
+
+  private void showMore(Map<String, VerificationInfo> jobs) {
+    int row = 0;
+    int column = 1;
+    Grid grid = new Grid(row, column);
+    for (Map.Entry<String, VerificationInfo> job : jobs.entrySet()) {
+      grid.insertRow(row);
+      HorizontalPanel p = new HorizontalPanel();
+      short vote = job.getValue().value();
+      if (vote > 0) {
+        p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
+      } else if (vote < 0) {
+        p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
+      }
+      p.add(new InlineHyperlink(job.getKey(), job.getValue().url()));
+      p.add(new InlineLabel(" (" + job.getValue().duration() + ")"));
+      if (job.getValue().abstain()) {
+        p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
+      }
+      grid.setWidget(row, 0, p);
+      row++;
+    }
+    add(new PopDownButton2("more", grid));
   }
 }
