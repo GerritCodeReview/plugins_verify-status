@@ -33,7 +33,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Extension for change screen that displays a status below the label info.
+ * Extension for change screen that displays job results under the change info
+ * panel
  */
 public class JobsPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
@@ -70,6 +71,26 @@ public class JobsPanel extends FlowPanel {
   }
 
   private void display(Map<String, VerificationInfo> jobs) {
+    Map<String, VerificationInfo> visibleJobs = new TreeMap<>();
+    Map<String, VerificationInfo> hiddenJobs = new TreeMap<>();
+    int i = 0;
+    for (Map.Entry<String, VerificationInfo> job : jobs.entrySet()) {
+      if (i < 5) {
+        visibleJobs.put(job.getKey(), job.getValue());
+      } else {
+        hiddenJobs.put(job.getKey(), job.getValue());
+      }
+      i++;
+    }
+    if (!visibleJobs.isEmpty()) {
+      add(getCondencedView(visibleJobs));
+    }
+    if (!hiddenJobs.isEmpty()) {
+      add(new JobsPanelButton("more", getCondencedView(hiddenJobs)));
+    }
+  }
+
+  private Grid getCondencedView(Map<String, VerificationInfo> jobs) {
     int row = 0;
     int column = 1;
     Grid grid = new Grid(row, column);
@@ -81,8 +102,6 @@ public class JobsPanel extends FlowPanel {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
       } else if (vote < 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
-      } else if (vote == 0) {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
       p.add(new InlineHyperlink(job.getKey(), job.getValue().url()));
       p.add(new InlineLabel(" (" + job.getValue().duration() + ")"));
@@ -92,6 +111,6 @@ public class JobsPanel extends FlowPanel {
       grid.setWidget(row, 0, p);
       row++;
     }
-    add(grid);
+    return grid;
   }
 }

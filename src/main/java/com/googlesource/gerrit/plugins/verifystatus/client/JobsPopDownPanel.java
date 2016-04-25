@@ -34,17 +34,17 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Extension for change screen that displays a status in the header bar.
+ * Extension for change screen that displays job results on the header
  */
-public class JobsDropDownPanel extends FlowPanel {
+public class JobsPopDownPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
     @Override
     public void onLoad(Panel panel) {
-      panel.setWidget(new JobsDropDownPanel(panel));
+      panel.setWidget(new JobsPopDownPanel(panel));
     }
   }
 
-  JobsDropDownPanel(Panel panel) {
+  JobsPopDownPanel(Panel panel) {
     ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     RevisionInfo rev =
@@ -97,6 +97,6 @@ public class JobsDropDownPanel extends FlowPanel {
           new InlineLabel(FormatUtil.shortFormat(job.getValue().granted())));
       row++;
     }
-    add(new PopDownButton("Jobs", grid));
+    add(new JobsPopDownPanelButton("Jobs", grid));
   }
 }

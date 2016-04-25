@@ -40,7 +40,7 @@ public class VerifyStatusPlugin extends PluginEntryPoint {
             if (info.showJobsDropDownPanel()) {
               Plugin.get().panel(
                   GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
-                  new JobsDropDownPanel.Factory());
+                  new JobsPopDownPanel.Factory());
             }
           }
 
