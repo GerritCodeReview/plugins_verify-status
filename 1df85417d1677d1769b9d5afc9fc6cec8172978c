@@ -229,6 +229,24 @@
       "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "680bd118_f8a271a9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-04-25T16:20:21Z",
+      "side": 1,
+      "message": "Yes, Gerrit shows me that it\u0027s in PS 7.  Are you looking at the latest patchset?",
+      "parentUuid": "a836a9dc_3299307f",
+      "revId": "1df85417d1677d1769b9d5afc9fc6cec8172978c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
