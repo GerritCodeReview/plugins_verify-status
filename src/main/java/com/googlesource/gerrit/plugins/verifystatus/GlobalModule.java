@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.verifystatus;
 
 import static com.google.inject.Scopes.SINGLETON;
+import static com.google.gerrit.server.account.AccountResource.ACCOUNT_KIND;
 import static com.google.gerrit.server.change.RevisionResource.REVISION_KIND;
 import static com.google.gerrit.server.config.ConfigResource.CONFIG_KIND;
 
@@ -28,6 +29,8 @@ import com.google.inject.Module;
 import com.google.inject.name.Names;
 
 import com.googlesource.gerrit.plugins.verifystatus.server.PutConfig;
+import com.googlesource.gerrit.plugins.verifystatus.server.GetPreferences;
+import com.googlesource.gerrit.plugins.verifystatus.server.SetPreferences;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetConfig;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetVerifications;
 import com.googlesource.gerrit.plugins.verifystatus.server.PostVerification;
@@ -87,6 +90,8 @@ class GlobalModule extends FactoryModule {
         put(CONFIG_KIND, "config").to(PutConfig.class);
         get(REVISION_KIND, "verifications").to(GetVerifications.class);
         post(REVISION_KIND, "verifications").to(PostVerification.class);
+        get(ACCOUNT_KIND, "preferences").to(GetPreferences.class);
+        put(ACCOUNT_KIND, "preferences").to(SetPreferences.class);
       }
     });
   }

@@ -29,6 +29,8 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.InlineLabel;
 
+import com.googlesource.gerrit.plugins.verifystatus.client.PreferencesInfo.VisibleJobs;
+
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -70,23 +72,55 @@ public class JobsPanel extends FlowPanel {
         });
   }
 
-  private void display(Map<String, VerificationInfo> jobs) {
-    Map<String, VerificationInfo> visibleJobs = new TreeMap<>();
-    Map<String, VerificationInfo> hiddenJobs = new TreeMap<>();
+  private void display(final Map<String, VerificationInfo> jobs) {
+
+    new RestApi("accounts").id("self").view(
+        Plugin.get().getPluginName(), "preferences")
+        .get(new AsyncCallback<PreferencesInfo>() {
+          @Override
+          public void onSuccess(PreferencesInfo result) {
+            VisibleJobs visibleJobs = result.visibleJobs();
+            switch (visibleJobs) {
+              case ALL:
+                display(jobs, jobs.size());
+                break;
+              case NONE:
+                break;
+              case FIVE:
+                display(jobs, 5);
+                break;
+              case TEN:
+                display(jobs, 10);
+                break;
+              default:
+                break;
+            }
+          }
+
+          @Override
+          public void onFailure(Throwable caught) {
+            // never invoked
+          }
+        });
+  }
+
+  private void display(Map<String, VerificationInfo> jobs, int n) {
+    final Map<String, VerificationInfo> unhidden = new TreeMap<>();
+    final Map<String, VerificationInfo> hidden = new TreeMap<>();
     int i = 0;
     for (Map.Entry<String, VerificationInfo> job : jobs.entrySet()) {
-      if (i < 5) {
-        visibleJobs.put(job.getKey(), job.getValue());
+      if (i < n) {
+        unhidden.put(job.getKey(), job.getValue());
       } else {
-        hiddenJobs.put(job.getKey(), job.getValue());
+        hidden.put(job.getKey(), job.getValue());
       }
       i++;
     }
-    if (!visibleJobs.isEmpty()) {
-      add(getCondencedView(visibleJobs));
+    if (!unhidden.isEmpty()) {
+      add(getCondencedView(unhidden));
     }
-    if (!hiddenJobs.isEmpty()) {
-      add(new JobsPanelButton("more", getCondencedView(hiddenJobs)));
+    if (!hidden.isEmpty()) {
+      add(new JobsPanelButton("more", getCondencedView(hidden)));
     }
   }
 
