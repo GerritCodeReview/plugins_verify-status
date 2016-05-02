@@ -45,6 +45,125 @@
       "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8f83dfd_3b541743",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/PreferencesInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "[optional] nit: one line per item",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80949df_1a6afd0a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/PreferencesInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "nit: line too long",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8f83dfd_1b515b53",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerifyStatusPlugin.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "nit: line too long",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80949df_7a77b9f2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "To be consistent with our recent API style PreferencesInfo should go into a separate file.",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80949df_5a7475ec",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/SetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "nit: long line",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80949df_9a644d3a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/SetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "Can you make this a @Singleton? Looks to me as if you do not hold any concrete object state here (just providers)?",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80949df_fa590980",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/VisibleJobs.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2016-05-02T11:46:32Z",
+      "side": 1,
+      "message": "[optional] nit: one line per item",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
