@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "883645c6_e9ebd5be",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "This is too wasteful to always query the user settings when rendering the change screen. The correct approach here would be do it only once and remember the retrieved value in the cookie and re-use it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c842fd2f_4bc4e54f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "Nit: Move it below to default case.",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8f83dfd_3b541743",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/PreferencesInfo.java",
         "patchSetId": 1
@@ -59,6 +105,29 @@
       "writtenOn": "2016-05-02T11:46:32Z",
       "side": 1,
       "message": "[optional] nit: one line per item",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c842fd2f_2bc79956",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/PreferencesInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "Why we repeat this enum definition? Can\u0027t we reuse this class from the client package in ther server code?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 3
+      },
       "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -93,6 +162,52 @@
       "writtenOn": "2016-05-02T11:46:32Z",
       "side": 1,
       "message": "nit: line too long",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "883645c6_a9e1dde2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "Same here, every one should be able to access this endpoint.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "883645c6_c9e611f8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "Too generic name.",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 69,
+        "endChar": 46
+      },
       "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -144,6 +259,70 @@
       "writtenOn": "2016-05-02T11:46:32Z",
       "side": 1,
       "message": "Can you make this a @Singleton? Looks to me as if you do not hold any concrete object state here (just providers)?",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "883645c6_69c1a53e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/SetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "Yes, that\u0027c correct. Should be a singleton.",
+      "parentUuid": "a80949df_9a644d3a",
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c842fd2f_0bcadd5f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/SetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "Every user should be able to set this setting at not only members of a group that was granted ModifyAccount capabilty.",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "883645c6_89dc192a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/SetPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-05-03T04:23:11Z",
+      "side": 1,
+      "message": "This name is too generic. We may have different strategies in this plugin for different aspects. Be more concrete, e.g. jobsPerPages or some such.",
+      "range": {
+        "startLine": 80,
+        "startChar": 53,
+        "endLine": 80,
+        "endChar": 61
+      },
       "revId": "604d8eac14ad575a70b62a779b7ef3871cf57216",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
