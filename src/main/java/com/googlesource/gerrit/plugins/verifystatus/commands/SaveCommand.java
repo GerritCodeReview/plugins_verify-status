@@ -19,14 +19,12 @@ import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
+import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.reviewdb.client.PatchSet;
-import com.google.gerrit.reviewdb.server.ReviewDb;
-import com.google.gerrit.server.IdentifiedUser;
-import com.google.gerrit.server.change.ChangeResource;
+import com.google.gerrit.server.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
-import com.google.gerrit.server.project.ChangeControl;
-import com.google.gerrit.server.project.NoSuchChangeException;
+import com.google.gerrit.server.change.Revisions;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -111,19 +109,16 @@ public class SaveCommand extends SshCommand {
   }
 
   @Inject
-  private ReviewDb db;
-
-  @Inject
-  private IdentifiedUser currentUser;
-
-  @Inject
   private PostVerification postVerification;
 
   @Inject
-  private ChangeControl.GenericFactory genericFactory;
+  private PatchSetParser psParser;
 
   @Inject
-  private PatchSetParser psParser;
+  private Revisions revisions;
+
+  @Inject
+  private ChangesCollection changes;
 
   private Map<String, VerificationInfo> jobResult = Maps.newHashMap();
 
@@ -146,14 +141,11 @@ public class SaveCommand extends SshCommand {
   }
 
   private void applyVerification(PatchSet patchSet, VerifyInput verify)
-      throws RestApiException, NoSuchChangeException, OrmException,
+      throws RestApiException, OrmException,
       IOException {
-    ChangeControl ctl =
-        genericFactory.validateFor(db, patchSet.getId().getParentKey(),
-            currentUser);
-    ChangeResource changeResource = new ChangeResource(ctl);
-    RevisionResource revResource = new RevisionResource(changeResource,
-        patchSet);
+    RevisionResource revResource = revisions.parse(
+        changes.parse(patchSet.getId().getParentKey()),
+        IdString.fromUrl(Integer.toString(patchSet.getPatchSetId())));
     postVerification.apply(revResource, verify);
   }
 
@@ -162,7 +154,7 @@ public class SaveCommand extends SshCommand {
     verify.verifications = jobResult;
     try {
       applyVerification(patchSet, verify);
-    } catch (RestApiException | NoSuchChangeException | OrmException
+    } catch (RestApiException | OrmException
         | IOException e) {
       throw PatchSetParser.error(e.getMessage());
     }
