@@ -35,7 +35,8 @@ for additional info on this request.
 
   )]}'
   {
-    "gate-horizon-pep8": {
+    "5081c5e5-e101-43eb-8e59-4e197f22a0d0"": {
+      "name": "gate-horizon-pep8",
       "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
       "value": -1,
       "reporter": "HPE CI",
@@ -44,7 +45,8 @@ for additional info on this request.
       "duration": "3m 10s"
       "granted": "15 Mar 2016 08:10:41",
     },
-    "gate-horizon-python27": {
+    "2a359a73-31e7-4f81-b295-ae0e20615da6": {
+      "name": "gate-horizon-python27",
       "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
       "value": 1,
       "abstain": true,
@@ -54,7 +56,8 @@ for additional info on this request.
       "duration": "7m 40s"
       "granted": "15 Mar 2016 08:30:16"
     }
-    "gate-horizon-python34": {
+    "807c8ece-0196-4ec4-b24f-ed035efa8e55": {
+      "name": "gate-horizon-python34",
       "url": "https://ci.host.com/jobs/gate-horizon-python34/9111",
       "value": 1,
       "reporter": "Drone CI",
@@ -160,6 +163,7 @@ The `VerificationInfo` entity describes a verification on a patch set.
 
 |Field Name |Description|
 |:----------|:----------|
+|name       |The name of this job|
 |value      |The pass/fail result for this job|
 |abstain    |Whether the value counts as a vote|
 |comment    |A short comment about this job|
