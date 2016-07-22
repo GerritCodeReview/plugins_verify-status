@@ -40,6 +40,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Singleton
 public class PostVerification
@@ -88,12 +89,16 @@ public class PostVerification
     Timestamp ts = TimeUtil.nowTs();
     for (Map.Entry<String, VerificationInfo> ent : jobs.entrySet()) {
       String name = ent.getKey();
+      if (name == null) {
+        throw new BadRequestException("Missing name field");
+      }
       PatchSetVerification c = current.remove(name);
       Short value = ent.getValue().value;
       if (value == null) {
         throw new BadRequestException("Missing value field");
       }
       if (c != null) {
+        // update a result
         c.setGranted(ts);
         c.setValue(value);
         if (Boolean.TRUE.equals(ent.getValue().abstain)) {
@@ -102,6 +107,10 @@ public class PostVerification
         String url = ent.getValue().url;
         if (url != null) {
           c.setUrl(url);
+        }
+        String job_name = c.getName();
+        if (job_name != null) {
+          c.setName(job_name);
         }
         String reporter = ent.getValue().reporter;
         if (reporter != null) {
@@ -123,12 +132,15 @@ public class PostVerification
             + c.getPatchSetId());
         ups.add(c);
       } else {
+        // add new result
+        String job_id = UUID.randomUUID().toString();
         c = new PatchSetVerification(new PatchSetVerification.Key(
                 resource.getPatchSet().getId(),
-                new LabelId(name)),
+                new LabelId(job_id)),
             value, ts);
         c.setAbstain(ent.getValue().abstain);
         c.setUrl(ent.getValue().url);
+        c.setName(name);
         c.setReporter(ent.getValue().reporter);
         c.setComment(ent.getValue().comment);
         c.setCategory(ent.getValue().category);
