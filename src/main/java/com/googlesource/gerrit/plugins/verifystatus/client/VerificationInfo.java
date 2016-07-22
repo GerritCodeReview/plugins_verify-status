@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class VerificationInfo extends JavaScriptObject {
 
   public final native String url() /*-{ return this.url; }-*/;
+  public final native String name() /*-{ return this.name; }-*/;
   public final native String comment() /*-{ return this.comment; }-*/;
   public final native short value() /*-{ return this.value; }-*/;
   public final native boolean abstain() /*-{ return this.abstain || false; }-*/;

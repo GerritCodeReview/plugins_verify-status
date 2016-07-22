@@ -30,6 +30,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.InlineLabel;
 
+import java.sql.Timestamp;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -55,9 +56,20 @@ public class JobsDropDownPanel extends FlowPanel {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
             if (!result.isEmpty()) {
+              // show only the last report that was submitted
               Map<String, VerificationInfo> jobs = new TreeMap<>();
+              Timestamp lastReportTime = new Timestamp(0);
               for (String key : result.keySet()) {
-                jobs.put(key, result.get(key));
+                Timestamp ts = result.get(key).granted();
+                if (ts.after(lastReportTime)) {
+                  lastReportTime = ts;
+                }
+              }
+              for (String key : result.keySet()) {
+                Timestamp ts = result.get(key).granted();
+                if (ts.equals(lastReportTime)) {
+                  jobs.put(result.get(key).name(), result.get(key));
+                }
               }
               display(jobs);
             }
@@ -85,7 +97,7 @@ public class JobsDropDownPanel extends FlowPanel {
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      p.add(new InlineHyperlink(job.getKey(), job.getValue().url()));
+      p.add(new InlineHyperlink(job.getValue().name(), job.getValue().url()));
       p.add(new InlineLabel("(" + job.getValue().duration() + ")"));
       if (job.getValue().abstain()) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));

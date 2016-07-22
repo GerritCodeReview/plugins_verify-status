@@ -85,6 +85,9 @@ public class PatchSetVerification {
   @Column(id = 9)
   protected boolean abstain;
 
+  @Column(id = 10, notNull = false, length = 255)
+  protected String name;
+
   protected PatchSetVerification() {
   }
 
@@ -141,6 +144,14 @@ public class PatchSetVerification {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getReporter() {

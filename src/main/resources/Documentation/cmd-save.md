@@ -80,7 +80,7 @@ another for the argument parser inside the Gerrit server.
 
 
 >     $ ssh -p 29418 review.example.com @PLUGIN@ save --verification
->      "'job=gate-horizon-pep8
+>      "'name=gate-horizon-pep8
 >      |value=1
 >      |url=https://ci.host.com/jobs/pep8/4711
 >      |reporter=Jenkins CI
