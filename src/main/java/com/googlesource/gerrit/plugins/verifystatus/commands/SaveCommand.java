@@ -92,12 +92,15 @@ public class SaveCommand extends SshCommand {
       throw new IllegalArgumentException(String.valueOf("Invalid verification parameters"));
     }
 
-    String job = params.get("job");
-    checkArgument(job != null, "Verification is missing a job");
+    String name = params.get("name");
+    checkArgument(name != null, "Verification is missing a name");
+    checkArgument(!name.isEmpty(), "Verification is missing a name");
     String value = params.get("value");
     checkArgument(value != null, "Verification is missing a value");
+    checkArgument(!value.isEmpty(), "Verification is missing a value");
     String abstain = params.get("abstain");
     VerificationInfo data = new VerificationInfo();
+    data.name = name;
     data.value = Short.parseShort(value);
     data.abstain = Boolean.valueOf(abstain);
     data.url = params.get("url");
@@ -105,7 +108,7 @@ public class SaveCommand extends SshCommand {
     data.comment = params.get("comment");
     data.category = params.get("category");
     data.duration = params.get("duration");
-    jobResult.put(job, data);
+    jobResult.put(name, data);
   }
 
   @Inject

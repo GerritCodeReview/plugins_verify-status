@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
 import com.google.common.collect.Maps;
+import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gwtorm.server.OrmException;
@@ -32,7 +33,8 @@ public class GetVerifications implements RestReadView<RevisionResource> {
   private final SchemaFactory<CiDb> schemaFactory;
 
   @Inject
-  GetVerifications(SchemaFactory<CiDb> schemaFactory) {
+  GetVerifications(SchemaFactory<CiDb> schemaFactory,
+      @PluginCanonicalWebUrl String url) {
     this.schemaFactory = schemaFactory;
   }
 
@@ -47,6 +49,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
         info.value = v.getValue();
         info.abstain = v.getAbstain();
         info.url = v.getUrl();
+        info.name = v.getName();
         info.reporter = v.getReporter();
         info.comment = v.getComment();
         info.granted = v.getGranted();
