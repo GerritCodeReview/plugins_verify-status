@@ -81,10 +81,14 @@ public class JobsPanel extends FlowPanel {
       p.add(new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url()));
       p.add(new InlineLabel(" (" + jobs.get(key).duration() + ")"));
       if (jobs.get(key).category() == "recheck") {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.rerun()));
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.rerun());
+        img.setTitle("recheck");
+        p.add(img);
       }
       if (jobs.get(key).abstain()) {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.info());
+        img.setTitle("non voting");
+        p.add(img);
       }
       grid.setWidget(row, 0, p);
       row++;

@@ -82,7 +82,9 @@ public class JobsDropDownPanel extends FlowPanel {
       p.add(new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url()));
       p.add(new InlineLabel("(" + jobs.get(key).duration() + ")"));
       if (jobs.get(key).abstain()) {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.info());
+        img.setTitle("non voting");
+        p.add(img);
       }
       grid.setWidget(row, 1, p);
       grid.setWidget(row, 2, new InlineLabel(jobs.get(key).category()));
