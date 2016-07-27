@@ -23,7 +23,7 @@ for additional info on this request.
 #### Request
 
 ```
-  GET /changes/myProject~master~I8473b95934b5732ac55d26311a706c9c2bde9940/revisions/674ac754f91e64a0efb8087e59a176484bd534d1/verifications HTTP/1.0
+  GET /changes/myProject~master~I8473b95934b5732ac55d26311a706c9c2bde9940/revisions/674ac754f91e64a0efb8087e59a176484bd534d1/@PLUGIN@~verifications HTTP/1.0
 ```
 
 #### Response
@@ -66,6 +66,55 @@ for additional info on this request.
       "category": "gate",
       "duration": "12m 20s"
       "granted": "15 Mar 2016 08:40:23",
+    }
+  }
+```
+
+### <a id="verification-options"> Verification Options
+Verifications Options
+
+Current(c)::
+Limit the results to the most current list of reports that were reported by
+each reporter.
+
+Assuming "HPE CI" and "ACME CI" published multiple reports to Gerrit.
+Retrieve the most current report(s) by each reporter:
+
+#### Request
+
+```
+  GET /changes/100/revisions/1/@PLUGIN@~verifications/?current HTTP/1.0
+```
+
+#### Response
+
+```
+  HTTP/1.1 200 OK
+  Content-Disposition: attachment
+  Content-Type: application/json; charset=UTF-8
+
+  )]}'
+  {
+    "5081c5e5-e101-43eb-8e59-4e197f22a0d0"": {
+      "name": "gate-horizon-pep8",
+      "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
+      "value": -1,
+      "reporter": "HPE CI",
+      "comment": "Failed",
+      "category": "check",
+      "duration": "3m 10s"
+      "granted": "15 Mar 2016 08:10:41",
+    },
+    "2a359a73-31e7-4f81-b295-ae0e20615da6": {
+      "name": "gate-horizon-python27",
+      "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
+      "value": 1,
+      "abstain": true,
+      "reporter": "Acme CI",
+      "comment": "Informational only",
+      "category": "check",
+      "duration": "7m 40s"
+      "granted": "15 Mar 2016 08:30:16"
     }
   }
 ```
