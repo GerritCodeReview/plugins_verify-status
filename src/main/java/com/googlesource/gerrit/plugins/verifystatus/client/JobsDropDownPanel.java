@@ -30,9 +30,6 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.InlineLabel;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 /**
  * Extension for change screen that displays a status in the header bar.
  */
@@ -51,15 +48,12 @@ public class JobsDropDownPanel extends FlowPanel {
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
     new RestApi("changes").id(change.id()).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
+        .addParameter("current", true)
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
             if (!result.isEmpty()) {
-              Map<String, VerificationInfo> jobs = new TreeMap<>();
-              for (String key : result.keySet()) {
-                jobs.put(key, result.get(key));
-              }
-              display(jobs);
+              display(result);
             }
           }
 
@@ -70,14 +64,14 @@ public class JobsDropDownPanel extends FlowPanel {
         });
   }
 
-  private void display(Map<String, VerificationInfo> jobs) {
+  private void display(NativeMap<VerificationInfo> jobs) {
     int row = 0;
     int column = 5;
     Grid grid = new Grid(row, column);
-    for (Map.Entry<String, VerificationInfo> job : jobs.entrySet()) {
+    for (String key : jobs.keySet()) {
       grid.insertRow(row);
       HorizontalPanel p = new HorizontalPanel();
-      short vote = job.getValue().value();
+      short vote = jobs.get(key).value();
       if (vote > 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
       } else if (vote < 0) {
@@ -85,16 +79,16 @@ public class JobsDropDownPanel extends FlowPanel {
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      p.add(new InlineHyperlink(job.getKey(), job.getValue().url()));
-      p.add(new InlineLabel("(" + job.getValue().duration() + ")"));
-      if (job.getValue().abstain()) {
+      p.add(new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url()));
+      p.add(new InlineLabel("(" + jobs.get(key).duration() + ")"));
+      if (jobs.get(key).abstain()) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
       }
       grid.setWidget(row, 1, p);
-      grid.setWidget(row, 2, new InlineLabel(job.getValue().category()));
-      grid.setWidget(row, 3, new InlineLabel(job.getValue().reporter()));
+      grid.setWidget(row, 2, new InlineLabel(jobs.get(key).category()));
+      grid.setWidget(row, 3, new InlineLabel(jobs.get(key).reporter()));
       grid.setWidget(row, 4,
-          new InlineLabel(FormatUtil.shortFormat(job.getValue().granted())));
+          new InlineLabel(FormatUtil.shortFormat(jobs.get(key).granted())));
       row++;
     }
     add(new PopDownButton("Jobs", grid));
