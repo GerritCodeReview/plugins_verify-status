@@ -83,9 +83,8 @@ another for the argument parser inside the Gerrit server.
 >      "'name=gate-horizon-pep8
 >      |value=1
 >      |url=https://ci.host.com/jobs/pep8/4711
->      |reporter=Jenkins CI
->      |comment=Experimental
->      |category=gate
+>      |reporter=Jenkins CI Check
+>      |category=slow
 >      |duration=1m 30s'"
 >      14a95001c
 

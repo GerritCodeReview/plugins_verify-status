@@ -39,9 +39,9 @@ for additional info on this request.
       "name": "gate-horizon-pep8",
       "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
       "value": -1,
-      "reporter": "HPE CI",
+      "reporter": "Jenkins Check",
       "comment": "Failed",
-      "category": "check",
+      "category": "cloud server",
       "duration": "3m 10s"
       "granted": "15 Mar 2016 08:10:41",
     },
@@ -52,7 +52,7 @@ for additional info on this request.
       "abstain": true,
       "reporter": "Acme CI",
       "comment": "Informational only",
-      "category": "check",
+      "category": "third party",
       "duration": "7m 40s"
       "granted": "15 Mar 2016 08:30:16"
     }
@@ -63,7 +63,7 @@ for additional info on this request.
       "reporter": "Drone CI",
       "comment": "RuntimeError: File was not found",
       "granted": "15 Mar 2016 08:40:23",
-      "category": "gate",
+      "category": "third party",
       "duration": "12m 20s"
       "granted": "15 Mar 2016 08:40:23",
     }
@@ -99,9 +99,9 @@ Retrieve the most current report(s) by each reporter:
       "name": "gate-horizon-pep8",
       "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
       "value": -1,
-      "reporter": "HPE CI",
+      "reporter": "Jenkins Check",
       "comment": "Failed",
-      "category": "check",
+      "category": "cloud server",
       "duration": "3m 10s"
       "granted": "15 Mar 2016 08:10:41",
     },
@@ -112,7 +112,7 @@ Retrieve the most current report(s) by each reporter:
       "abstain": true,
       "reporter": "Acme CI",
       "comment": "Informational only",
-      "category": "check",
+      "category": "third party",
       "duration": "7m 40s"
       "granted": "15 Mar 2016 08:30:16"
     }
@@ -156,18 +156,18 @@ $ cat verification_data.txt
       "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
       "value": 1,
       "abstain": true,
-      "reporter": "Acme CI",
+      "reporter": "Jenkins Check",
       "comment": "Informational only",
-      "category": "gate",
+      "category": "third party",
       "duration": "2m 40s"
     },
     "gate-horizon-python34": {
       "url": "https://ci.host.com/jobs/gate-horizon-python34/1711",
       "value": -1,
       "abstain": false,
-      "reporter": "Drone CI",
+      "reporter": "Jenkins Check",
       "comment": "RuntimeError: File was not found",
-      "category": "gate",
+      "category": "third party",
       "duration": "12m 20s"
     }
   }
@@ -186,6 +186,7 @@ to a revision.
 
 |Field Name  |     |Description|
 |:-----------|:----|:----------|
+|name        |required|The name of this job|
 |value       |required|The pass/fail result for this job|
 |abstain     |optional|Whether the value counts as a vote (defaults to false)|
 |comment     |optional|A short comment about this job|
@@ -194,6 +195,10 @@ to a revision.
 |category    |optional|A category for this job|
 |duration    |optional|The time it took to run this job|
 
+
+*__Notice__: There is a special category called 'recheck' that indicates that
+the job was a rerun on the same patchset.  An icon will appear on the change
+screen for these jobs.
 
 ### <a id="revision-info"></a>RevisionInfo
 
