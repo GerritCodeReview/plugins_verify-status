@@ -47,6 +47,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
         info.value = v.getValue();
         info.abstain = v.getAbstain();
         info.url = v.getUrl();
+        info.name = v.getName();
         info.reporter = v.getReporter();
         info.comment = v.getComment();
         info.granted = v.getGranted();

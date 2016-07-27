@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.verifystatus.common;
 import java.sql.Timestamp;
 
 public class VerificationInfo {
+  public String name;
   public String url;
   public Short value;
   public boolean abstain;
