@@ -80,6 +80,9 @@ public class JobsPanel extends FlowPanel {
       }
       p.add(new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url()));
       p.add(new InlineLabel(" (" + jobs.get(key).duration() + ")"));
+      if (jobs.get(key).category() == "recheck") {
+        p.add(new Image(VerifyStatusPlugin.RESOURCES.rerun()));
+      }
       if (jobs.get(key).abstain()) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
       }
