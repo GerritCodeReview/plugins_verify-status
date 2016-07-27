@@ -78,13 +78,21 @@ public class JobsPanel extends FlowPanel {
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      p.add(new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url()));
-      p.add(new InlineLabel(" (" + jobs.get(key).duration() + ")"));
+      InlineHyperlink link = new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url());
+      link.setTitle("view logs");
+      p.add(link);
+      InlineLabel label = new InlineLabel(" (" + jobs.get(key).duration() + ")");
+      label.setTitle("duration");
+      p.add(label);
       if (jobs.get(key).category() == "recheck") {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.rerun()));
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.rerun());
+        img.setTitle("recheck");
+        p.add(img);
       }
       if (jobs.get(key).abstain()) {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.info());
+        img.setTitle("non voting");
+        p.add(img);
       }
       grid.setWidget(row, 0, p);
       row++;

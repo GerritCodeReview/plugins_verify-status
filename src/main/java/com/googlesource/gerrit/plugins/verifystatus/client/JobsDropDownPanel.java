@@ -79,16 +79,28 @@ public class JobsDropDownPanel extends FlowPanel {
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      p.add(new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url()));
-      p.add(new InlineLabel("(" + jobs.get(key).duration() + ")"));
+      InlineHyperlink link = new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url());
+      link.setTitle("view logs");
+      p.add(link);
+      InlineLabel durlabel = new InlineLabel(" (" + jobs.get(key).duration() + ")");
+      durlabel.setTitle("duration");
+      p.add(durlabel);
       if (jobs.get(key).abstain()) {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.info()));
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.info());
+        img.setTitle("non voting");
+        p.add(img);
       }
       grid.setWidget(row, 1, p);
-      grid.setWidget(row, 2, new InlineLabel(jobs.get(key).category()));
-      grid.setWidget(row, 3, new InlineLabel(jobs.get(key).reporter()));
-      grid.setWidget(row, 4,
-          new InlineLabel(FormatUtil.shortFormat(jobs.get(key).granted())));
+      InlineLabel catLabel = new InlineLabel(jobs.get(key).category());
+      catLabel.setTitle("category");
+      grid.setWidget(row, 2, catLabel);
+      InlineLabel repLabel = new InlineLabel(jobs.get(key).reporter());
+      repLabel.setTitle("reporter");
+      grid.setWidget(row, 3, repLabel);
+      InlineLabel grLabel = new InlineLabel(
+          FormatUtil.shortFormat(jobs.get(key).granted()));
+      grLabel.setTitle("date saved");
+      grid.setWidget(row, 4, grLabel);
       row++;
     }
     add(new PopDownButton("Jobs", grid));
