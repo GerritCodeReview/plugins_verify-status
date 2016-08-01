@@ -1,4 +1,4 @@
-// Copyright (C) 2015 The Android Open Source Project
+// Copyright (C) 2014 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,15 +14,13 @@
 
 package com.googlesource.gerrit.plugins.verifystatus;
 
-import com.google.gerrit.sshd.PluginCommandModule;
+import com.google.gerrit.extensions.config.CapabilityDefinition;
 
-import com.googlesource.gerrit.plugins.verifystatus.SaveCommand;
+class AccessCiDatabaseCapability extends CapabilityDefinition {
+  static final String ID = "accessCiDatabase";
 
-class SshModule extends PluginCommandModule {
   @Override
-  protected void configureCommands() {
-    command(VerifyStatusAdminQueryShell.class);
-    command(SaveCommand.class);
-    factory(VerifyStatusQueryShell.Factory.class);
+  public String getDescription() {
+    return "Access Ci Database";
   }
 }

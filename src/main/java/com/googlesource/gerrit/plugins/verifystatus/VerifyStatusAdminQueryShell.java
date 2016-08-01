@@ -12,29 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.verifystatus.commands;
+package com.googlesource.gerrit.plugins.verifystatus;
 
-import com.google.gerrit.common.data.GlobalCapability;
 import com.google.gerrit.common.errors.PermissionDeniedException;
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
-import com.google.gerrit.server.IdentifiedUser;
+import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.account.CapabilityControl;
 import com.google.gerrit.sshd.AdminHighPriorityCommand;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 import org.kohsuke.args4j.Option;
 
 /** Opens a query processor. */
 @AdminHighPriorityCommand
-@RequiresCapability(GlobalCapability.ACCESS_DATABASE)
+@RequiresCapability(AccessCiDatabaseCapability.ID)
 @CommandMetaData(name = "gsql", description = "Administrative interface to CI database")
 public class VerifyStatusAdminQueryShell extends SshCommand {
-  @Inject
-  private VerifyStatusQueryShell.Factory factory;
+  private final String pluginName;
+  private final Provider<CurrentUser> userProvider;
 
   @Inject
-  private IdentifiedUser currentUser;
+  private VerifyStatusQueryShell.Factory factory;
 
   @Option(name = "--format", usage = "Set output format")
   private VerifyStatusQueryShell.OutputFormat format = VerifyStatusQueryShell.OutputFormat.PRETTY;
@@ -42,20 +44,27 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
   @Option(name = "-c", metaVar = "SQL QUERY", usage = "Query to execute")
   private String query;
 
+  @Inject
+  VerifyStatusAdminQueryShell(@PluginName String pluginName,
+      Provider<CurrentUser> userProvider) {
+    this.pluginName = pluginName;
+    this.userProvider = userProvider;
+  }
+
   @Override
-  protected void run() throws Failure {
+  protected void run() throws UnloggedFailure {
     try {
       checkPermission();
-
-      final VerifyStatusQueryShell shell = factory.create(in, out);
-      shell.setOutputFormat(format);
-      if (query != null) {
-        shell.execute(query);
-      } else {
-        shell.run();
-      }
     } catch (PermissionDeniedException err) {
       throw new UnloggedFailure("fatal: " + err.getMessage());
+    }
+
+    final VerifyStatusQueryShell shell = factory.create(in, out);
+    shell.setOutputFormat(format);
+    if (query != null) {
+      shell.execute(query);
+    } else {
+      shell.run();
     }
   }
 
@@ -70,10 +79,12 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
    * @throws PermissionDeniedException
    */
   private void checkPermission() throws PermissionDeniedException {
-    if (!currentUser.getCapabilities().canAccessDatabase()) {
+    CapabilityControl ctl = userProvider.get().getCapabilities();
+    if (!ctl.canPerform(pluginName + "-" + AccessCiDatabaseCapability.ID)) {
       throw new PermissionDeniedException(String.format(
-          "%s does not have \"Access Database\" capability.",
-          currentUser.getUserName()));
+          "%s does not have \"%s\" capability.",
+          userProvider.get().getUserName(),
+          new AccessCiDatabaseCapability().getDescription()));
     }
   }
 }

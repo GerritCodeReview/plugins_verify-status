@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.verifystatus.commands;
+package com.googlesource.gerrit.plugins.verifystatus;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import com.google.gerrit.common.TimeUtil;
 import com.google.gerrit.common.Version;
+import com.google.gerrit.extensions.annotations.RequiresCapability;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gwtorm.jdbc.JdbcSchema;
@@ -47,6 +48,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /** Simple interactive SQL query tool. */
+@RequiresCapability(AccessCiDatabaseCapability.ID)
 public class VerifyStatusQueryShell {
   public interface Factory {
     VerifyStatusQueryShell create(@Assisted InputStream in, @Assisted OutputStream out);

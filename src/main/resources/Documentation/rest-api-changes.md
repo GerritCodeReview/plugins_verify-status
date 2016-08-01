@@ -252,6 +252,11 @@ The `VerificationInfo` entity describes a verification on a patch set.
 |granted    |The date this verification was recorded|
 
 
+ACCESS
+------
+Caller must be a member of a group that is granted the
+'Save Verification Report' capability (provided by this plugin) in order to
+POST reports.
 
 SEE ALSO
 --------
