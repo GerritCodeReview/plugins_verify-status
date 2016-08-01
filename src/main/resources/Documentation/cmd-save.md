@@ -63,7 +63,8 @@ OPTIONS
 
 ACCESS
 ------
-Any user who has configured an SSH key.
+Caller must be a member of a group that is granted the
+'Save Verification Report' capability (provided by this plugin).
 
 SCRIPTING
 ---------

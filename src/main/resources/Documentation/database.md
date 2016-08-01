@@ -115,6 +115,11 @@ Acccesing Database
 > ssh -p 29418 localhost verify-status gsql -c "'show tables;'"
 
 
+ACCESS
+------
+Caller must be a member of a group that is granted the
+'Access Ci Database' capability (provided by this plugin).
+
 SEE ALSO
 --------
 

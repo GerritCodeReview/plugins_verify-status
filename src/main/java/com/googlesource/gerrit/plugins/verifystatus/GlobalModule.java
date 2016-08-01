@@ -18,6 +18,8 @@ import static com.google.inject.Scopes.SINGLETON;
 import static com.google.gerrit.server.change.RevisionResource.REVISION_KIND;
 import static com.google.gerrit.server.config.ConfigResource.CONFIG_KIND;
 
+import com.google.gerrit.extensions.annotations.Exports;
+import com.google.gerrit.extensions.config.CapabilityDefinition;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.restapi.RestApiModule;
 import com.google.gerrit.lifecycle.LifecycleModule;
@@ -30,7 +32,6 @@ import com.google.inject.name.Names;
 import com.googlesource.gerrit.plugins.verifystatus.server.PutConfig;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetConfig;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetVerifications;
-import com.googlesource.gerrit.plugins.verifystatus.server.PostVerification;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceModule;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceProvider;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceType;
@@ -52,6 +53,12 @@ class GlobalModule extends FactoryModule {
 
   @Override
   protected void configure() {
+    bind(CapabilityDefinition.class)
+    .annotatedWith(Exports.named(AccessCiDatabaseCapability.ID))
+    .to(AccessCiDatabaseCapability.class);
+    bind(CapabilityDefinition.class)
+    .annotatedWith(Exports.named(SaveReportCapability.ID))
+    .to(SaveReportCapability.class);
     List<Module> modules = new ArrayList<>();
     modules.add(new LifecycleModule() {
       @Override
