@@ -73,9 +73,32 @@ for additional info on this request.
 ### <a id="verification-options"> Verification Options
 Verifications Options
 
-Current(c)::
-Limit the results to the most current list of reports that were reported by
-each reporter.
+Sort(s)::
+Sort the results by a field.
+
+|Field Name |Description|
+|:----------|:----------|
+|NAME       |Sort job name in ascending order|
+|REPORTER   |Sort reporter in ascending order|
+
+*__Note__: Fields are also sorted by the time the job was saved in descending
+order. 
+
+#### Request
+
+```
+  GET /changes/100/revisions/1/@PLUGIN@~verifications/?sort=REPORTER HTTP/1.0
+```
+
+
+Filter(f)::
+
+|Field Name |Description|
+|:----------|:----------|
+|CURRENT    |Limit the results to the most current list of reports|
+|FAILED     |Limit the results to only failed jobs|
+
+#### Example
 
 Assuming "Jenkins Check" and "ACME CI" published multiple reports to Gerrit.
 Retrieve the most current report(s) by each reporter:
@@ -83,7 +106,7 @@ Retrieve the most current report(s) by each reporter:
 #### Request
 
 ```
-  GET /changes/100/revisions/1/@PLUGIN@~verifications/?current HTTP/1.0
+  GET /changes/100/revisions/1/@PLUGIN@~verifications/?sort=REPORTER&filter=CURRENT HTTP/1.0
 ```
 
 #### Response
@@ -95,16 +118,6 @@ Retrieve the most current report(s) by each reporter:
 
   )]}'
   {
-    "5081c5e5-e101-43eb-8e59-4e197f22a0d0"": {
-      "name": "gate-horizon-pep8",
-      "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
-      "value": -1,
-      "reporter": "Jenkins Check",
-      "comment": "Failed",
-      "category": "cloud server",
-      "duration": "3m 10s"
-      "granted": "15 Mar 2016 08:10:41",
-    },
     "2a359a73-31e7-4f81-b295-ae0e20615da6": {
       "name": "gate-horizon-python27",
       "url": "https://ci.host.com/jobs/gate-horizon-python27/1711",
@@ -115,6 +128,16 @@ Retrieve the most current report(s) by each reporter:
       "category": "third party",
       "duration": "7m 40s"
       "granted": "15 Mar 2016 08:30:16"
+    },
+    "5081c5e5-e101-43eb-8e59-4e197f22a0d0"": {
+      "name": "gate-horizon-pep8",
+      "url": "https://ci.host.com/jobs/gate-horizon-pep8/2711",
+      "value": -1,
+      "reporter": "Jenkins Check",
+      "comment": "Failed",
+      "category": "cloud server",
+      "duration": "3m 10s"
+      "granted": "15 Mar 2016 08:10:41",
     }
   }
 ```

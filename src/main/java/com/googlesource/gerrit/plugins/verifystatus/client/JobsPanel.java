@@ -47,7 +47,8 @@ public class JobsPanel extends FlowPanel {
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
     new RestApi("changes").id(change.id()).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("current", true)
+        .addParameter("sort", "REPORTER")
+        .addParameter("filter", "CURRENT")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
