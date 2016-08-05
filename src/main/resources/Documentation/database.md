@@ -1,7 +1,5 @@
-<link href="../com/googlesource/gerrit/plugins/verifystatus/public/verifystatus.css" rel="stylesheet"></link>
-
-Database
-========
+@PLUGIN@ Database
+=================
 
 DESCRIPTION
 -----------

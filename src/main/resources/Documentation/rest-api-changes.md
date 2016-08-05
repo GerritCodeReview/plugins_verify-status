@@ -1,5 +1,3 @@
-<link href="../com/googlesource/gerrit/plugins/verifystatus/public/verifystatus.css" rel="stylesheet"></link>
-
 @PLUGIN@ - /changes/ REST API
 ==============================
 

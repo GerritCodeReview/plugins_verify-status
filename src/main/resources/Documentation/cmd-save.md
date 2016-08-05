@@ -1,7 +1,5 @@
-<link href="../com/googlesource/gerrit/plugins/verifystatus/public/verifystatus.css" rel="stylesheet"></link>
-
 @PLUGIN@ save
-=====================
+=============
 
 NAME
 ----
@@ -76,10 +74,6 @@ EXAMPLES
 Report results for 'gate-horizon-pep8' job with score=+1 on the patchset with
 commit 14a95001c.  Results can be updated by posting with the same job name.
 
-*__Notice__ two levels of quoting are required, one for the local shell, and
-another for the argument parser inside the Gerrit server.
-
-
 >     $ ssh -p 29418 review.example.com @PLUGIN@ save --verification
 >      "'name=gate-horizon-pep8
 >      |value=1
@@ -89,6 +83,26 @@ another for the argument parser inside the Gerrit server.
 >      |duration=1m 30s'"
 >      14a95001c
 
+
+Report multiple job results
+
+>     $ ssh -p 29418 review.example.com @PLUGIN@ save
+>      --verification
+>      "'name=gate-horizon-pep8
+>      |value=1
+>      |url=https://ci.host.com/jobs/pep8/4711
+>      |reporter=Jenkins CI Check
+>      |duration=1m 30s'"
+>      --verification
+>      "'name=gate-python-27
+>      |value=-1
+>      |url=https://ci.host.com/jobs/python-27/8312
+>      |reporter=Jenkins CI Check
+>      |duration=2m 10s'"
+>      14a95001c
+
+*__Notice__ two levels of quoting are required, one for the local shell, and
+another for the argument parser inside the Gerrit server.
 
 SEE ALSO
 --------

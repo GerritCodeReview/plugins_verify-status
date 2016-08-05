@@ -1,7 +1,5 @@
-<link href="../com/googlesource/gerrit/plugins/verifystatus/public/verifystatus.css" rel="stylesheet"></link>
-
-Build
-=====
+@PLUGIN@ Build
+==============
 
 This plugin can be built with Buck or Maven.
 
