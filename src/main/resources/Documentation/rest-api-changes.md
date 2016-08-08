@@ -140,6 +140,57 @@ Retrieve the most current report(s) by each reporter:
   }
 ```
 
+### <a id="get-stats"> Get Stats
+
+__GET__ /changes/{change-id}/revisions/{revision-id}/@PLUGIN@~stats
+
+Gets the [verification statistics](#verification-stats) for a change.  Please
+refer to the general
+[changes rest api](../../../Documentation/rest-api-changes.html#get-review)
+for additional info on this request.
+
+#### Request
+
+```
+  GET /changes/myProject~master~I8473b95934b5732ac55d26311a706c9c2bde9940/revisions/674ac754f91e64a0efb8087e59a176484bd534d1/@PLUGIN@~stats HTTP/1.0
+```
+
+#### Response
+
+```
+  HTTP/1.1 200 OK
+  Content-Disposition: attachment
+  Content-Type: application/json; charset=UTF-8
+
+  )]}'
+  {
+    "jobs": 10,
+    "passes": 8,
+    "fails": 1,
+    "unstables": 1,
+    "votings": 9
+  }
+```
+
+Stats Options
+
+Filter(f)::
+
+|Field Name |Description|
+|:----------|:----------|
+|CURRENT    |Limit the results to the most current list of reports|
+
+#### Example
+
+Get stats for just the most current report:
+
+#### Request
+
+```
+  GET /changes/100/revisions/1/@PLUGIN@~stats?filter=CURRENT HTTP/1.0
+```
+
+
 ### <a id="post-verify"> Post Verify
 
 __POST__ /changes/{change-id}/revisions/{revision-id}/@PLUGIN@~verifications
@@ -249,6 +300,18 @@ The `VerificationInfo` entity describes a verification on a patch set.
 |duration   |The time it took to run this job|
 |granted    |The date this verification was recorded|
 
+
+### <a id="verification-stats"></a>VerificationStats
+
+The `VerificationStats` entity describes statistics on a patch set.
+
+|Field Name |Description|
+|:----------|:----------|
+|jobs       |The total number of jobs|
+|passes     |The number of passed jobs|
+|fails      |The number of failed jobs|
+|unstable   |The number of unstable jobs|
+|voting     |The number of voting jobs|
 
 ACCESS
 ------
