@@ -36,11 +36,13 @@ public class GetConfig implements RestReadView<ConfigResource> {
     ConfigInfo info = new ConfigInfo();
     info.showJobsPanel = cfg.getBoolean("showJobsPanel", true);
     info.showJobsDropDownPanel = cfg.getBoolean("showJobsDropDownPanel", true);
+    info.showJobsSummaryPanel = cfg.getBoolean("showJobsSummaryPanel", true);
     return info;
   }
 
   public static class ConfigInfo {
     Boolean showJobsPanel;
     Boolean showJobsDropDownPanel;
+    Boolean showJobsSummaryPanel;
   }
 }

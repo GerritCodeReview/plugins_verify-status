@@ -34,6 +34,11 @@ public class VerifyStatusPlugin extends PluginEntryPoint {
         .get(new AsyncCallback<ConfigInfo>() {
           @Override
           public void onSuccess(ConfigInfo info) {
+            if (info.showJobsSummaryPanel()) {
+              Plugin.get().panel(
+                  GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
+                  new JobsSummaryPanel.Factory());
+            }
             if (info.showJobsPanel()) {
               Plugin.get().panel(
                   GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
