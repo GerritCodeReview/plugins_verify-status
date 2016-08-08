@@ -64,13 +64,13 @@ file.
 |:----------------------|:----------|
 |showJobsPanel          | Whether jobs panel should be displayed (default to true)|
 |showJobsDropDownPanel  | Whether jobs drop down panel should be displayed (default to true)|
+|showJobsSummaryPanel   | Whether jobs summary panel should be displayed (default to true)|
 
 
 #### Example
 
 ```
 [plugin "@PLUGIN@"]
-   showJobsPanel = false
    showJobsDropDownPanel = false
 ```
 
