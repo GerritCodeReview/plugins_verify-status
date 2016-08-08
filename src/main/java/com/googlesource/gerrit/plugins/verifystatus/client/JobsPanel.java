@@ -45,15 +45,15 @@ public class JobsPanel extends FlowPanel {
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     RevisionInfo rev =
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+    final String patchsetId = change.id() + "," + rev.id();
     new RestApi("changes").id(change.id()).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("sort", "REPORTER")
-        .addParameter("filter", "CURRENT")
+        .addParameter("sort", "REPORTER").addParameter("filter", "CURRENT")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
             if (!result.isEmpty()) {
-              display(result);
+              display(patchsetId, result);
             }
           }
 
@@ -64,12 +64,11 @@ public class JobsPanel extends FlowPanel {
         });
   }
 
-  private void display(NativeMap<VerificationInfo> jobs) {
+  private void display(String patchsetId, NativeMap<VerificationInfo> jobs) {
     int row = 0;
     int column = 1;
     Grid grid = new Grid(row, column);
     for (String key : jobs.keySet()) {
-      grid.insertRow(row);
       HorizontalPanel p = new HorizontalPanel();
       short vote = jobs.get(key).value();
       if (vote > 0) {
@@ -79,10 +78,12 @@ public class JobsPanel extends FlowPanel {
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      InlineHyperlink link = new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url());
+      InlineHyperlink link =
+          new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url());
       link.setTitle("view logs");
       p.add(link);
-      InlineLabel label = new InlineLabel(" (" + jobs.get(key).duration() + ")");
+      InlineLabel label =
+          new InlineLabel(" (" + jobs.get(key).duration() + ")");
       label.setTitle("duration");
       p.add(label);
       if (jobs.get(key).category() == "recheck") {
@@ -95,9 +96,16 @@ public class JobsPanel extends FlowPanel {
         img.setTitle("non voting");
         p.add(img);
       }
+      grid.insertRow(row);
       grid.setWidget(row, 0, p);
       row++;
     }
+    HorizontalPanel p = new HorizontalPanel();
+    InlineHyperlink all = new InlineHyperlink("Show All Reports",
+        "/x/" + Plugin.get().getName() + "/jobs/" + patchsetId);
+    p.add(all);
+    grid.insertRow(row);
+    grid.setWidget(row, 0, p);
     add(grid);
   }
 }

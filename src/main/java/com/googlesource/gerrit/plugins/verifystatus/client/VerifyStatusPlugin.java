@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.verifystatus.client;
 
 import com.google.gerrit.client.GerritUiExtensionPoint;
+
 import  com.googlesource.gerrit.plugins.verifystatus.client.Resources;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.PluginEntryPoint;
@@ -27,6 +28,7 @@ public class VerifyStatusPlugin extends PluginEntryPoint {
 
   @Override
   public void onPluginLoad() {
+    Plugin.get().screenRegex("jobs/(.*)", new JobsScreen.Factory());
     new RestApi("config").view("server")
         .view(Plugin.get().getPluginName(), "config")
         .get(new AsyncCallback<ConfigInfo>() {
