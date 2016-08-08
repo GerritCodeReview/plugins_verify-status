@@ -40,6 +40,7 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
   public static class Input {
     public Boolean showJobsPanel;
     public Boolean showJobsDropDownPanel;
+    public Boolean showJobsSummaryPanel;
   }
 
   private final PluginConfigFactory cfgFactory;
@@ -76,6 +77,12 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
           input.showJobsDropDownPanel);
     } else {
       cfg.unset("plugin", pluginName, "showJobsDropDownPanel");
+    }
+    if (input.showJobsSummaryPanel != null) {
+      cfg.setBoolean("plugin", pluginName, "showJobsSummaryPanel",
+          input.showJobsSummaryPanel);
+    } else {
+      cfg.unset("plugin", pluginName, "showJobsSummaryPanel");
     }
 
     cfg.save();
