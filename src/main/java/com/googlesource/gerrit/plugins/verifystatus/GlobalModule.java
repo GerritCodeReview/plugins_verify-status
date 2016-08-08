@@ -31,6 +31,7 @@ import com.google.inject.name.Names;
 
 import com.googlesource.gerrit.plugins.verifystatus.server.PutConfig;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetConfig;
+import com.googlesource.gerrit.plugins.verifystatus.server.GetStats;
 import com.googlesource.gerrit.plugins.verifystatus.server.GetVerifications;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceModule;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceProvider;
@@ -94,6 +95,7 @@ class GlobalModule extends FactoryModule {
         put(CONFIG_KIND, "config").to(PutConfig.class);
         get(REVISION_KIND, "verifications").to(GetVerifications.class);
         post(REVISION_KIND, "verifications").to(PostVerification.class);
+        get(REVISION_KIND, "stats").to(GetStats.class);
       }
     });
   }
