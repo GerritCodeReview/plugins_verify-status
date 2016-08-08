@@ -71,6 +71,7 @@ plugin.
 |:------------------------|:----------|
 |show_jobs_panel          | Whether jobs panel should be displayed|
 |show_jobs_drop_down_panel| Whether jobs drop down panel should be displayed|
+|show_jobs_summary_panel  | Whether jobs summary panel should be displayed|
 
 
 SEE ALSO
