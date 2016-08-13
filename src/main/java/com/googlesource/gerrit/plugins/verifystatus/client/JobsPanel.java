@@ -22,6 +22,7 @@ import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.extension.Panel;
 import com.google.gerrit.plugin.client.rpc.RestApi;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -78,10 +79,10 @@ public class JobsPanel extends FlowPanel {
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      InlineHyperlink link =
-          new InlineHyperlink(jobs.get(key).name(), jobs.get(key).url());
-      link.setTitle("view logs");
-      p.add(link);
+      Anchor anchor =
+          new Anchor(jobs.get(key).name(), jobs.get(key).url());
+      anchor.setTitle("view logs");
+      p.add(anchor);
       InlineLabel label =
           new InlineLabel(" (" + jobs.get(key).duration() + ")");
       label.setTitle("duration");

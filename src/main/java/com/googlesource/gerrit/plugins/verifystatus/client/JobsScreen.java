@@ -20,9 +20,9 @@ import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.rpc.RestApi;
 import com.google.gerrit.plugin.client.screen.Screen;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
 
@@ -95,8 +95,8 @@ public class JobsScreen extends VerticalPanel {
       } else if (vote == 0) {
         t.setWidget(row, 0, new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      InlineHyperlink link = new InlineHyperlink(vi.name(), vi.url());
-      t.setWidget(row, 1, link);
+      Anchor anchor = new Anchor(vi.name(), vi.url());
+      t.setWidget(row, 1, anchor);
       t.setText(row, 2, vi.duration());
       if (vi.abstain()) {
         t.setText(row, 3, "non-voting");
