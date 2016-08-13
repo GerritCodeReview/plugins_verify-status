@@ -19,6 +19,7 @@ import com.google.gerrit.plugin.client.FormatUtil;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.rpc.RestApi;
 import com.google.gerrit.plugin.client.screen.Screen;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Image;
@@ -38,10 +39,10 @@ public class JobsScreen extends VerticalPanel {
   JobsScreen(final String patchsetId) {
     setStyleName("verifystatus-panel");
     String[] id = patchsetId.split(",");
-    String chagneId = id[0];
+    String decodedChagneId = URL.decodePathSegment(id[0]);
     String revId = id[1];
 
-    new RestApi("changes").id(chagneId).view("revisions").id(revId)
+    new RestApi("changes").id(decodedChagneId).view("revisions").id(revId)
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "REPORTER")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
