@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de3badab_6d11b5ac",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsDropDownPanel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-15T21:29:44Z",
+      "side": 1,
+      "message": "I think it might be good to also verify that rev is not null.  so something like this this..\n\nif (rev !\u003d null \u0026\u0026 !rev.isEdit()) {\n  panel.setWidget(new JobsDropDownPanel(panel));\n}",
+      "revId": "9a179c38cf9e1f19e09ccfad2011777b774c63e7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
