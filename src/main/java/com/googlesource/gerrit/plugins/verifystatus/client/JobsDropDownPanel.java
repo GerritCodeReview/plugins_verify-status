@@ -22,6 +22,7 @@ import com.google.gerrit.plugin.client.FormatUtil;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.extension.Panel;
 import com.google.gerrit.plugin.client.rpc.RestApi;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -44,9 +45,10 @@ public class JobsDropDownPanel extends FlowPanel {
   JobsDropDownPanel(Panel panel) {
     ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
+    String decodedChangeId = URL.decodePathSegment(change.id());
     RevisionInfo rev =
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
-    new RestApi("changes").id(change.id()).view("revisions").id(rev.id())
+    new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "REPORTER")
         .addParameter("filter", "CURRENT")

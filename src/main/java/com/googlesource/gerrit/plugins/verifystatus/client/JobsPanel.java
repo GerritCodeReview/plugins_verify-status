@@ -21,6 +21,7 @@ import com.google.gerrit.client.rpc.NativeMap;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.extension.Panel;
 import com.google.gerrit.plugin.client.rpc.RestApi;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -42,18 +43,19 @@ public class JobsPanel extends FlowPanel {
   }
 
   JobsPanel(Panel panel) {
-    ChangeInfo change =
+    final ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
-    RevisionInfo rev =
+    String decodedChangeId = URL.decodePathSegment(change.id());
+    final RevisionInfo rev =
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
-    final String patchsetId = change.id() + "," + rev.id();
-    new RestApi("changes").id(change.id()).view("revisions").id(rev.id())
+    new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "REPORTER").addParameter("filter", "CURRENT")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
             if (!result.isEmpty()) {
+              final String patchsetId = change.id() + "," + rev.id();
               display(patchsetId, result);
             }
           }
