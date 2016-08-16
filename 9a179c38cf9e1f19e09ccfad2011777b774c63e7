@@ -16,6 +16,24 @@
       "revId": "9a179c38cf9e1f19e09ccfad2011777b774c63e7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bc18f1c_29f0cd90",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsDropDownPanel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-16T02:40:51Z",
+      "side": 1,
+      "message": "actually, i\u0027m wrong. that\u0027s not needed.",
+      "parentUuid": "de3badab_6d11b5ac",
+      "revId": "9a179c38cf9e1f19e09ccfad2011777b774c63e7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
