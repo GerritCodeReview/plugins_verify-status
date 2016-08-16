@@ -38,12 +38,6 @@ public class JobsPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
     @Override
     public void onLoad(Panel panel) {
-      RevisionInfo rev =
-          panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
-      if (rev.isEdit()) {
-        return;
-      }
-
       panel.setWidget(new JobsPanel(panel));
     }
   }
