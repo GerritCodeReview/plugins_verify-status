@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.client;
 
+import com.google.gerrit.client.info.ChangeInfo;
 import com.google.gerrit.client.rpc.NativeMap;
 import com.google.gerrit.plugin.client.FormatUtil;
 import com.google.gerrit.plugin.client.Plugin;
@@ -30,19 +31,35 @@ import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
 public class JobsScreen extends VerticalPanel {
   static class Factory implements Screen.EntryPoint {
     @Override
-    public void onLoad(Screen screen) {
-      screen.setPageTitle("Reports for patchset " + screen.getToken(1));
-      screen.show(new JobsScreen(screen.getToken(1)));
+    public void onLoad(final Screen screen) {
+      // get change id and revision id from string containing
+      // $project~$branch~$changeId,$revision
+      String input = screen.getToken(1);
+      String[] patchsetId = input.split(",");
+      final String changeId = URL.decodePathSegment(patchsetId[0]);
+      final String revisionId = patchsetId[1];
+      new RestApi("changes").id(changeId)
+      .get(new AsyncCallback<ChangeInfo>() {
+        @Override
+        public void onSuccess(ChangeInfo result) {
+          if (result != null) {
+            screen.setPageTitle("Reports for change " + result._number() +
+                "/" + revisionId);
+          }
+        }
+
+        @Override
+        public void onFailure(Throwable caught) {
+          // never invoked
+        }
+      });
+
+      screen.show(new JobsScreen(changeId, revisionId));
     }
   }
 
-  JobsScreen(final String patchsetId) {
-    setStyleName("verifystatus-panel");
-    String[] id = patchsetId.split(",");
-    String decodedChagneId = URL.decodePathSegment(id[0]);
-    String revId = id[1];
-
-    new RestApi("changes").id(decodedChagneId).view("revisions").id(revId)
+  JobsScreen(String changeId, String revisionId) {
+    new RestApi("changes").id(changeId).view("revisions").id(revisionId)
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "REPORTER")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
