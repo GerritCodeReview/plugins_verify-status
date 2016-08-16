@@ -19,7 +19,6 @@ import com.google.gerrit.plugin.client.FormatUtil;
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.rpc.RestApi;
 import com.google.gerrit.plugin.client.screen.Screen;
-import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -30,19 +29,20 @@ import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
 public class JobsScreen extends VerticalPanel {
   static class Factory implements Screen.EntryPoint {
     @Override
-    public void onLoad(Screen screen) {
-      screen.setPageTitle("Reports for patchset " + screen.getToken(1));
-      screen.show(new JobsScreen(screen.getToken(1)));
+    public void onLoad(final Screen screen) {
+      // get change and revision number from passed in patchsetId of form
+      // $changeNumber/$revisionNumber
+      String input = screen.getToken(1);
+      String[] patchsetId = input.split("/");
+      final String changeId = patchsetId[0];
+      final String revisionId = patchsetId[1];
+      screen.setPageTitle("Report History for Change " + input);
+      screen.show(new JobsScreen(changeId, revisionId));
     }
   }
 
-  JobsScreen(final String patchsetId) {
-    setStyleName("verifystatus-panel");
-    String[] id = patchsetId.split(",");
-    String decodedChagneId = URL.decodePathSegment(id[0]);
-    String revId = id[1];
-
-    new RestApi("changes").id(decodedChagneId).view("revisions").id(revId)
+  JobsScreen(String changeId, String revisionId) {
+    new RestApi("changes").id(changeId).view("revisions").id(revisionId)
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "REPORTER")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
