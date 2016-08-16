@@ -61,7 +61,7 @@ public class JobsPanel extends FlowPanel {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
             if (!result.isEmpty()) {
-              final String patchsetId = change.id() + "," + rev.id();
+              final String patchsetId = change._number() + "/" + rev.id();
               display(patchsetId, result);
             }
           }
