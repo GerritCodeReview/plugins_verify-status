@@ -68,6 +68,12 @@ This project can be imported into the Eclipse IDE:
   ./tools/eclipse/project.py
 ```
 
+To execute the tests run:
+
+```
+  buck test --include @PLUGIN@
+```
+
 Maven
 -----
 
@@ -80,3 +86,8 @@ To build with Maven, run
 ```
 mvn clean package
 ```
+
+When building with Maven, the Gerrit Plugin API must be available.
+
+How to build the Gerrit Plugin API is described in the [Gerrit
+documentation](../../../Documentation/dev-buck.html#_extension_and_plugin_api_jar_files).
