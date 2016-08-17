@@ -1,5 +1,5 @@
 [alias]
-  ci = //:verify-status
+  verify-status = //:verify-status
   plugin = //:verify-status
 
 [java]

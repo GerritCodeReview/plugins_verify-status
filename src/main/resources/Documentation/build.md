@@ -10,7 +10,7 @@ Two build modes are supported: Standalone and in Gerrit tree.
 The standalone build mode is recommended, as this mode doesn't require
 the Gerrit tree to exist locally.
 
-
+### Build standalone
 
 Clone bucklets library:
 
@@ -48,6 +48,13 @@ The output is created in
   buck-out/gen/@PLUGIN@.jar
 ```
 
+To execute the tests run:
+
+```
+  buck test
+```
+
+### Build in Gerrit tree
 
 Clone or link this plugin to the plugins directory of Gerrit's source
 tree, and issue the command:
@@ -66,6 +73,12 @@ This project can be imported into the Eclipse IDE:
 
 ```
   ./tools/eclipse/project.py
+```
+
+To execute the tests run:
+
+```
+  buck test --include @PLUGIN@
 ```
 
 Maven
