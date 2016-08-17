@@ -88,6 +88,23 @@ limitations under the License.
           </execution>
         </executions>
       </plugin>
+ 
+ <!--
+ Maven IT tests is failing so commenting out for now.
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.19.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+-->
 
     </plugins>
   </build>
@@ -110,6 +127,24 @@ limitations under the License.
       <artifactId>gwt-user</artifactId>
       <version>2.7.0</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+		<dependency>
+	    <groupId>com.google.truth</groupId>
+	    <artifactId>truth</artifactId>
+	    <version>0.27</version>
+      <scope>test</scope>
+		</dependency>
+    <dependency>
+      <groupId>com.google.gerrit</groupId>
+      <artifactId>gerrit-acceptance-framework</artifactId>
+      <version>${Gerrit-ApiVersion}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 

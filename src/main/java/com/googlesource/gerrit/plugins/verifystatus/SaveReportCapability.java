@@ -23,4 +23,8 @@ class SaveReportCapability extends CapabilityDefinition {
   public String getDescription() {
     return "Save Verification Report";
   }
+
+  public static String getName(String pluginName) {
+    return pluginName + "-" + ID;
+  }
 }

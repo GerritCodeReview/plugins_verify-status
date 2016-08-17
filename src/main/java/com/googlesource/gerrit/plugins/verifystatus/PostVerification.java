@@ -201,7 +201,7 @@ public class PostVerification
    */
   private void checkPermission() throws PermissionDeniedException {
     CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + SaveReportCapability.ID)) {
+    if (!ctl.canPerform(SaveReportCapability.getName(pluginName))) {
       throw new PermissionDeniedException(String.format(
           "%s does not have \"%s\" capability.",
           userProvider.get().getUserName(),
