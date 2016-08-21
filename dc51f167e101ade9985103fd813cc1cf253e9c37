@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68c1271d_c96811f3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsScreen.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-21T14:06:18Z",
+      "side": 1,
+      "message": "I think we could avoid this request to translate change id to change number. This screen is opened from the change screen, by passing\n\n  change.getId() + \",\" + rev.id()\n\nas token. If you would pass change number instead of change id you could avoid this request here, just construct the token as:\n\n  change._number() + \",\" + rev.id()\n\nin JobsPanel.",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "dc51f167e101ade9985103fd813cc1cf253e9c37",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
