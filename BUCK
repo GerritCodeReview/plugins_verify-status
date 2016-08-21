@@ -18,7 +18,6 @@ gerrit_plugin(
   ],
   provided_deps = [
     '//lib/commons:dbcp',
-    '//lib:gson',
   ]
 )
 
