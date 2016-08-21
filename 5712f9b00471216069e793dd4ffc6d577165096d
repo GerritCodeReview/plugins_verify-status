@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88bc9b98_ea7387ef",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerifyStatusPlugin.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-21T13:38:21Z",
+      "side": 1,
+      "message": "We made it configurable to show job panel or not in change screen. Wouldn\u0027t it make sense to extend the configuration and also allow sites/user to configure if jobs summary should be shown or not?",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "5712f9b00471216069e793dd4ffc6d577165096d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
