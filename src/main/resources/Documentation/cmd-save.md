@@ -51,7 +51,7 @@ OPTIONS
 
 --verification
 -v
-> The key=value pair of [VerifyInput](rest-api-changes.html#verify-input)
+> The key=value pair of [VerifyInput](rest-api-changes.md#verify-input)
 > parameters separated by '|' character.
  
 --help

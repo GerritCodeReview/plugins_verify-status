@@ -12,7 +12,7 @@ A typical workflow for @PLUGIN@ plugin:
 
 1. CI system triggers on a new patchset.
 2. CI system executes build jobs.
-3. CI system reports build job results with @PLUGIN@ [ssh command](cmd-save.html)
+3. CI system reports build job results with @PLUGIN@ [ssh command](cmd-save.md)
 or [rest-api](rest-api-changes.md).
 4. CI system reports a combined `Verfiied` vote based on the results of each job
 using the review [ssh command](../../../Documentation/cmd-review.html) or
