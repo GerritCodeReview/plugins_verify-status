@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68712757_a9875d0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-24T04:13:35Z",
+      "side": 1,
+      "message": "Add documentation here: [1].\n\n* [1] https://gerrit.googlesource.com/plugins/verify-status/+/a3dacb24aad7aceef1db448020686ae73721ff58/src/main/resources/Documentation/build.md",
+      "revId": "a3dacb24aad7aceef1db448020686ae73721ff58",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68712757_898299fd",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-24T04:13:35Z",
+      "side": 1,
+      "message": "Is this really needed?",
+      "revId": "a3dacb24aad7aceef1db448020686ae73721ff58",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68712757_e97d5512",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-24T04:13:35Z",
+      "side": 1,
+      "message": "provided missing.",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "a3dacb24aad7aceef1db448020686ae73721ff58",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
