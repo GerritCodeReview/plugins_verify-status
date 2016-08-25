@@ -16,6 +16,24 @@
       "revId": "ef5b1a2ee30093c9415df4be3d08dc09b004ab9a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5ccbe55_8cc78743",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-25T19:30:32Z",
+      "side": 1,
+      "message": "hmm.  i just built with buck and maven against Gerrit stable-2.13 and the build completed without error.  I also ran the test and no errors either.  \n\nRegardless if that change isn\u0027t in stable-2.13 then yes we should cherry-pick it over.",
+      "parentUuid": "05b096bd_26879610",
+      "revId": "ef5b1a2ee30093c9415df4be3d08dc09b004ab9a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
