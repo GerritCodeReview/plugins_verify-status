@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5c38220_6d733517",
+        "filename": "pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-25T21:40:50Z",
+      "side": 1,
+      "message": "I kept getting these errors when running IT tests using maven. Tried to fix but was not able to yet so i\u0027ve just commented it out for now.\n\nTests in error: \n  VerifyStatusIT\u003ePluginDaemonTest.beforeTest:58-\u003ePluginDaemonTest.locatePaths:108 » IllegalArgument\n  VerifyStatusIT\u003ePluginDaemonTest.beforeTest:58-\u003ePluginDaemonTest.locatePaths:108 » IllegalArgument\n  VerifyStatusIT\u003ePluginDaemonTest.beforeTest:58-\u003ePluginDaemonTest.locatePaths:108 » IllegalArgument",
+      "revId": "3e50dec13e172987de79c1107ede3bae3ee89a3b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
