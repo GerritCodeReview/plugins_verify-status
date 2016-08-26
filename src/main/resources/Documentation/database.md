@@ -3,15 +3,15 @@
 
 DESCRIPTION
 -----------
-CI data is stored in a [CI database](#supported-dbs) which can be in the Gerrit
-review database or a completely separate database.
+Test metadata is stored in a [CI database](#supported-dbs) which can be in the
+Gerrit review database or a completely separate database.
 
 ### <a id="schema-initialization"> @PLUGIN@ schema initialization
 
 Schema initialization
 ---------------------
 
-The database is initialized and the schema is created with during an initial
+The database is initialized and the schema is created during an initial
 site creation.
 
 ```
@@ -35,7 +35,7 @@ Initialized <gerrit-site>
 Schema upgrade
 --------------
 
-Schema upgrade takes place in init plugin step:
+Schema upgrade takes place in the init plugin step:
 
 ```
 *** SQL Database for @PLUGIN@
@@ -56,8 +56,8 @@ The @PLUGIN@ database can be configured in the [gerrit.config]
 (../../../Documentation/config-gerrit.html#_file_code_etc_gerrit_config_code)
 file
 
-The [database section](#database-params) configures where the @PLUGIN@ stores
-per patchset CI results.
+The [database section](#database-params) configures where the @PLUGIN@ plugin
+stores per patchset test results.
 
 ```
 [plugin "@PLUGIN@"]
@@ -105,7 +105,7 @@ Default is `30 seconds`.
 Acccesing Database
 ------------------
 
-@PLUGIN@ provides an administrative interface to the database.
+@PLUGIN@ plugin provides an administrative interface to the database.
 
 'ssh' -p <port> <host> '@PLUGIN@ gsql' [--format {PRETTY | JSON | JSON_SINGLE}] [-c QUERY]
 
