@@ -21,7 +21,7 @@ limitations under the License.
   <groupId>com.googlesource.gerrit.plugins</groupId>
   <artifactId>verify-status</artifactId>
   <packaging>jar</packaging>
-  <version>2.14-SNAPSHOT</version>
+  <version>2.13-SNAPSHOT</version>
   <name>Gerrit Verify Status Plugin</name>
 
   <properties>
