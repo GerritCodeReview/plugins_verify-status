@@ -22,6 +22,30 @@
       "revId": "dc51f167e101ade9985103fd813cc1cf253e9c37",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "457a8ef7_0878a720",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsScreen.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-26T16:53:45Z",
+      "side": 1,
+      "message": "Good call here, thanks.  Done.",
+      "parentUuid": "68c1271d_c96811f3",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "dc51f167e101ade9985103fd813cc1cf253e9c37",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
