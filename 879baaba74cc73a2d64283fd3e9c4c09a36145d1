@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8599e695_62e4f6d3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsScreen.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-28T13:21:38Z",
+      "side": 1,
+      "message": "Name it changeNumber?",
+      "revId": "879baaba74cc73a2d64283fd3e9c4c09a36145d1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45628e90_e8ceb362",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsScreen.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-28T13:21:38Z",
+      "side": 1,
+      "message": "Name it revisionNumber?",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "879baaba74cc73a2d64283fd3e9c4c09a36145d1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
