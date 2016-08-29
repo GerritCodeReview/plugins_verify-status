@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.change.RevisionResource;
@@ -28,7 +29,6 @@ import org.apache.commons.lang.builder.CompareToBuilder;
 import org.kohsuke.args4j.Option;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -57,6 +57,47 @@ public class GetVerifications implements RestReadView<RevisionResource> {
     this.filter = filter.toUpperCase();
   }
 
+  private VerificationInfo createVerificationInfo(PatchSetVerification v) {
+    VerificationInfo info = new VerificationInfo();
+    info.value = v.getValue();
+    info.abstain = v.getAbstain();
+    info.url = v.getUrl();
+    info.name = v.getName();
+    info.reporter = v.getReporter();
+    info.comment = v.getComment();
+    info.granted = v.getGranted();
+    info.category = v.getCategory();
+    info.duration = v.getDuration();
+    return info;
+  }
+
+  private void sortJobs(List<PatchSetVerification> jobs, String order) {
+    if (order.equals("REPORTER")) {
+      // sort the jobs list by reporter(A-Z)/Name(A-Z)/Granted(Z-A)
+      Collections.sort(jobs, new Comparator<PatchSetVerification>() {
+        @Override
+        public int compare(PatchSetVerification a, PatchSetVerification b) {
+          return new CompareToBuilder()
+              .append(a.getReporter(),b.getReporter())
+              .append(a.getName(), b.getName())
+              .append(b.getGranted(),a.getGranted())
+              .toComparison();
+        }
+      });
+    } else if (order.equals("NAME")) {
+      // sort the jobs list by Name(A-Z)/Granted(Z-A)
+      Collections.sort(jobs, new Comparator<PatchSetVerification>() {
+        @Override
+        public int compare(PatchSetVerification a, PatchSetVerification b) {
+          return new CompareToBuilder()
+              .append(a.getName(),b.getName())
+              .append(b.getGranted(),a.getGranted())
+              .toComparison();
+        }
+      });
+    }
+  }
+
   @Override
   public Map<String, VerificationInfo> apply(RevisionResource rsrc)
       throws IOException, OrmException {
@@ -64,89 +105,54 @@ public class GetVerifications implements RestReadView<RevisionResource> {
     try (CiDb db = schemaFactory.open()) {
       ResultSet<PatchSetVerification> rs =
           db.patchSetVerifications().byPatchSet(rsrc.getPatchSet().getId());
-      List<PatchSetVerification> jobs = rs.toList();
+      List<PatchSetVerification> result = rs.toList();
+      List<PatchSetVerification> jobs = Lists.newLinkedList();
+
+      // filter jobs
+      boolean isSorted = false;
+      if (filter != null && !filter.isEmpty()) {
+        if (filter.equals("CURRENT") ) {
+          // logic to get current jobs assumes list is sorted by reporter
+          sortJobs(result, "REPORTER");
+          isSorted = true;
+          String prevReporter = "";
+          String prevName = "";
+          for (PatchSetVerification v : result) {
+            String reporter = v.getReporter();
+            String jobName = v.getName();
+            if (!reporter.equals(prevReporter)) {
+              jobs.add(v);
+            } else if (!jobName.equals(prevName)) {
+              jobs.add(v);
+            }
+            prevReporter = reporter;
+            prevName = jobName;
+          }
+        } else if (filter.equals("FAILED") ) {
+            for (PatchSetVerification v : result) {
+              if (v.getValue() < 0) {
+                jobs.add(v);
+              }
+            }
+         } else {
+           // assume no filtering for an invalid filter option
+           jobs.addAll(result);
+         }
+      } else {
+        jobs.addAll(result);
+      }
+
+      // sort jobs
       if (sort != null && !sort.isEmpty()) {
-        // sort the jobs list by reporter (ascending) then reported date (descending)
-        if (sort.equals("REPORTER")) {
-          Collections.sort(jobs, new Comparator<PatchSetVerification>() {
-            @Override
-            public int compare(PatchSetVerification a, PatchSetVerification b) {
-              return new CompareToBuilder()
-                  .append(a.getReporter(),b.getReporter())
-                  .append(b.getGranted(),a.getGranted())
-                  .toComparison();
-            }
-          });
+        if (sort.equals("REPORTER") && !isSorted) {
+          sortJobs(jobs, "REPORTER");
         } else if (sort.equals("NAME")) {
-          // sort the jobs list by name (ascending) then reported date (descending)
-          Collections.sort(jobs, new Comparator<PatchSetVerification>() {
-            @Override
-            public int compare(PatchSetVerification a, PatchSetVerification b) {
-              return new CompareToBuilder()
-                  .append(a.getName(),b.getName())
-                  .append(b.getGranted(),a.getGranted())
-                  .toComparison();
-            }
-          });
+          sortJobs(jobs, "NAME");
         }
       }
 
-      if (filter != null && !filter.isEmpty()) {
-        if (filter.equals("CURRENT") ) {
-          Map<String, Timestamp> reported = Maps.newHashMap();
-          for (PatchSetVerification v : jobs) {
-            if (!reported.containsKey(v.getReporter())) {
-              reported.put(v.getReporter(), v.getGranted());
-            }
-          }
-          for (PatchSetVerification v : jobs) {
-            Timestamp ts = v.getGranted();
-            if (reported.values().contains(ts)) {
-              VerificationInfo info = new VerificationInfo();
-              info.value = v.getValue();
-              info.abstain = v.getAbstain();
-              info.url = v.getUrl();
-              info.name = v.getName();
-              info.reporter = v.getReporter();
-              info.comment = v.getComment();
-              info.granted = v.getGranted();
-              info.category = v.getCategory();
-              info.duration = v.getDuration();
-              out.put(v.getJobId().get(), info);
-            }
-          }
-        } else if (filter.equals("FAILED") ) {
-            for (PatchSetVerification v : jobs) {
-              if (v.getValue() < 0) {
-                VerificationInfo info = new VerificationInfo();
-                info.value = v.getValue();
-                info.abstain = v.getAbstain();
-                info.url = v.getUrl();
-                info.name = v.getName();
-                info.reporter = v.getReporter();
-                info.comment = v.getComment();
-                info.granted = v.getGranted();
-                info.category = v.getCategory();
-                info.duration = v.getDuration();
-                out.put(v.getJobId().get(), info);
-              }
-            }
-          }
-      } else {
-        // show all reports
-        for (PatchSetVerification v : jobs) {
-          VerificationInfo info = new VerificationInfo();
-          info.value = v.getValue();
-          info.abstain = v.getAbstain();
-          info.url = v.getUrl();
-          info.name = v.getName();
-          info.reporter = v.getReporter();
-          info.comment = v.getComment();
-          info.granted = v.getGranted();
-          info.category = v.getCategory();
-          info.duration = v.getDuration();
-          out.put(v.getJobId().get(), info);
-        }
+      for (PatchSetVerification v : jobs) {
+        out.put(v.getJobId().get(), createVerificationInfo(v));
       }
     }
     return out;
