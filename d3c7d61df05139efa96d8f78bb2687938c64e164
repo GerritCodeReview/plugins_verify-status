@@ -16,6 +16,24 @@
       "revId": "d3c7d61df05139efa96d8f78bb2687938c64e164",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85848625_ca984312",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-29T04:31:00Z",
+      "side": 1,
+      "message": "I\u0027ve made a request[1] to have Jenkins host the plugin.  Once that\u0027s complete the wiki page will contain all the needed info, including a reference to the github location, which will be something like.. https://github.com/jenkinsci/verify-status-reporter\n\n[1] https://issues.jenkins-ci.org/browse/HOSTING-181",
+      "parentUuid": "8599e695_02a1aa90",
+      "revId": "d3c7d61df05139efa96d8f78bb2687938c64e164",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
