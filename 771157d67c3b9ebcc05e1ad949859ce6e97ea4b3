@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "513df5bb_308128fc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-08-30T05:56:21Z",
+      "side": 1,
+      "message": "This condition assumes specific sorting order, right? What if sort \u003d \"NAME\" and filter \u003d \"CURRENT\"? Then the records are not sorted by reporter. Would filtering out the latest reported records also work?",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "771157d67c3b9ebcc05e1ad949859ce6e97ea4b3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
