@@ -22,6 +22,30 @@
       "revId": "771157d67c3b9ebcc05e1ad949859ce6e97ea4b3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a510aa06_d3551455",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-30T18:59:37Z",
+      "side": 1,
+      "message": "Good catch.  Yes, logic assumes that the jobs have gone thru the \"REPORTER\" sort.  I\u0027ve made sure to sort by reporter before executing this logic.  I think what i\u0027m doing is filter out so I\u0027m not sure I understand your alternate suggestion.  Could you please clarify?",
+      "parentUuid": "513df5bb_308128fc",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "771157d67c3b9ebcc05e1ad949859ce6e97ea4b3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
