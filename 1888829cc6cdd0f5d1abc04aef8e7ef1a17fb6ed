@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "518b35e0_20c9aa1c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-08-31T16:12:12Z",
+      "side": 1,
+      "message": "Its probably better to filter before doing the sort.",
+      "revId": "1888829cc6cdd0f5d1abc04aef8e7ef1a17fb6ed",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
