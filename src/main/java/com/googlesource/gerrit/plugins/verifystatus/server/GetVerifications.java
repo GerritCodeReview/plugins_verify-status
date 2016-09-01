@@ -105,6 +105,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
               VerificationInfo info = new VerificationInfo();
               info.value = v.getValue();
               info.abstain = v.getAbstain();
+              info.rerun = v.getRerun();
               info.url = v.getUrl();
               info.name = v.getName();
               info.reporter = v.getReporter();
@@ -121,6 +122,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
                 VerificationInfo info = new VerificationInfo();
                 info.value = v.getValue();
                 info.abstain = v.getAbstain();
+                info.rerun = v.getRerun();
                 info.url = v.getUrl();
                 info.name = v.getName();
                 info.reporter = v.getReporter();
@@ -138,6 +140,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
           VerificationInfo info = new VerificationInfo();
           info.value = v.getValue();
           info.abstain = v.getAbstain();
+          info.rerun = v.getRerun();
           info.url = v.getUrl();
           info.name = v.getName();
           info.reporter = v.getReporter();

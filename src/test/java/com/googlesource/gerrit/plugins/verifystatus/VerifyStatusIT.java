@@ -48,6 +48,7 @@ public class VerifyStatusIT extends PluginDaemonTest {
       "CATEGORY     VARCHAR(255)," +
       "DURATION     VARCHAR(255)," +
       "ABSTAIN      CHAR(1) DEFAULT 'N' NOT NULL," +
+      "RERUN        CHAR(1) DEFAULT 'N' NOT NULL," +
       "NAME         VARCHAR(255)," +
       "CHANGE_ID    INTEGER DEFAULT 0 NOT NULL," +
       "PATCH_SET_ID INTEGER DEFAULT 0 NOT NULL," +
@@ -94,6 +95,7 @@ public class VerifyStatusIT extends PluginDaemonTest {
     i.name = "job42";
     i.value = 1;
     i.reporter = "zuul@openstack.org";
+    i.rerun = true;
     i.comment = "Test CI";
     i.url = "url";
     i.category = "bar";
@@ -170,5 +172,6 @@ public class VerifyStatusIT extends PluginDaemonTest {
     assertThat(r.url).isEqualTo(e.url);
     assertThat(r.category).isEqualTo(e.category);
     assertThat(r.duration).isEqualTo(e.duration);
+    assertThat(r.rerun).isEqualTo(e.rerun);
   }
 }
