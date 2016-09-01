@@ -114,10 +114,12 @@ public class SaveCommand extends SshCommand {
     checkArgument(value != null, "Verification is missing a value");
     checkArgument(!value.isEmpty(), "Verification is missing a value");
     String abstain = params.get("abstain");
+    String rerun = params.get("rerun");
     VerificationInfo data = new VerificationInfo();
     data.name = name;
     data.value = Short.parseShort(value);
     data.abstain = Boolean.valueOf(abstain);
+    data.rerun = Boolean.valueOf(rerun);
     data.url = params.get("url");
     data.reporter = params.get("reporter");
     data.comment = params.get("comment");

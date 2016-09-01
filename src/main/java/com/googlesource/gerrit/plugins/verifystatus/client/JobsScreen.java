@@ -75,9 +75,10 @@ public class JobsScreen extends VerticalPanel {
     t.setText(0, 1, "Name");
     t.setText(0, 2, "Duration");
     t.setText(0, 3, "Voting");
-    t.setText(0, 4, "Category");
-    t.setText(0, 5, "Reporter");
-    t.setText(0, 6, "Date");
+    t.setText(0, 4, "Rerun");
+    t.setText(0, 5, "Category");
+    t.setText(0, 6, "Reporter");
+    t.setText(0, 7, "Date");
 
     int row = 1;
     for (String key : jobs.keySet()) {
@@ -104,10 +105,15 @@ public class JobsScreen extends VerticalPanel {
       } else {
         t.setText(row, 3, "voting");
       }
+      if (vi.rerun()) {
+        t.setText(row, 4, "Y");
+      } else {
+        t.setText(row, 4, "N");
+      }
 
-      t.setText(row, 4, vi.category());
-      t.setText(row, 5, vi.reporter());
-      t.setText(row, 6, FormatUtil.shortFormat(vi.granted()));
+      t.setText(row, 5, vi.category());
+      t.setText(row, 6, vi.reporter());
+      t.setText(row, 7, FormatUtil.shortFormat(vi.granted()));
       row++;
     }
     add(t);
