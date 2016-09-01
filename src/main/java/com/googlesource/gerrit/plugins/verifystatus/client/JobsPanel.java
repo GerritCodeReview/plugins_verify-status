@@ -95,9 +95,9 @@ public class JobsPanel extends FlowPanel {
           new InlineLabel(" (" + jobs.get(key).duration() + ")");
       label.setTitle("duration");
       p.add(label);
-      if (jobs.get(key).category() == "recheck") {
+      if (jobs.get(key).rerun()) {
         Image img = new Image(VerifyStatusPlugin.RESOURCES.rerun());
-        img.setTitle("recheck");
+        img.setTitle("re-run");
         p.add(img);
       }
       if (jobs.get(key).abstain()) {

@@ -126,6 +126,9 @@ public class PostVerification
         if (Boolean.TRUE.equals(ent.getValue().abstain)) {
           c.setAbstain(true);
         }
+        if (Boolean.TRUE.equals(ent.getValue().rerun)) {
+          c.setRerun(true);
+        }
         String url = ent.getValue().url;
         if (url != null) {
           c.setUrl(url);
@@ -161,6 +164,7 @@ public class PostVerification
                 new LabelId(job_id)),
             value, ts);
         c.setAbstain(ent.getValue().abstain);
+        c.setRerun(ent.getValue().rerun);
         c.setUrl(ent.getValue().url);
         c.setName(name);
         c.setReporter(ent.getValue().reporter);

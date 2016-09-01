@@ -88,6 +88,9 @@ public class PatchSetVerification {
   @Column(id = 10, notNull = false, length = 255)
   protected String name;
 
+  @Column(id = 11)
+  protected boolean rerun;
+
   protected PatchSetVerification() {
   }
 
@@ -124,6 +127,14 @@ public class PatchSetVerification {
 
   public void setAbstain(boolean a) {
     abstain = a;
+  }
+
+  public boolean getRerun() {
+    return rerun;
+  }
+
+  public void setRerun(boolean r) {
+    rerun = r;
   }
 
   public Timestamp getGranted() {

@@ -99,6 +99,11 @@ public class JobsDropDownPanel extends FlowPanel {
         img.setTitle("non voting");
         p.add(img);
       }
+      if (jobs.get(key).rerun()) {
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.rerun());
+        img.setTitle("re-run");
+        p.add(img);
+      }
       grid.setWidget(row, 1, p);
       InlineLabel catLabel = new InlineLabel(jobs.get(key).category());
       catLabel.setTitle("category");
