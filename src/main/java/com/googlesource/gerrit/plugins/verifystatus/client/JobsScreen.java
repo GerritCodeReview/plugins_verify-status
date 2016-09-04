@@ -44,7 +44,7 @@ public class JobsScreen extends VerticalPanel {
 
     new RestApi("changes").id(decodedChagneId).view("revisions").id(revId)
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("sort", "REPORTER")
+        .addParameter("sort", "DATE")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
