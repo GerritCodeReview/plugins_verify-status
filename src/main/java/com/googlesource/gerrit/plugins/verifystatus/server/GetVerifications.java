@@ -95,6 +95,16 @@ public class GetVerifications implements RestReadView<RevisionResource> {
               .toComparison();
         }
       });
+    } else if (order.equals("DATE")) {
+      // sort the jobs list by Granted(Z-A)
+      Collections.sort(jobs, new Comparator<PatchSetVerification>() {
+        @Override
+        public int compare(PatchSetVerification a, PatchSetVerification b) {
+          return new CompareToBuilder()
+              .append(b.getGranted(),a.getGranted())
+              .toComparison();
+        }
+      });
     }
   }
 
@@ -148,6 +158,8 @@ public class GetVerifications implements RestReadView<RevisionResource> {
           sortJobs(jobs, "REPORTER");
         } else if (sort.equals("NAME")) {
           sortJobs(jobs, "NAME");
+        } else if (sort.equals("DATE")) {
+          sortJobs(jobs, "DATE");
         }
       }
 
