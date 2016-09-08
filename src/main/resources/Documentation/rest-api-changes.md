@@ -210,16 +210,13 @@ to a revision.
 |name        |required|The name of this job|
 |value       |required|The pass/fail result for this job|
 |abstain     |optional|Whether the value counts as a vote (defaults to false)|
+|rerun       |optional|Whether this result is from a re-test on the same patchset|
 |comment     |optional|A short comment about this job|
 |url         |optional|The url link to more info about this job|
 |reporter    |optional|The user that verified this job|
 |category    |optional|A category for this job|
 |duration    |optional|The time it took to run this job|
 
-
-*__Notice__: There is a special category called 'recheck' that indicates that
-the job was a rerun on the same patchset.  An icon will appear on the change
-screen for these jobs.
 
 ### <a id="revision-info"></a>RevisionInfo
 
@@ -242,6 +239,7 @@ The `VerificationInfo` entity describes a verification on a patch set.
 |name       |The name of this job|
 |value      |The pass/fail result for this job|
 |abstain    |Whether the value counts as a vote|
+|rerun      |Whether this result is from a re-test on the same patchset|
 |comment    |A short comment about this job|
 |url        |The url link to more info about this job|
 |reporter   |The user that verified this job|
