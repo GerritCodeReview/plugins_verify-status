@@ -77,8 +77,17 @@ public class JobsPanel extends FlowPanel {
     int row = 0;
     int column = 1;
     Grid grid = new Grid(row, column);
+    String prevReporter = "";
     for (String key : jobs.keySet()) {
       HorizontalPanel p = new HorizontalPanel();
+      String reporter = jobs.get(key).reporter();
+      if (!reporter.equals(prevReporter)) {
+        HorizontalPanel rp = new HorizontalPanel();
+        rp.add(new InlineLabel(reporter));
+        grid.insertRow(row);
+        grid.setWidget(row, 0, rp);
+        row++;
+      }
       short vote = jobs.get(key).value();
       if (vote > 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
@@ -108,6 +117,7 @@ public class JobsPanel extends FlowPanel {
       grid.insertRow(row);
       grid.setWidget(row, 0, p);
       row++;
+      prevReporter = reporter;
     }
     HorizontalPanel p = new HorizontalPanel();
     InlineHyperlink all = new InlineHyperlink("Show All Reports",
