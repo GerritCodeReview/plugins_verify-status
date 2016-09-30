@@ -37,18 +37,19 @@ outside of the Gerrit comments.
 Any CI system can be used with the @PLUGIN@ plugin.
 
 A typical workflow:
-1. CI system triggers on a new patchset.
+1. CI system triggers on a new patchset, ref update or comment.
 2. CI system executes build jobs.
-3. CI system reports build job results with the @PLUGIN@
+3. CI system reports test results with the @PLUGIN@
 [ssh command](cmd-save.md) or [rest-api](rest-api-changes.md).
-4. CI system reports a combined `Verfiied` vote based on the results of each job
-using the review [ssh command](../../../Documentation/cmd-review.html) or
-[rest api](../../../Documentation/rest-api-changes.html#set-review).
+4. CI system reports a combined `Verified` vote based on the results of each job
+using the [review ssh command](../../../Documentation/cmd-review.html) or
+[review rest api](../../../Documentation/rest-api-changes.html#set-review).
 5. Users can view per patch job results on Gerrit UI or retrieve the results
 using the @PLUGIN@ rest api.
 
-_NOTE_: The [verify-status-reporter] plugin documentation contains specific
-instructions on setting up this workflow with the Jenkins CI system.
+_NOTE_: The Jenkins [Gerrit verify status reporter plugin] documentation
+contains specific instructions on setting up this workflow with the
+Jenkins CI system.
 
 
 ### <a id="change-screen"></a>
@@ -106,4 +107,4 @@ file.
 
 
 [Jenkins]: https://jenkins.io
-[verify-status-reporter]: https://wiki.jenkins-ci.org/display/JENKINS/Verify+Status+Reporter
+[Gerrit verify status reporter plugin]: https://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Verify+Status+Reporter+Plugin
