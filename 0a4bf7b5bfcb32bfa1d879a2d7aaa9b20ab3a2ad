@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ec810b_51b1d4da",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2016-10-04T08:24:22Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "0a4bf7b5bfcb32bfa1d879a2d7aaa9b20ab3a2ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
