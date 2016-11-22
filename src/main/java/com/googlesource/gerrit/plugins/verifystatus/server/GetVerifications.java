@@ -130,7 +130,12 @@ public class GetVerifications implements RestReadView<RevisionResource> {
           String prevName = "";
           for (PatchSetVerification v : result) {
             String reporter = v.getReporter();
+	    if (reporter == null) {
+		reporter = "(unknown)";
             String jobName = v.getName();
+	    if ( jobName == null ) {
+		jobName = "(unknown)";
+	    }
             if (!reporter.equals(prevReporter)) {
               jobs.add(v);
             } else if (!jobName.equals(prevName)) {
