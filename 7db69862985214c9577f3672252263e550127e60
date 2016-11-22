@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104624f2_9df50314",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-11-22T13:51:35Z",
+      "side": 1,
+      "message": "Singular: \"it is valid string\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "7db69862985214c9577f3672252263e550127e60",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d091ec62_6b1cc152",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-11-22T13:51:35Z",
+      "side": 1,
+      "message": "Why it\u0027s needed?",
+      "range": {
+        "startLine": 168,
+        "startChar": 62,
+        "endLine": 168,
+        "endChar": 71
+      },
+      "revId": "7db69862985214c9577f3672252263e550127e60",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d091ec62_4b17052f",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-11-22T13:51:35Z",
+      "side": 1,
+      "message": "isNull()",
+      "range": {
+        "startLine": 170,
+        "startChar": 66,
+        "endLine": 170,
+        "endChar": 81
+      },
+      "revId": "7db69862985214c9577f3672252263e550127e60",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104624f2_fd00c71e",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-11-22T13:51:35Z",
+      "side": 1,
+      "message": "Nit: blank before null.",
+      "range": {
+        "startLine": 178,
+        "startChar": 17,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "7db69862985214c9577f3672252263e550127e60",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
