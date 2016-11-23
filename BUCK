@@ -25,7 +25,6 @@ java_test(
   name = 'verify-status_tests',
   srcs = glob(['src/test/java/**/*IT.java']),
   labels = ['verify-status'],
-  source_under_test = [':verify-status__plugin'],
   deps = GERRIT_PLUGIN_API + GERRIT_TESTS + [
     ':verify-status__plugin',
   ],
