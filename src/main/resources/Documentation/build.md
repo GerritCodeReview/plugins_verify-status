@@ -1,7 +1,72 @@
 @PLUGIN@ Build
 ==============
 
-This plugin can be built with Buck or Maven.
+This plugin can be built with Bazel, Buck or Maven.
+
+Bazel
+----
+
+Two build modes are supported: Standalone and in Gerrit tree.
+The standalone build mode is recommended, as this mode doesn't require
+the Gerrit tree to exist locally.
+
+### Build standalone
+
+To build the plugin, issue the following command:
+
+
+```
+  bazel build verify-status
+```
+
+The output is created in
+
+```
+  bazel-genfiles/@PLUGIN@.jar
+```
+
+To execute the tests run:
+
+```
+  bazel test verify_status_tests
+```
+
+### Build in Gerrit tree
+
+Clone or link this plugin to the plugins directory of Gerrit's source
+tree, and issue the command:
+
+```
+  bazel build plugins/@PLUGIN@
+```
+
+The output is created in
+
+```
+  bazel-genfiles/plugins/@PLUGIN@/@PLUGIN@.jar
+```
+
+This project can be imported into the Eclipse IDE. List the plugin in the
+custom plugin list, in `gerrit/tools/bzl/plugins.bzl`:
+
+```
+CUSTOM_PLUGINS = [
+  [...]
+  'verify-status',
+]
+```
+
+and issue the command:
+
+```
+  ./tools/eclipse/project_bzl.py
+```
+
+To execute the tests run:
+
+```
+  bazel test plugins/verify-status:verify_status_tests
+```
 
 Buck
 ----
