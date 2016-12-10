@@ -14,7 +14,6 @@ the Gerrit tree to exist locally.
 
 To build the plugin, issue the following command:
 
-
 ```
   bazel build verify-status
 ```
@@ -25,8 +24,11 @@ The output is created in
   bazel-genfiles/@PLUGIN@.jar
 ```
 
-Note: The tests are not working in standalone build mode due to
-gerrit-acceptance-framework limitation.
+To execute the tests run:
+
+```
+  bazel test verify_status_tests
+```
 
 ### Build in Gerrit tree
 

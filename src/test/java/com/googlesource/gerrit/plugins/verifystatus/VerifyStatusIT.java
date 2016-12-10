@@ -18,9 +18,12 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.gerrit.server.group.SystemGroupBackend.REGISTERED_USERS;
 
 import com.google.common.collect.Iterables;
-import com.google.gerrit.acceptance.PluginDaemonTest;
+import com.google.gerrit.acceptance.GerritConfig;
+import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.PushOneCommit.Result;
 import com.google.gerrit.acceptance.RestResponse;
+import com.google.gerrit.acceptance.TestPlugin;
+import com.google.gerrit.acceptance.UseLocalDisk;
 import com.google.gson.reflect.TypeToken;
 import com.google.gwtorm.jdbc.SimpleDataSource;
 
@@ -36,7 +39,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class VerifyStatusIT extends PluginDaemonTest {
+@TestPlugin(
+    name = "verify-status",
+    sysModule = "com.googlesource.gerrit.plugins.verifystatus.GlobalModule",
+    httpModule = "com.googlesource.gerrit.plugins.verifystatus.HttpModule",
+    sshModule = "com.googlesource.gerrit.plugins.verifystatus.SshModule"
+)
+public class VerifyStatusIT extends LightweightPluginDaemonTest {
+  private final static String NAME = "verify-status";
+  private final static String DB_TYPE_CONFIG = "plugin." + NAME + ".dbType";
+  private final static String DB_URL_CONFIG = "plugin." + NAME + ".dbUrl";
+  private final static String H2 = "h2";
+  private final static String URL = "jdbc:h2:mem:TestCiDB;DB_CLOSE_DELAY=-1";
   private final static String TABLE = "PATCH_SET_VERIFICATIONS";
   private static final String CREATE_TABLE =
       "CREATE       TABLE IF NOT EXISTS " + TABLE + " (" +
@@ -56,14 +70,16 @@ public class VerifyStatusIT extends PluginDaemonTest {
   private static final String DELETE_TABLE =
       "DELETE FROM " + TABLE;
 
+  @Before
   @Override
-  protected void beforeTestServerStarts() throws Exception {
-    String url = "jdbc:h2:mem:TestCiDB;DB_CLOSE_DELAY=-1";
+  public void setUp() throws Exception {
+    super.setUp();
+    allowGlobalCapabilities(REGISTERED_USERS,
+        SaveReportCapability.getName(NAME));
+
     Properties p = new Properties();
     p.setProperty("driver", "org.h2.Driver");
-    p.setProperty("url", url);
-    setPluginConfigString("dbType", "h2");
-    setPluginConfigString("dbUrl", url);
+    p.setProperty("url", URL);
 
     SimpleDataSource sds = new SimpleDataSource(p);
     try (Connection c = sds.getConnection();
@@ -74,13 +90,10 @@ public class VerifyStatusIT extends PluginDaemonTest {
     }
   }
 
-  @Before
-  public void setUp() throws Exception {
-    allowGlobalCapabilities(REGISTERED_USERS,
-        SaveReportCapability.getName(pluginName));
-  }
-
   @Test
+  @GerritConfig(name = DB_TYPE_CONFIG, value = H2)
+  @GerritConfig(name = DB_URL_CONFIG, value = URL)
+  @UseLocalDisk
   public void noVerificationTest() throws Exception {
     Result c = createChange();
     Map<String, VerificationInfo> infos = getVerifications(c);
@@ -88,6 +101,9 @@ public class VerifyStatusIT extends PluginDaemonTest {
   }
 
   @Test
+  @GerritConfig(name = DB_TYPE_CONFIG, value = H2)
+  @GerritConfig(name = DB_URL_CONFIG, value = URL)
+  @UseLocalDisk
   public void verificationOneTest() throws Exception {
     VerifyInput in = new VerifyInput();
     in.verifications = new HashMap<>();
@@ -113,6 +129,9 @@ public class VerifyStatusIT extends PluginDaemonTest {
   }
 
   @Test
+  @GerritConfig(name = DB_TYPE_CONFIG, value = H2)
+  @GerritConfig(name = DB_URL_CONFIG, value = URL)
+  @UseLocalDisk
   public void verificationTwoTest() throws Exception {
     VerifyInput in = new VerifyInput();
     in.verifications = new HashMap<>();
