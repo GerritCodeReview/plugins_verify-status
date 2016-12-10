@@ -27,6 +27,7 @@ gerrit_plugin(
 
 junit_tests(
     name = "verify_status_tests",
+    size = "small",
     srcs = glob(["src/test/java/**/*IT.java"]),
     tags = ["verify-status"],
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
