@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af0039f_4d99f906",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-12-14T20:41:51Z",
+      "side": 1,
+      "message": "This is not working for me or there\u0027s not enough info on how to do it.  I don\u0027t see any documentation in gerrit core on how to setup standalone builds...\n\n\n~/temp ❯❯❯ git clone https://gerrit.googlesource.com/plugins/verify-status\nCloning into \u0027verify-status\u0027...\nremote: Total 921 (delta 214), reused 921 (delta 214)\nReceiving objects: 100% (921/921), 1.24 MiB | 0 bytes/s, done.\nResolving deltas: 100% (214/214), done.\n~/temp ❯❯❯ cd verify-status\n~/t/verify-status ❯❯❯ bazel build verify-status                                                                                                                                                     master\nThe \u0027build\u0027 command is only supported from within a workspace.",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af307ad_6e94afd0",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-12-14T20:41:51Z",
+      "side": 1,
+      "message": "This is not working for me..\n\n~/w/gerrit-plugin-cr ❯❯❯ bazel test verify_status_tests \nERROR: no such target \u0027//:verify_status_tests\u0027: target \u0027verify_status_tests\u0027 not declared in package \u0027\u0027 defined by /Users/zaro0508/work-gerrit/gerrit-plugin-cr/BUILD.\nINFO: Elapsed time: 0.300s\nERROR: Couldn\u0027t start the build. Unable to run tests.\n\n\nIt also does not work when run from the plugin directory..\n\n\n~/w/g/p/verify-status ❯❯❯ bazel test verify_status_tests \n........\nERROR: com.google.devtools.build.lib.packages.BuildFileContainsErrorsException: error loading package \u0027\u0027: Encountered error while reading extension file \u0027gerrit_gwt.bzl\u0027: no such package \u0027@com_googlesource_gerrit_bazlets//\u0027: local_repository rule //external:com_googlesource_gerrit_bazlets must specify an existing directory.\nINFO: Elapsed time: 0.404s\nERROR: Couldn\u0027t start the build. Unable to run tests.",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af0039f_cd6de91f",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-12-14T20:41:51Z",
+      "side": 1,
+      "message": "this build also creates a bazel-genfiles/plugins/@PLUGIN@/@PLUGIN@-static.jar file.  Can you explain what that is for?",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af0039f_2d9aadff",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-12-14T20:41:51Z",
+      "side": 1,
+      "message": "should we provide instructions for intellij as well?",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af0039f_0d9ff1ef",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-12-14T20:41:51Z",
+      "side": 1,
+      "message": "I added this to my plugins.bzl file and ran the project_bzl.py tool however when I import gerrit into eclipse I don\u0027t see verify-status plugin being added to the project.  I only see core plugins.\n\n\nI added it at the root level right under PLUGIN_TEST_DEPS, like so..\n\n\nPLUGIN_TEST_DEPS \u003d [\"//gerrit-acceptance-framework:lib\"]\n\nCUSTOM_PLUGINS \u003d [\u0027verify-status\u0027]\n\ndef gerrit_plugin(\n..",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af0039f_6d94b5d0",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2016-12-14T20:41:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t work for me and I can\u0027t verify whether it even can run with buck because buck is not working either...\n\n\n~/w/gerrit-plugin-cr ❯❯❯ bazel test plugins/verify-status:verify_status_tests            \nINFO: Found 1 test target...\nFAIL: //plugins/verify-status:verify_status_tests (see /private/var/tmp/_bazel_zaro0508/e6e07b402568a16bb5c4c2954a1fec35/execroot/gerrit-plugin-cr/bazel-out/local-fastbuild/testlogs/plugins/verify-status/verify_status_tests/test.log).\nTarget //plugins/verify-status:verify_status_tests up-to-date:\n  bazel-bin/plugins/verify-status/verify_status_tests.jar\n  bazel-bin/plugins/verify-status/verify_status_tests\nINFO: Elapsed time: 2.838s, Critical Path: 1.82s\n//plugins/verify-status:verify_status_tests                              FAILED in 1.5s\n  /private/var/tmp/_bazel_zaro0508/e6e07b402568a16bb5c4c2954a1fec35/execroot/gerrit-plugin-cr/bazel-out/local-fastbuild/testlogs/plugins/verify-status/verify_status_tests/test.log\n\nExecuted 1 out of 1 test: 1 fails locally.\n\n\n\n~/w/gerrit-plugin-cr ❯❯❯ cat /private/var/tmp/_bazel_zaro0508/e6e07b402568a16bb5c4c2954a1fec35/execroot/gerrit-plugin-cr/bazel-out/local-fastbuild/testlogs/plugins/verify-status/verify_status_tests/test.log\n\n\n\nexec ${PAGER:-/usr/bin/less} \"$0\" || exit 1\n-----------------------------------------------------------------------------\nJUnit4 Test Runner\n.URL: sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@370736d9\nURL: sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@185d8b6\nE.URL: sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@1f28c152\nURL: sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@3a5ed7a6\nE.URL: sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@67b92f0a\nURL: sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@4f970963\nE\nTime: 0.071\nThere were 3 failures:\n1) verificationOneTest(com.googlesource.gerrit.plugins.verifystatus.VerifyStatusIT)\njava.nio.file.FileSystemException: /Users/zaro0508/work-gerrit/gerrit-plugin-cr/.primary_build_tool: Operation not permitted\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:91)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)\n\tat sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214)\n\tat java.nio.file.Files.newByteChannel(Files.java:361)\n\tat java.nio.file.Files.newByteChannel(Files.java:407)\n\tat java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384)\n\tat java.nio.file.Files.newInputStream(Files.java:152)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.loadBuildProperties(PluginDaemonTest.java:241)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.buildPluginJar(PluginDaemonTest.java:195)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.beforeTest(PluginDaemonTest.java:65)\n\tat com.google.gerrit.acceptance.AbstractDaemonTest$1$1.evaluate(AbstractDaemonTest.java:285)\n\tat org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)\n\tat org.junit.rules.RunRules.evaluate(RunRules.java:20)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat org.junit.runners.Suite.runChild(Suite.java:127)\n\tat org.junit.runners.Suite.runChild(Suite.java:26)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat org.junit.runners.Suite.runChild(Suite.java:127)\n\tat org.junit.runners.Suite.runChild(Suite.java:26)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat com.google.testing.junit.runner.internal.junit4.CancellableRequestFactory$CancellableRunner.run(CancellableRequestFactory.java:89)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:160)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:138)\n\tat com.google.testing.junit.runner.junit4.JUnit4Runner.run(JUnit4Runner.java:112)\n\tat com.google.testing.junit.runner.BazelTestRunner.runTestsInSuite(BazelTestRunner.java:140)\n\tat com.google.testing.junit.runner.BazelTestRunner.main(BazelTestRunner.java:79)\n2) verificationTwoTest(com.googlesource.gerrit.plugins.verifystatus.VerifyStatusIT)\njava.nio.file.FileSystemException: /Users/zaro0508/work-gerrit/gerrit-plugin-cr/.primary_build_tool: Operation not permitted\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:91)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)\n\tat sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214)\n\tat java.nio.file.Files.newByteChannel(Files.java:361)\n\tat java.nio.file.Files.newByteChannel(Files.java:407)\n\tat java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384)\n\tat java.nio.file.Files.newInputStream(Files.java:152)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.loadBuildProperties(PluginDaemonTest.java:241)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.buildPluginJar(PluginDaemonTest.java:195)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.beforeTest(PluginDaemonTest.java:65)\n\tat com.google.gerrit.acceptance.AbstractDaemonTest$1$1.evaluate(AbstractDaemonTest.java:285)\n\tat org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)\n\tat org.junit.rules.RunRules.evaluate(RunRules.java:20)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat org.junit.runners.Suite.runChild(Suite.java:127)\n\tat org.junit.runners.Suite.runChild(Suite.java:26)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat org.junit.runners.Suite.runChild(Suite.java:127)\n\tat org.junit.runners.Suite.runChild(Suite.java:26)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat com.google.testing.junit.runner.internal.junit4.CancellableRequestFactory$CancellableRunner.run(CancellableRequestFactory.java:89)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:160)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:138)\n\tat com.google.testing.junit.runner.junit4.JUnit4Runner.run(JUnit4Runner.java:112)\n\tat com.google.testing.junit.runner.BazelTestRunner.runTestsInSuite(BazelTestRunner.java:140)\n\tat com.google.testing.junit.runner.BazelTestRunner.main(BazelTestRunner.java:79)\n3) noVerificationTest(com.googlesource.gerrit.plugins.verifystatus.VerifyStatusIT)\njava.nio.file.FileSystemException: /Users/zaro0508/work-gerrit/gerrit-plugin-cr/.primary_build_tool: Operation not permitted\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:91)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)\n\tat sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214)\n\tat java.nio.file.Files.newByteChannel(Files.java:361)\n\tat java.nio.file.Files.newByteChannel(Files.java:407)\n\tat java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384)\n\tat java.nio.file.Files.newInputStream(Files.java:152)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.loadBuildProperties(PluginDaemonTest.java:241)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.buildPluginJar(PluginDaemonTest.java:195)\n\tat com.google.gerrit.acceptance.PluginDaemonTest.beforeTest(PluginDaemonTest.java:65)\n\tat com.google.gerrit.acceptance.AbstractDaemonTest$1$1.evaluate(AbstractDaemonTest.java:285)\n\tat org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)\n\tat org.junit.rules.RunRules.evaluate(RunRules.java:20)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat org.junit.runners.Suite.runChild(Suite.java:127)\n\tat org.junit.runners.Suite.runChild(Suite.java:26)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat org.junit.runners.Suite.runChild(Suite.java:127)\n\tat org.junit.runners.Suite.runChild(Suite.java:26)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat com.google.testing.junit.runner.internal.junit4.CancellableRequestFactory$CancellableRunner.run(CancellableRequestFactory.java:89)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:160)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:138)\n\tat com.google.testing.junit.runner.junit4.JUnit4Runner.run(JUnit4Runner.java:112)\n\tat com.google.testing.junit.runner.BazelTestRunner.runTestsInSuite(BazelTestRunner.java:140)\n\tat com.google.testing.junit.runner.BazelTestRunner.main(BazelTestRunner.java:79)\n\nFAILURES!!!\nTests run: 3,  Failures: 3\n\n\nBazelTestRunner exiting with a return value of 1\nJVM shutdown hooks (if any) will run now.\nThe JVM will exit once they complete.\n\n-- JVM shutdown starting at 2016-12-14 20:18:46 --",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
