@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a04f34e_d1d2a4b6",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-12-14T21:06:44Z",
+      "side": 1,
+      "message": "I try to reproduce your steps:\n\n  $1\u003e mkdir temp\n  $2\u003e cd temp\n  $3\u003e git clone https://gerrit.googlesource.com/plugins/verify-status\n  $4\u003e cd verify-status\n  $5\u003e bazel build verify-status\n  The \u0027build\u0027 command is only supported from within a workspace.\n\nSo, why not to clone this CL? Nobody claimed that Bazel build was implemented *before* this change:\n\n  $6\u003e git fetch   \n  https://gerrit.googlesource.com/plugins/verify-status   \n  refs/changes/15/92915/1 \u0026\u0026 git cherry-pick FETCH_HEAD\n  remote: Counting objects: 117, done\n  remote: Finding sources: 100% (18/18)\n  remote: Total 18 (delta 0), reused 15 (delta 0)\n  Unpacking objects: 100% (18/18), done.\n  From https://gerrit.googlesource.com/plugins/verify-status\n  * branch            refs/changes/15/92915/1 -\u003e FETCH_HEAD\n  [master 4a54ba0] Implement Bazel build\n  Date: Sat Dec 10 15:01:28 2016 +0100\n  10 files changed, 193 insertions(+), 1 deletion(-)\n  create mode 100644 BUILD\n  create mode 100644 WORKSPACE\n  create mode 100644 bazlets.bzl\n  create mode 100644 tools/bazel.rc\n  create mode 100644 tools/bzl/BUILD\n  create mode 100644 tools/bzl/junit.bzl\n  create mode 100644 tools/bzl/plugin.bzl\n  create mode 100755 tools/workspace-status.sh\n\nAnd re-try to verify:\n\n  $7\u003e bazel build verify-status\n  ........\n  INFO: Found 1 target...\n  INFO: From GWT compiling verify-status__gwt_application.zip [for host]:\n  Compiling module   \n  com.googlesource.gerrit.plugins.verifystatus.VerifyStatusForm\n     Compiling 5 permutations\n      Compiling permutation 0...\n      Compiling permutation 1...\n      Compiling permutation 2...\n      Compiling permutation 3...\n      Compiling permutation 4...\n   Compile of permutations succeeded\n   Compilation succeeded -- 24.668s\n  [...]\n  Target //:verify-status up-to-date:\n  bazel-genfiles/verify-status.jar\n  INFO: Elapsed time: 40.784s, Critical Path: 28.74s\n\nLet\u0027s check the outpus is sane:\n\n  $8\u003e unzip bazel-genfiles/verify-status.jar\n  see http://paste.openstack.org/show/592397 for the output.",
+      "parentUuid": "1af0039f_4d99f906",
+      "revId": "a694f2d31e234c3c2bfd378a645091e6684e698f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af307ad_6e94afd0",
         "filename": "src/main/resources/Documentation/build.md",
         "patchSetId": 1
