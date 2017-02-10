@@ -61,10 +61,11 @@ stores per patchset test results.
 
 ```
 [plugin "@PLUGIN@"]
-  dbType = MYSQL
-  dbUrl = jdbc:mysql://localhost:3306/cidata
-  username = gerrit2
-  password = s3kr3t
+    dbType = mysql
+    hostname = localhost
+    database = cidata
+    username = gerrit2
+    password = secret
 ```
 
 ### <a id="supported-dbs"> @PLUGIN@ supported databases
