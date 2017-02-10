@@ -21,8 +21,6 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.lifecycle.LifecycleModule;
-import com.google.gerrit.metrics.DisabledMetricMaker;
-import com.google.gerrit.metrics.MetricMaker;
 import com.google.gerrit.pgm.init.api.ConsoleUI;
 import com.google.gerrit.pgm.init.api.InitStep;
 import com.google.gerrit.pgm.init.api.Section;
@@ -177,7 +175,6 @@ public class InitPlugin implements InitStep {
       @Override
       protected void configure() {
         bind(SchemaVersion.class).to(SchemaVersion.C);
-        bind(MetricMaker.class).to(DisabledMetricMaker.class);
       }
     });
 
