@@ -71,7 +71,7 @@ stores per patchset test results.
 ### <a id="supported-dbs"> @PLUGIN@ supported databases
  * H2
  * Apache Derby
- * MySQL
+ * [MySQL](mysql-setup-example.md)
  * Oracle
  * PostgreSQL
 
@@ -122,6 +122,7 @@ Caller must be a member of a group that is granted the
 SEE ALSO
 --------
 
+* [Example Mysql Setup](mysql-setup-example.md)
 * [Database Setup](../../../Documentation/database-setup.html)
 * [Automatic Site Initialization](../../../Documentation/config-auto-site-initialization.html)
 * [Database Settings](../../../Documentation/config-gerrit.html#database)
