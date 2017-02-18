@@ -96,7 +96,7 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
   @UseLocalDisk
   public void noVerificationTest() throws Exception {
     Result c = createChange();
-    Map<String, VerificationInfo> infos = getVerifications(c);
+    Map<String, VerificationInfo> infos = getVerifications(c, null);
     assertThat(infos).hasSize(0);
   }
 
@@ -123,7 +123,7 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
     RestResponse r = adminRestSession.post(endPoint, in);
     r.assertNoContent();
 
-    Map<String, VerificationInfo> infos = getVerifications(c);
+    Map<String, VerificationInfo> infos = getVerifications(c, null);
     assertThat(infos).hasSize(1);
     assertVerification(Iterables.getOnlyElement(infos.values()), i);
   }
@@ -161,13 +161,41 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
     RestResponse r = adminRestSession.post(endPoint, in);
     r.assertNoContent();
 
-    Map<String, VerificationInfo> infos = getVerifications(c);
+    Map<String, VerificationInfo> infos = getVerifications(c, null);
     assertThat(infos).hasSize(2);
   }
 
-  private Map<String, VerificationInfo> getVerifications(Result c)
+  @Test
+  public void verificationTestNullReporter() throws Exception {
+    VerifyInput in = new VerifyInput();
+    in.verifications = new HashMap<>();
+    VerificationInfo i = new VerificationInfo();
+    i.name = "job42";
+    i.value = 1;
+    i.rerun = true;
+    i.comment = "Test CI";
+    i.url = "url";
+    i.category = "bar";
+    i.duration = "1h 30min";
+    in.verifications.put("foo", i);
+
+    Result c = createChange();
+    String endPoint = url(c);
+    RestResponse r = adminRestSession.post(endPoint, in);
+    r.assertNoContent();
+
+    Map<String, VerificationInfo> infos = getVerifications(c, "CURRENT");
+    assertThat(infos).hasSize(1);
+    assertThat(Iterables.getOnlyElement(infos.values()).reporter).isNull();
+    assertVerification(Iterables.getOnlyElement(infos.values()), i);
+  }
+
+  private Map<String, VerificationInfo> getVerifications(Result c, String filter)
       throws Exception {
     String endPoint = url(c);
+    if (filter != null) {
+      endPoint += "/?filter=" + filter;
+    }
     RestResponse r = adminRestSession.get(endPoint);
     r.assertOK();
 
