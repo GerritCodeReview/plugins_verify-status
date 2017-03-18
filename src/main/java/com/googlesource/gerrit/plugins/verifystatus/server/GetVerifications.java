@@ -42,14 +42,10 @@ public class GetVerifications implements RestReadView<RevisionResource> {
     this.schemaFactory = schemaFactory;
   }
 
-  private String sort;
-  private String filter;
-
   @Option(name = "--sort", aliases = {"-s"}, metaVar = "SORT",
       usage = "Sort the list by an entry")
-  public void setSort(String sort) {
-    this.sort = sort.toUpperCase();
-  }
+  private JobsSorting sort;
+  private String filter;
 
   @Option(name = "--filter", aliases = {"-f"}, metaVar = "FILTER",
       usage = "filter the results")
@@ -72,8 +68,8 @@ public class GetVerifications implements RestReadView<RevisionResource> {
     return info;
   }
 
-  private void sortJobs(List<PatchSetVerification> jobs, String order) {
-    if (order.equals("REPORTER")) {
+  private void sortJobs(List<PatchSetVerification> jobs, JobsSorting order) {
+    if (order == JobsSorting.REPORTER) {
       // sort the jobs list by reporter(A-Z)/Name(A-Z)/Granted(Z-A)
       Collections.sort(jobs, new Comparator<PatchSetVerification>() {
         @Override
@@ -85,7 +81,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
               .toComparison();
         }
       });
-    } else if (order.equals("NAME")) {
+    } else if (order == JobsSorting.NAME) {
       // sort the jobs list by Name(A-Z)/Granted(Z-A)
       Collections.sort(jobs, new Comparator<PatchSetVerification>() {
         @Override
@@ -96,7 +92,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
               .toComparison();
         }
       });
-    } else if (order.equals("DATE")) {
+    } else if (order == JobsSorting.DATE) {
       // sort the jobs list by Granted(Z-A)
       Collections.sort(jobs, new Comparator<PatchSetVerification>() {
         @Override
@@ -124,7 +120,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
       if (filter != null && !filter.isEmpty()) {
         if (filter.equals("CURRENT") ) {
           // logic to get current jobs assumes list is sorted by reporter
-          sortJobs(result, "REPORTER");
+          sortJobs(result, JobsSorting.REPORTER);
           isSorted = true;
           String prevReporter = "";
           String prevName = "";
@@ -157,14 +153,8 @@ public class GetVerifications implements RestReadView<RevisionResource> {
       }
 
       // sort jobs
-      if (sort != null && !sort.isEmpty()) {
-        if (sort.equals("REPORTER") && !isSorted) {
-          sortJobs(jobs, "REPORTER");
-        } else if (sort.equals("NAME")) {
-          sortJobs(jobs, "NAME");
-        } else if (sort.equals("DATE")) {
-          sortJobs(jobs, "DATE");
-        }
+      if ((sort != JobsSorting.REPORTER) || !isSorted) {
+        sortJobs(jobs, sort);
       }
 
       for (PatchSetVerification v : jobs) {
