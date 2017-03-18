@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "061eae24_dd1bbe18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f19a5f_a76e65cb",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afd92f8d_c846afbd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-18T20:21:31Z",
       "side": 1,
       "message": "Would it make sence to change the default to date?",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e1a393_fcfcc7ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Well, as for me it is indeed more reasonable to have DATE as default but if we do so it will affect people platforms during plugin update. That\u0027s why I opted to old value here. But if you are ok with new default let\u0027s do it.",
+      "parentUuid": "afd92f8d_c846afbd",
       "range": {
         "startLine": 15,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "338489c5_1eef0452",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134ecb88_6a255264",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2eaf591_8d751089",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-03-18T20:21:31Z",
       "side": 1,
       "message": "sortJobPanel",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae93dd3f_3ab42905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2eaf591_8d751089",
       "range": {
         "startLine": 19,
         "startChar": 5,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b5eb3e60_153cbd4c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsDropDownPanel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a4a9a76_6d28d98a",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64bccafd_3e577a74",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0bb40346_40b865e6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64bccafd_3e577a74",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8adcde5f_77961861",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2017-03-18T20:21:31Z",
       "side": 1,
       "message": "Nit: no tabs.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef83dfe_1684fc1f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-18T20:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8adcde5f_77961861",
       "range": {
         "startLine": 66,
         "startChar": 0,
