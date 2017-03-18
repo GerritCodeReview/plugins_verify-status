@@ -41,6 +41,8 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
     public Boolean showJobsPanel;
     public Boolean showJobsDropDownPanel;
     public Boolean showJobsSummaryPanel;
+    public String sortJobsPanel;
+    public String sortJobsDropDownPanel;
   }
 
   private final PluginConfigFactory cfgFactory;
@@ -83,6 +85,18 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
           input.showJobsSummaryPanel);
     } else {
       cfg.unset("plugin", pluginName, "showJobsSummaryPanel");
+    }
+    if (input.sortJobsPanel != null) {
+      cfg.setEnum("plugin", pluginName, "sortJobsPanel",
+          JobsSorting.valueOf(input.sortJobsPanel));
+    } else {
+      cfg.unset("plugin", pluginName, "sortJobsPanel");
+    }
+    if (input.sortJobsDropDownPanel != null) {
+      cfg.setEnum("plugin", pluginName, "sortJobsDropDownPanel",
+          JobsSorting.valueOf(input.sortJobsDropDownPanel));
+    } else {
+      cfg.unset("plugin", pluginName, "sortJobsDropDownPanel");
     }
 
     cfg.save();
