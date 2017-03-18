@@ -37,6 +37,8 @@ public class GetConfig implements RestReadView<ConfigResource> {
     info.showJobsPanel = cfg.getBoolean("showJobsPanel", true);
     info.showJobsDropDownPanel = cfg.getBoolean("showJobsDropDownPanel", true);
     info.showJobsSummaryPanel = cfg.getBoolean("showJobsSummaryPanel", true);
+    info.sortJobsPanel = cfg.getString("sortJobsPanel", "REPORTER");
+    info.sortJobsDropDownPanel = cfg.getString("sortJobsDropDownPanel", "REPORTER");
     return info;
   }
 
@@ -44,5 +46,7 @@ public class GetConfig implements RestReadView<ConfigResource> {
     Boolean showJobsPanel;
     Boolean showJobsDropDownPanel;
     Boolean showJobsSummaryPanel;
+    String sortJobsPanel;
+    String sortJobsDropDownPanel;
   }
 }

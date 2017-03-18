@@ -36,6 +36,12 @@ import com.google.gwt.user.client.ui.InlineLabel;
  */
 public class JobsPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
+    private final ConfigInfo info;
+
+    public Factory(ConfigInfo info) {
+      this.info = info;
+    }
+
     @Override
     public void onLoad(Panel panel) {
       RevisionInfo rev =
@@ -44,11 +50,11 @@ public class JobsPanel extends FlowPanel {
         return;
       }
 
-      panel.setWidget(new JobsPanel(panel));
+      panel.setWidget(new JobsPanel(panel, info));
     }
   }
 
-  JobsPanel(Panel panel) {
+  JobsPanel(Panel panel, ConfigInfo info) {
     final ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     String decodedChangeId = URL.decodePathSegment(change.id());
@@ -56,7 +62,8 @@ public class JobsPanel extends FlowPanel {
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
     new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("sort", "REPORTER").addParameter("filter", "CURRENT")
+        .addParameter("sort", info.sortJobsPanel())
+        .addParameter("filter", "CURRENT")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
