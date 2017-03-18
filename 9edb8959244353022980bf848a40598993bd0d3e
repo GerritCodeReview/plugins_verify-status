@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "352f6402_333de369",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-18T20:35:54Z",
+      "side": 1,
+      "message": "Let\u0027s do it in a separate change, and may be not on stable branch?",
+      "parentUuid": "e1e1a393_fcfcc7ad",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "9edb8959244353022980bf848a40598993bd0d3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "134ecb88_6a255264",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
