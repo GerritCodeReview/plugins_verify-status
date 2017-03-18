@@ -96,6 +96,8 @@ file.
 |showJobsPanel          | Whether jobs panel should be displayed (default to true)|
 |showJobsDropDownPanel  | Whether jobs drop down panel should be displayed (default to true)|
 |showJobsSummaryPanel   | Whether jobs summary panel should be displayed (default to true)|
+|sortJobsPanel          | The order of jobs sorting on jobs panel (REPORTER|NAME|DATE default to REPORTER)|
+|sortJobsDropDownPanel  | The order of jobs sorting on jobs drop down panel (REPORTER|NAME|DATE default to REPORTER)|
 
 
 #### Example
