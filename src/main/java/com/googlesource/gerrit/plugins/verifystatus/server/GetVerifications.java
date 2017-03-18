@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.verifystatus.server;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gwtorm.server.OrmException;
@@ -42,14 +43,10 @@ public class GetVerifications implements RestReadView<RevisionResource> {
     this.schemaFactory = schemaFactory;
   }
 
-  private String sort;
-  private String filter;
-
   @Option(name = "--sort", aliases = {"-s"}, metaVar = "SORT",
       usage = "Sort the list by an entry")
-  public void setSort(String sort) {
-    this.sort = sort.toUpperCase();
-  }
+  private JobsSorting sort;
+  private String filter;
 
   @Option(name = "--filter", aliases = {"-f"}, metaVar = "FILTER",
       usage = "filter the results")
@@ -72,40 +69,50 @@ public class GetVerifications implements RestReadView<RevisionResource> {
     return info;
   }
 
-  private void sortJobs(List<PatchSetVerification> jobs, String order) {
-    if (order.equals("REPORTER")) {
-      // sort the jobs list by reporter(A-Z)/Name(A-Z)/Granted(Z-A)
-      Collections.sort(jobs, new Comparator<PatchSetVerification>() {
-        @Override
-        public int compare(PatchSetVerification a, PatchSetVerification b) {
-          return new CompareToBuilder()
-              .append(a.getReporter(),b.getReporter())
-              .append(a.getName(), b.getName())
-              .append(b.getGranted(),a.getGranted())
-              .toComparison();
-        }
-      });
-    } else if (order.equals("NAME")) {
-      // sort the jobs list by Name(A-Z)/Granted(Z-A)
-      Collections.sort(jobs, new Comparator<PatchSetVerification>() {
-        @Override
-        public int compare(PatchSetVerification a, PatchSetVerification b) {
-          return new CompareToBuilder()
-              .append(a.getName(),b.getName())
-              .append(b.getGranted(),a.getGranted())
-              .toComparison();
-        }
-      });
-    } else if (order.equals("DATE")) {
-      // sort the jobs list by Granted(Z-A)
-      Collections.sort(jobs, new Comparator<PatchSetVerification>() {
-        @Override
-        public int compare(PatchSetVerification a, PatchSetVerification b) {
-          return new CompareToBuilder()
-              .append(b.getGranted(),a.getGranted())
-              .toComparison();
-        }
-      });
+  private void sortJobs(List<PatchSetVerification> jobs,
+    @Nullable JobsSorting order) {
+    if (order == null) {
+      return;
+    }
+    switch (order) {
+      case REPORTER:
+        // sort the jobs list by reporter(A-Z)/Name(A-Z)/Granted(Z-A)
+        Collections.sort(jobs, new Comparator<PatchSetVerification>() {
+          @Override
+          public int compare(PatchSetVerification a, PatchSetVerification b) {
+            return new CompareToBuilder()
+                .append(a.getReporter(),b.getReporter())
+                .append(a.getName(), b.getName())
+                .append(b.getGranted(),a.getGranted())
+                .toComparison();
+          }
+        });
+	break;
+      case NAME:
+        // sort the jobs list by Name(A-Z)/Granted(Z-A)
+        Collections.sort(jobs, new Comparator<PatchSetVerification>() {
+          @Override
+          public int compare(PatchSetVerification a, PatchSetVerification b) {
+            return new CompareToBuilder()
+                .append(a.getName(),b.getName())
+                .append(b.getGranted(),a.getGranted())
+                .toComparison();
+          }
+        });
+	break;
+      case DATE:
+        // sort the jobs list by Granted(Z-A)
+        Collections.sort(jobs, new Comparator<PatchSetVerification>() {
+          @Override
+          public int compare(PatchSetVerification a, PatchSetVerification b) {
+            return new CompareToBuilder()
+                .append(b.getGranted(),a.getGranted())
+                .toComparison();
+          }
+        });
+	break;
+      default:
+	break;
     }
   }
 
@@ -124,7 +131,7 @@ public class GetVerifications implements RestReadView<RevisionResource> {
       if (filter != null && !filter.isEmpty()) {
         if (filter.equals("CURRENT") ) {
           // logic to get current jobs assumes list is sorted by reporter
-          sortJobs(result, "REPORTER");
+          sortJobs(result, JobsSorting.REPORTER);
           isSorted = true;
           String prevReporter = "";
           String prevName = "";
@@ -157,14 +164,8 @@ public class GetVerifications implements RestReadView<RevisionResource> {
       }
 
       // sort jobs
-      if (sort != null && !sort.isEmpty()) {
-        if (sort.equals("REPORTER") && !isSorted) {
-          sortJobs(jobs, "REPORTER");
-        } else if (sort.equals("NAME")) {
-          sortJobs(jobs, "NAME");
-        } else if (sort.equals("DATE")) {
-          sortJobs(jobs, "DATE");
-        }
+      if ((sort != JobsSorting.REPORTER) || !isSorted) {
+        sortJobs(jobs, sort);
       }
 
       for (PatchSetVerification v : jobs) {
