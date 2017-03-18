@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f3dd0a_2337047e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-18T19:45:22Z",
+      "side": 1,
+      "message": "Can you expand a bit why you need this and add an example how to configure it.",
+      "revId": "4d2b0528ba7484c94e96f87d2268cfbe58c076ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69acafa_396a019e",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-18T19:45:22Z",
+      "side": 1,
+      "message": "Same here and below.",
+      "range": {
+        "startLine": 99,
+        "startChar": 75,
+        "endLine": 99,
+        "endChar": 76
+      },
+      "revId": "4d2b0528ba7484c94e96f87d2268cfbe58c076ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afee777e_87ec6bcf",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-18T19:45:22Z",
+      "side": 1,
+      "message": "You can\u0027t use here \u0027|\u0027 char, see: [1]. Use comma instead.\n\n* [1] https://gerrit.googlesource.com/plugins/verify-status/+/4d2b0528ba7484c94e96f87d2268cfbe58c076ab/src/main/resources/Documentation/rest-api-config.md",
+      "range": {
+        "startLine": 75,
+        "startChar": 77,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "4d2b0528ba7484c94e96f87d2268cfbe58c076ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45c8af6c_126d25e9",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-18T19:45:22Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 76,
+        "startChar": 87,
+        "endLine": 76,
+        "endChar": 88
+      },
+      "revId": "4d2b0528ba7484c94e96f87d2268cfbe58c076ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
