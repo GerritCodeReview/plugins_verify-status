@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbe2af63_e7439da3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PutConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2017-03-21T21:57:25Z",
+      "side": 1,
+      "message": "Since user can set this configuration to any arbitrary string we should check that he has configured it to one of REPORTER, NAME, OR DATE.  If it\u0027s not one of those then maybe fallback to the default?",
+      "revId": "be33b059e4472fac2dfddd291a977ed50be71c10",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
