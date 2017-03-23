@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d32c789_dff178a9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-23T21:13:20Z",
+      "side": 1,
+      "message": "2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "f1b2a9bafd848ea0083d74445122cf93bc5ff9ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c097b71_abe025da",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-23T21:13:20Z",
+      "side": 1,
+      "message": "Is the implementation of this interface really needed?",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "f1b2a9bafd848ea0083d74445122cf93bc5ff9ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff68fce3_ec14e6d7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-23T21:13:20Z",
+      "side": 1,
+      "message": "Wrong style. Open paren on the prev line. here and below.",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "f1b2a9bafd848ea0083d74445122cf93bc5ff9ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e95a1985_ad7916b3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-23T21:13:20Z",
+      "side": 1,
+      "message": "no final in new code.",
+      "range": {
+        "startLine": 29,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "f1b2a9bafd848ea0083d74445122cf93bc5ff9ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
