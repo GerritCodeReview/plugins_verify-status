@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "71d6dfa4_e5ce0b81",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-23T21:34:04Z",
+      "side": 1,
+      "message": "Yes. Otherwise jgit will set values in lowercase\nhttps://github.com/eclipse/jgit/blob/3b4448637fbb9d74e0c9d44048ba76bb7c1214ce/org.eclipse.jgit/src/org/eclipse/jgit/lib/Config.java#L899",
+      "parentUuid": "5c097b71_abe025da",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "f1b2a9bafd848ea0083d74445122cf93bc5ff9ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff68fce3_ec14e6d7",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
         "patchSetId": 4
