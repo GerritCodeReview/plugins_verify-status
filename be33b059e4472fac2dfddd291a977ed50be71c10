@@ -16,6 +16,24 @@
       "revId": "be33b059e4472fac2dfddd291a977ed50be71c10",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edfc8c4f_d19430a8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/PutConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-23T15:42:22Z",
+      "side": 1,
+      "message": "Masking invalid options by defaults is confusing. One who sets value expects either receive an error or get the value set just like it was passed in the request.I redesigned options processing a bit to use enums. Now:\n1. If wrong config option is present in gerrit.config there will be IllegalArgumentException error in gerrit server log and plugin initialization failure\n2. If client tries to get/set incorrect value via API there will be IllegalArgumentException error in gerrit server log and 503 http respose on client side.\n\nSo it will allow:\n1. Inform client about something wrong with his request.\n2. Track down the root of the issue by looking into logs.\n3. Keep config consistent",
+      "parentUuid": "fbe2af63_e7439da3",
+      "revId": "be33b059e4472fac2dfddd291a977ed50be71c10",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
