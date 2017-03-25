@@ -37,6 +37,8 @@ public class GetConfig implements RestReadView<ConfigResource> {
     info.showJobsPanel = cfg.getBoolean("showJobsPanel", true);
     info.showJobsDropDownPanel = cfg.getBoolean("showJobsDropDownPanel", true);
     info.showJobsSummaryPanel = cfg.getBoolean("showJobsSummaryPanel", true);
+    info.showJobsPanelBelowTabPanel = cfg.getBoolean(
+	"showJobsPanelBelowTabPanel", false);
     info.sortJobsPanel = cfg.getEnum(JobsSorting.values(),
         "sortJobsPanel", JobsSorting.REPORTER);
     info.sortJobsDropDownPanel = cfg.getEnum(JobsSorting.values(),
@@ -48,6 +50,7 @@ public class GetConfig implements RestReadView<ConfigResource> {
     Boolean showJobsPanel;
     Boolean showJobsDropDownPanel;
     Boolean showJobsSummaryPanel;
+    Boolean showJobsPanelBelowTabPanel;
     JobsSorting sortJobsPanel;
     JobsSorting sortJobsDropDownPanel;
   }
