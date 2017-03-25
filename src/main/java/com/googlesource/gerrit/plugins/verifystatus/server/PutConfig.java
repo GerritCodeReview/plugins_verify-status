@@ -42,6 +42,7 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
     public Boolean showJobsDropDownPanel;
     public Boolean showJobsSummaryPanel;
     public Boolean showJobsBelowRelatedInfoBlock;
+    public Boolean enableInProgressStatus;
     public String sortJobsPanel;
     public String sortJobsDropDownPanel;
   }
@@ -92,6 +93,12 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
           input.showJobsBelowRelatedInfoBlock);
     } else {
       cfg.unset("plugin", pluginName, "showJobsBelowRelatedInfoBlock");
+    }
+    if (input.enableInProgressStatus != null) {
+      cfg.setBoolean("plugin", pluginName, "enableInProgressStatus",
+          input.enableInProgressStatus);
+    } else {
+      cfg.unset("plugin", pluginName, "enableInProgressStatus");
     }
     if (input.sortJobsPanel != null) {
       cfg.setEnum("plugin", pluginName, "sortJobsPanel",

@@ -73,11 +73,15 @@ combined Verified vote.
 |less than 0    |Failed  |
 |0              |Unstable|
 |greater than 0 |Passed  |
+|2              |In progress (if enableInProgressStatus=true)|
 
 
 The information icon is an indicator that a job has abstained from voting
 (or is a non-voting job).  Abstaining typically indicates that a job's
 score may not factor into determining the combined vote.
+
+If enableInProgressStatus is true then the loading icon is an indicator
+that a job has been set with value 2 and identified as 'in progress'.
 
 
 ### <a id="configure-panels"> @PLUGIN@ configure-panels
@@ -97,6 +101,7 @@ file.
 |showJobsDropDownPanel         | Whether jobs drop down panel should be displayed (default to true)|
 |showJobsSummaryPanel          | Whether jobs summary panel should be displayed (default to true)|
 |showJobsBelowRelatedInfoBlock | Whether jobs panel should be positioned below related info block (default to false)|
+|enableInProgressStatus        | Whether value=2 should be treated as 'in progress' status (default to false)|
 |sortJobsPanel                 | The order of jobs sorting on jobs panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
 |sortJobsDropDownPanel         | The order of jobs sorting on jobs drop down panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
 
