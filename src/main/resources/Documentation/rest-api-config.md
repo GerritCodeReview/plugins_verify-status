@@ -67,13 +67,14 @@ parameter unchanged.
 The `ConfigInfo` entity contains the configuration of the @PLUGIN@
 plugin.
 
-|Field Name               |Description|
-|:------------------------|:----------|
-|show_jobs_panel          | Whether jobs panel should be displayed|
-|show_jobs_drop_down_panel| Whether jobs drop down panel should be displayed|
-|show_jobs_summary_panel  | Whether jobs summary panel should be displayed|
-|sort_jobs_panel          | The order of jobs sorting on jobs panel (REPORTER,NAME,DATE)|
-|sort_jobs_drop_down_panel| The order of jobs sorting on jobs drop down panel (REPORTER,NAME,DATE)|
+|Field Name                         |Description|
+|:----------------------------------|:----------|
+|show_jobs_panel                    | Whether jobs panel should be displayed|
+|show_jobs_drop_down_panel          | Whether jobs drop down panel should be displayed|
+|show_jobs_summary_panel            | Whether jobs summary panel should be displayed|
+|show_jobs_below_related_info_block | Whether jobs panel should be positioned below related info block|
+|sort_jobs_panel                    | The order of jobs sorting on jobs panel (REPORTER,NAME,DATE)|
+|sort_jobs_drop_down_panel          | The order of jobs sorting on jobs drop down panel (REPORTER,NAME,DATE)|
 
 
 SEE ALSO
