@@ -91,13 +91,14 @@ file.
 
 #### Parameters
 
-|Field Name             |Description|
-|:----------------------|:----------|
-|showJobsPanel          | Whether jobs panel should be displayed (default to true)|
-|showJobsDropDownPanel  | Whether jobs drop down panel should be displayed (default to true)|
-|showJobsSummaryPanel   | Whether jobs summary panel should be displayed (default to true)|
-|sortJobsPanel          | The order of jobs sorting on jobs panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
-|sortJobsDropDownPanel  | The order of jobs sorting on jobs drop down panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
+|Field Name                 |Description|
+|:--------------------------|:----------|
+|showJobsPanel              | Whether jobs panel should be displayed (default to true)|
+|showJobsDropDownPanel      | Whether jobs drop down panel should be displayed (default to true)|
+|showJobsSummaryPanel       | Whether jobs summary panel should be displayed (default to true)|
+|showJobsPanelBelowTabPanel | Whether jobs panel should be positioned below Tab Panel (default to false)|
+|sortJobsPanel              | The order of jobs sorting on jobs panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
+|sortJobsDropDownPanel      | The order of jobs sorting on jobs drop down panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
 
 
 #### Example

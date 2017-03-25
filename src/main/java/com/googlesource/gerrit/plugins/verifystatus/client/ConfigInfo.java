@@ -20,12 +20,14 @@ public class ConfigInfo extends JavaScriptObject {
   final native boolean showJobsSummaryPanel() /*-{ return this.show_jobs_summary_panel ? true : false; }-*/;
   final native boolean showJobsPanel() /*-{ return this.show_jobs_panel ? true : false; }-*/;
   final native boolean showJobsDropDownPanel() /*-{ return this.show_jobs_drop_down_panel ? true : false; }-*/;
+  final native boolean showJobsPanelBelowTabPanel() /*-{ return this.show_jobs_panel_below_tab_panel ? true : false; }-*/;
   final native String sortJobsPanel() /*-{ return this.sort_jobs_panel }-*/;
   final native String sortJobsDropDownPanel() /*-{ return this.sort_jobs_drop_down_panel }-*/;
 
   final native void setShowJobsSummaryPanel(boolean s) /*-{ this.show_jobs_summary_panel = s; }-*/;
   final native void setShowJobsPanel(boolean s) /*-{ this.show_jobs_panel = s; }-*/;
   final native void setShowJobsDropDownPanel(boolean s) /*-{ this.show_jobs_drop_down_panel = s; }-*/;
+  final native void setShowJobsPanelBelowTabPanel(boolean s) /*-{ this.show_jobs_panel_below_tab_panel = s; }-*/;
   final native void setSortJobsPanel(String s) /*-{ this.sort_jobs_panel = s; }-*/;
   final native void setSortJobsDropDownPanel(String s) /*-{ this.sort_jobs_drop_down_panel = s; }-*/;
 
