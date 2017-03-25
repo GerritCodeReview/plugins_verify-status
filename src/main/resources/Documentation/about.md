@@ -73,11 +73,22 @@ combined Verified vote.
 |less than 0    |Failed  |
 |0              |Unstable|
 |greater than 0 |Passed  |
+|2              |In progress (if enableInProgressStatus=true)|
 
 
 The information icon is an indicator that a job has abstained from voting
 (or is a non-voting job).  Abstaining typically indicates that a job's
 score may not factor into determining the combined vote.
+
+If enableInProgressStatus is true then the loading icon is an indicator that a job
+has been set with value 2 and identified as 'in progress'.
+_NOTE_: The Jenkins [Gerrit verify status reporter plugin] currently doesn't
+support in-progress or any equivalent status so enabling progress status makes
+sense only if one uses own postbuild/prebuild custom pipeline logic for setting
+statuses via API. For instance:
+1. In-progress status with value=2 is sent via API as the first step of the build.
+2. From postbuild section actual finish status is calculated in groovy script and
+is send via API.
 
 
 ### <a id="configure-panels"> @PLUGIN@ configure-panels
@@ -97,6 +108,7 @@ file.
 |showJobsDropDownPanel         | Whether jobs drop down panel should be displayed (default to true)|
 |showJobsSummaryPanel          | Whether jobs summary panel should be displayed (default to true)|
 |showJobsBelowRelatedInfoBlock | Whether jobs panel should be positioned below related info block (default to false)|
+|enableInProgressStatus        | Whether value=2 should be treated as 'in progress' status (default to false)|
 |sortJobsPanel                 | The order of jobs sorting on jobs panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
 |sortJobsDropDownPanel         | The order of jobs sorting on jobs drop down panel (REPORTER,NAME,DATE default to REPORTER). Both upper and lower cases are allowed.|
 
