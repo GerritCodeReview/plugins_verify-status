@@ -21,6 +21,7 @@ public class ConfigInfo extends JavaScriptObject {
   final native boolean showJobsPanel() /*-{ return this.show_jobs_panel ? true : false; }-*/;
   final native boolean showJobsDropDownPanel() /*-{ return this.show_jobs_drop_down_panel ? true : false; }-*/;
   final native boolean showJobsBelowRelatedInfoBlock() /*-{ return this.show_jobs_below_related_info_block ? true : false; }-*/;
+  final native boolean enableInProgressStatus() /*-{ return this.enable_in_progress_status ? true : false; }-*/;
   final native String sortJobsPanel() /*-{ return this.sort_jobs_panel }-*/;
   final native String sortJobsDropDownPanel() /*-{ return this.sort_jobs_drop_down_panel }-*/;
 
@@ -28,6 +29,7 @@ public class ConfigInfo extends JavaScriptObject {
   final native void setShowJobsPanel(boolean s) /*-{ this.show_jobs_panel = s; }-*/;
   final native void setShowJobsDropDownPanel(boolean s) /*-{ this.show_jobs_drop_down_panel = s; }-*/;
   final native void setShowJobsBelowRelatedInfoBlock(boolean s) /*-{ this.show_jobs_below_related_info_block = s; }-*/;
+  final native void setEnableInProgressStatus() /*-{ this.enable_in_progress_status = s; }-*/;
   final native void setSortJobsPanel(String s) /*-{ this.sort_jobs_panel = s; }-*/;
   final native void setSortJobsDropDownPanel(String s) /*-{ this.sort_jobs_drop_down_panel = s; }-*/;
 
