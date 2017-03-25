@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "22bd39ba_de2e2548",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-25T17:53:50Z",
+      "side": 1,
+      "message": "You are right. \nInterface implementation has been removed.\nAs for nice http error handling there is no quick fix for it. Right now api always return \u0027204 No Content\u0027 for any processed request. And due to limitations of com.google.gerrit.extensions.restapi.Response there is no way to use any arbitrary response code (for instance 400 Bad Request). So it looks the proper implementation would be \u0027200 Ok\u0027 as a response to all requests having exact status code inside response text. But I don\u0027t see it as a part of this change. So let\u0027s keep it as is with http 503 error on wrong input data. Anyway changing config options regularly through API is quite rare use case and having there neat error handling is not that important.",
+      "parentUuid": "08273430_8e538c31",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "f1b2a9bafd848ea0083d74445122cf93bc5ff9ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff68fce3_ec14e6d7",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/JobsSorting.java",
         "patchSetId": 4
