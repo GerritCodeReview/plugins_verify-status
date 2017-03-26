@@ -97,17 +97,20 @@ public class JobsDropDownPanel extends FlowPanel {
       Anchor anchor = new Anchor(jobs.get(key).name(), jobs.get(key).url());
       anchor.setTitle("view logs");
       p.add(anchor);
-      InlineLabel durlabel = new InlineLabel(" (" + jobs.get(key).duration() + ")");
-      durlabel.setTitle("duration");
-      p.add(durlabel);
-      if (jobs.get(key).abstain()) {
-        Image img = new Image(VerifyStatusPlugin.RESOURCES.info());
-        img.setTitle("non voting");
-        p.add(img);
+      if (jobs.get(key).duration() != null) {
+        InlineLabel durlabel =
+            new InlineLabel(" (" + jobs.get(key).duration() + ")");
+        durlabel.setTitle("duration");
+        p.add(durlabel);
       }
       if (jobs.get(key).rerun()) {
         Image img = new Image(VerifyStatusPlugin.RESOURCES.rerun());
         img.setTitle("re-run");
+        p.add(img);
+      }
+      if (jobs.get(key).abstain()) {
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.mute());
+        img.setTitle("non voting");
         p.add(img);
       }
       grid.setWidget(row, 1, p);

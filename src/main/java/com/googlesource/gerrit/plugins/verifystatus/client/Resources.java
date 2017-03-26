@@ -34,10 +34,12 @@ public interface Resources extends ClientBundle {
   @Source("exclamation.png")
   public ImageResource warning();
 
-  @Source("donut.png")
+  @Source("rerun.png")
   public ImageResource rerun();
 
   @Source("loader.gif")
   public ImageResource progress();
 
+  @Source("alarm-off.png")
+  public ImageResource mute();
 }

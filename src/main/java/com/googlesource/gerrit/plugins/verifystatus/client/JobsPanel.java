@@ -104,17 +104,19 @@ public class JobsPanel extends FlowPanel {
           new Anchor(jobs.get(key).name(), jobs.get(key).url());
       anchor.setTitle("view logs");
       p.add(anchor);
-      InlineLabel label =
-          new InlineLabel(" (" + jobs.get(key).duration() + ")");
-      label.setTitle("duration");
-      p.add(label);
+      if (jobs.get(key).duration() != null) {
+        InlineLabel label =
+            new InlineLabel(" (" + jobs.get(key).duration() + ")");
+        label.setTitle("duration");
+        p.add(label);
+      }
       if (jobs.get(key).rerun()) {
         Image img = new Image(VerifyStatusPlugin.RESOURCES.rerun());
         img.setTitle("re-run");
         p.add(img);
       }
       if (jobs.get(key).abstain()) {
-        Image img = new Image(VerifyStatusPlugin.RESOURCES.info());
+        Image img = new Image(VerifyStatusPlugin.RESOURCES.mute());
         img.setTitle("non voting");
         p.add(img);
       }
