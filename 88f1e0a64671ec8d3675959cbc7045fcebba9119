@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e61a20c_f5ab6884",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-26T09:25:50Z",
+      "side": 1,
+      "message": "Would be nice to move it to enum and possibly make it configurable too (not in this change).",
+      "range": {
+        "startLine": 66,
+        "startChar": 32,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed7209d7_c7100fcf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-26T09:25:50Z",
+      "side": 1,
+      "message": "Nit: 80 char max line length, wrap this line, here and below.",
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b7a5dad_a63ec40d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-26T09:25:50Z",
+      "side": 1,
+      "message": "Is it all really needed? Args4j should handle it all for you now. Can\u0027t you remove this setter entirely, and add the @Option annotation to the sort declaration on line 45:\n\n  @Option(name \u003d \"--sort\", aliases \u003d {\"-s\"}, metaVar \u003d \"SORT\", usage \u003d \"Sort the list by an entry\")\n  private JobsSorting sort;",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0387b475_8233fac4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-26T09:25:50Z",
+      "side": 1,
+      "message": "Would be also nice to do the refactoring here and extract CURRENT|FAILED to be a enum, like it was done with JobsSorting.",
+      "range": {
+        "startLine": 125,
+        "startChar": 27,
+        "endLine": 125,
+        "endChar": 34
+      },
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
