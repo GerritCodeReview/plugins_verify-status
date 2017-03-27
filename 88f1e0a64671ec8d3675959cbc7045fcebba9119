@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc5765a3_8134f172",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/JobsPanel.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-27T12:58:17Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "3e61a20c_f5ab6884",
+      "range": {
+        "startLine": 66,
+        "startChar": 32,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed7209d7_c7100fcf",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetConfig.java",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2017-03-26T09:25:50Z",
       "side": 1,
       "message": "Nit: 80 char max line length, wrap this line, here and below.",
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61d8bcbc_e5e77a44",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-27T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed7209d7_c7100fcf",
       "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "35ac7add_5b7efbcb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-27T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7a5dad_a63ec40d",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0387b475_8233fac4",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
         "patchSetId": 5
@@ -76,6 +142,30 @@
       "writtenOn": "2017-03-26T09:25:50Z",
       "side": 1,
       "message": "Would be also nice to do the refactoring here and extract CURRENT|FAILED to be a enum, like it was done with JobsSorting.",
+      "range": {
+        "startLine": 125,
+        "startChar": 27,
+        "endLine": 125,
+        "endChar": 34
+      },
+      "revId": "88f1e0a64671ec8d3675959cbc7045fcebba9119",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2d18d4b_4a394497",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/GetVerifications.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-03-27T12:58:17Z",
+      "side": 1,
+      "message": "Agree. I will add it after done with this change and couple of more features/improvements I already have in mind.",
+      "parentUuid": "0387b475_8233fac4",
       "range": {
         "startLine": 125,
         "startChar": 27,
