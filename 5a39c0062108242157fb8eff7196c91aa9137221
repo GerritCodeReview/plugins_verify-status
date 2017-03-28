@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f4c8c97_a312d30b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-28T19:31:33Z",
+      "side": 1,
+      "message": "Can we keep the terminology from the API and avoid inventing yet another name, CamelCased BELOW_RELATED_INFO_BLOCK:\n\n  ShowJobsBelowRelatedInfoBlock\n\nor BelowRelatedPanel? On the PolyGerrit UI, there is no tab: [1].\n\nAnother option would be to use enum here to, e.g.: JobsPanelPosition in case in the new UI we would have more tha two options, but this could be done later.\n\n* [1] http://imgur.com/a/rHm6p",
+      "range": {
+        "startLine": 11,
+        "startChar": 46,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "5a39c0062108242157fb8eff7196c91aa9137221",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ddd58cd_2d9613d9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerifyStatusPlugin.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-03-28T19:31:33Z",
+      "side": 1,
+      "message": "Use ternary operator to avoid duplication:\n\n  Plugin.get().panel(\n      info.showJobsPanelBelowTabPanel()\n          ? GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_RELATED_INFO_BLOCK\n          : GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,\n      new JobsPanel.Factory(info));",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "5a39c0062108242157fb8eff7196c91aa9137221",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
