@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d50d675_210fbeae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-04-03T15:58:21Z",
+      "side": 1,
+      "message": "I don\u0027t use jenkins plugin but use ssh interface to report everything. That\u0027s mainly because of a bit tricky CI pipeline logic where the final status is calculated based on several runtime calculated conditions.",
+      "parentUuid": "4aa47bc3_bb24bf76",
+      "revId": "b29d8e1c0fe7b49fcdb9c482e2623d2b5a73697b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b438b539_fa16fefb",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/loader.gif",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-03T06:46:02Z",
       "side": 1,
       "message": "Can you mention where this icon came from and what license it has?",
+      "revId": "b29d8e1c0fe7b49fcdb9c482e2623d2b5a73697b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc21425d_fdbecd43",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/loader.gif",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-04-03T15:58:21Z",
+      "side": 1,
+      "message": "I just googled it and don\u0027t remember the source. I replaced it with generated one (see commit message)",
+      "parentUuid": "b438b539_fa16fefb",
       "revId": "b29d8e1c0fe7b49fcdb9c482e2623d2b5a73697b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
