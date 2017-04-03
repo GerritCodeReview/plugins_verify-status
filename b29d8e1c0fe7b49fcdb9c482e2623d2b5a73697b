@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aa47bc3_bb24bf76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-04-03T06:46:02Z",
+      "side": 1,
+      "message": "What bout reporting of value \u003d 2? I guess Jenkins verify-status reporter plugin: [1] wasn\u0027t extended to support that? So I\u0027m curious how you use it in your CI pipeline environment? Mention your specific use case in the commit message or documentation (how you\u0027ve solved reporting build-in-progress status)?\n\n  https://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Verify+Status+Reporter+Plugin",
+      "revId": "b29d8e1c0fe7b49fcdb9c482e2623d2b5a73697b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b438b539_fa16fefb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/loader.gif",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-04-03T06:46:02Z",
+      "side": 1,
+      "message": "Can you mention where this icon came from and what license it has?",
+      "revId": "b29d8e1c0fe7b49fcdb9c482e2623d2b5a73697b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
