@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e2acb78_682448a1",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1012623
+      },
+      "writtenOn": "2017-04-04T20:02:54Z",
+      "side": 1,
+      "message": "Now that you are using 2 to indicate a state this is no longer accurate.  \n\nThis metadata was intended to store job results.  I\u0027m wondering if it  even makes sense to mix job results with job states?  State seems like it should be a new column in the db?  It could indicate \"in progress\", \"hung\", \"aborted\", \"not built\", etc..\n\nWas wondering what you guys think?",
+      "revId": "5af6ab6f407c2cc03272a14081e4ee5e8e9169fc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
