@@ -16,6 +16,24 @@
       "revId": "5af6ab6f407c2cc03272a14081e4ee5e8e9169fc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "460b6e6b_d667ed7f",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2017-04-04T21:15:59Z",
+      "side": 1,
+      "message": "With Jenkins CI as a reference \"aborted\" and \"not built\" are just another job results http://javadoc.jenkins-ci.org/hudson/model/Result.html. And that makes sense because they are all mutual exclusive so there is no absolute need to categorize them differently. As for \u0027in-progress\u0027 itself it\u0027s not supported as explicit result yet on jenkins side but eventually it seems to be just another candidate for Result enum similar to NOT_BUILT (which literally is not result). So I prefer jenkins way and keep everything under the same variable. \"hung\" is just endless in-progress so I don\u0027t think there will be a need for unique result value for it.",
+      "parentUuid": "0e2acb78_682448a1",
+      "revId": "5af6ab6f407c2cc03272a14081e4ee5e8e9169fc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
