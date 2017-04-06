@@ -3,8 +3,8 @@ workspace(name = "verify_status")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "8a4cbdc993f41fcfe7290e7d1007cfedf8d87c18",
-#    local_path = "/home/davido/projects/bazlets",
+    commit = "696f59e1b591c23469433cd7a8e5933c738682c5",
+    # local_path = "/home/<user>/projects/bazlets",
 )
 
 # Snapshot Plugin API
