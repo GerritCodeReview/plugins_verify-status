@@ -166,6 +166,9 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
   }
 
   @Test
+  @GerritConfig(name = DB_TYPE_CONFIG, value = H2)
+  @GerritConfig(name = DB_URL_CONFIG, value = URL)
+  @UseLocalDisk
   public void verificationTestNullReporter() throws Exception {
     VerifyInput in = new VerifyInput();
     in.verifications = new HashMap<>();
