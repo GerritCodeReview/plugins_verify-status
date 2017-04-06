@@ -2,9 +2,10 @@ workspace(name = "verify_status")
 
 load("//:bazlets.bzl", "load_bazlets")
 
+# TODO(davido): Switch again to bazlets
 load_bazlets(
     commit = "8a4cbdc993f41fcfe7290e7d1007cfedf8d87c18",
-#    local_path = "/home/davido/projects/bazlets",
+    local_path = "/home/davido/projects/bazlets",
 )
 
 # Snapshot Plugin API
@@ -38,3 +39,7 @@ maven_jar(
     artifact = "commons-dbcp:commons-dbcp:1.4",
     sha1 = "30be73c965cc990b153a100aaaaafcf239f82d39",
 )
+
+load("@com_googlesource_gerrit_bazlets//:bouncycastle.bzl", "bouncycastle_repository")
+
+bouncycastle_repository()

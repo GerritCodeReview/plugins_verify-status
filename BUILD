@@ -31,6 +31,7 @@ junit_tests(
     srcs = glob(["src/test/java/**/*IT.java"]),
     tags = ["verify-status"],
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+        "@bcprov//jar",
         ":verify-status__plugin",
     ],
 )
