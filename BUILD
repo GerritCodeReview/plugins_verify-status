@@ -1,4 +1,3 @@
-load("//tools/bzl:junit.bzl", "junit_tests")
 load(
     "//tools/bzl:plugin.bzl",
     "gerrit_plugin",
@@ -25,10 +24,11 @@ gerrit_plugin(
     resources = glob(["src/main/**/*"]),
 )
 
-junit_tests(
-    name = "verify_status_tests",
+java_test(
+    name = "verify-status-tests",
     size = "small",
-    srcs = glob(["src/test/java/**/*IT.java"]),
+    srcs = ["src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java"],
+    test_class = "com.googlesource.gerrit.plugins.verifystatus.VerifyStatusIT",
     tags = ["verify-status"],
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":verify-status__plugin",
