@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89f2e494_d434f69f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-04-10T06:31:09Z",
+      "side": 1,
+      "message": "Another option is to say this in boths modes:\n\n  bazel test --test_output\u003dstreamed --test_tag_filters\u003dverify-status //...\n\nBut i omitted it, as there seems to be some issues with mixing the build modes: [1].\n\n* [1] https://github.com/bazelbuild/bazel/issues/2797",
+      "revId": "3b2a6bdce64cc97a5440ec3f435e199a1de4d9c0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
