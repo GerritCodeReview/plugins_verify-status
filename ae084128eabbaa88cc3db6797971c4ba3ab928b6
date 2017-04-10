@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adf10976_cd46897e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/client/VerifyStatusPlugin.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-04-10T04:44:11Z",
+      "side": 1,
+      "message": "Untabify here and below.",
+      "revId": "ae084128eabbaa88cc3db6797971c4ba3ab928b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
