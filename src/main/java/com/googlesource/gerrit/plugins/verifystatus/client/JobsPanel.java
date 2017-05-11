@@ -35,7 +35,14 @@ import com.google.gwt.user.client.ui.InlineLabel;
  * Extension for change screen that displays a status below the label info.
  */
 public class JobsPanel extends FlowPanel {
+  private final ConfigInfo info;
   static class Factory implements Panel.EntryPoint {
+    private final ConfigInfo info;
+
+    public Factory(ConfigInfo info) {
+      this.info = info;
+    }
+
     @Override
     public void onLoad(Panel panel) {
       RevisionInfo rev =
@@ -44,11 +51,12 @@ public class JobsPanel extends FlowPanel {
         return;
       }
 
-      panel.setWidget(new JobsPanel(panel));
+      panel.setWidget(new JobsPanel(panel, info));
     }
   }
 
-  JobsPanel(Panel panel) {
+  JobsPanel(Panel panel, ConfigInfo info) {
+    this.info = info;
     final ChangeInfo change =
         panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     String decodedChangeId = URL.decodePathSegment(change.id());
@@ -56,7 +64,8 @@ public class JobsPanel extends FlowPanel {
         panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
     new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("sort", "REPORTER").addParameter("filter", "CURRENT")
+        .addParameter("sort", info.sortJobsPanel())
+        .addParameter("filter", "CURRENT")
         .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
           @Override
           public void onSuccess(NativeMap<VerificationInfo> result) {
@@ -81,7 +90,11 @@ public class JobsPanel extends FlowPanel {
       HorizontalPanel p = new HorizontalPanel();
       short vote = jobs.get(key).value();
       if (vote > 0) {
-        p.add(new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
+        p.add(new Image(
+                ((vote == 2) && info.enableInProgressStatus())
+                    ? VerifyStatusPlugin.RESOURCES.progress()
+                    : VerifyStatusPlugin.RESOURCES.greenCheck()
+                ));
       } else if (vote < 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
       } else if (vote == 0) {
