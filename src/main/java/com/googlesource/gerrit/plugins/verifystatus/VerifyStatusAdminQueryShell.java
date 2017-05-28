@@ -14,11 +14,13 @@
 
 package com.googlesource.gerrit.plugins.verifystatus;
 
-import com.google.gerrit.common.errors.PermissionDeniedException;
+import static com.googlesource.gerrit.plugins.verifystatus.AccessCiDatabaseCapability.permission;
+
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.account.CapabilityControl;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.sshd.AdminHighPriorityCommand;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -29,7 +31,10 @@ import org.kohsuke.args4j.Option;
 
 /** Opens a query processor. */
 @AdminHighPriorityCommand
-@RequiresCapability(AccessCiDatabaseCapability.ID)
+@RequiresCapability(
+    value = AccessCiDatabaseCapability.ID,
+    fallBackToAdmin = false
+)
 @CommandMetaData(name = "gsql", description = "Administrative interface to CI database")
 public class VerifyStatusAdminQueryShell extends SshCommand {
   private final String pluginName;
@@ -52,39 +57,13 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
   }
 
   @Override
-  protected void run() throws UnloggedFailure {
-    try {
-      checkPermission();
-    } catch (PermissionDeniedException err) {
-      throw new UnloggedFailure("fatal: " + err.getMessage());
-    }
-
+  protected void run() throws AuthException, PermissionBackendException {
     final VerifyStatusQueryShell shell = factory.create(in, out);
     shell.setOutputFormat(format);
     if (query != null) {
       shell.execute(query);
     } else {
       shell.run();
-    }
-  }
-
-  /**
-   * Assert that the current user is permitted to perform raw queries.
-   * <p>
-   * As the @RequireCapability guards at various entry points of internal
-   * commands implicitly add administrators (which we want to avoid), we also
-   * check permissions within QueryShell and grant access only to those who
-   * canPerformRawQuery, regardless of whether they are administrators or not.
-   *
-   * @throws PermissionDeniedException
-   */
-  private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + AccessCiDatabaseCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new AccessCiDatabaseCapability().getDescription()));
     }
   }
 }
