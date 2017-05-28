@@ -14,10 +14,15 @@
 
 package com.googlesource.gerrit.plugins.verifystatus;
 
+import com.google.gerrit.extensions.api.access.PluginPermission;
 import com.google.gerrit.extensions.config.CapabilityDefinition;
 
 class SaveReportCapability extends CapabilityDefinition {
   static final String ID = "saveVerificationReport";
+
+  static PluginPermission permission(String plugin) {
+    return new PluginPermission(plugin, SaveReportCapability.ID);
+  }
 
   @Override
   public String getDescription() {
