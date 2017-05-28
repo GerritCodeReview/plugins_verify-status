@@ -14,11 +14,14 @@
 
 package com.googlesource.gerrit.plugins.verifystatus;
 
-import com.google.gerrit.common.errors.PermissionDeniedException;
+import static com.googlesource.gerrit.plugins.verifystatus.AccessCiDatabaseCapability.permission;
+
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.account.CapabilityControl;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.sshd.AdminHighPriorityCommand;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -34,6 +37,7 @@ import org.kohsuke.args4j.Option;
 public class VerifyStatusAdminQueryShell extends SshCommand {
   private final String pluginName;
   private final Provider<CurrentUser> userProvider;
+  private final PermissionBackend permissionBackend;
 
   @Inject
   private VerifyStatusQueryShell.Factory factory;
@@ -46,18 +50,18 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
 
   @Inject
   VerifyStatusAdminQueryShell(@PluginName String pluginName,
-      Provider<CurrentUser> userProvider) {
+      Provider<CurrentUser> userProvider,
+      PermissionBackend permissionBackend) {
     this.pluginName = pluginName;
     this.userProvider = userProvider;
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
-  protected void run() throws UnloggedFailure {
-    try {
-      checkPermission();
-    } catch (PermissionDeniedException err) {
-      throw new UnloggedFailure("fatal: " + err.getMessage());
-    }
+  protected void run() throws AuthException, PermissionBackendException {
+    // Explicitly check that current user was granted plugin's own capability,
+    // regardless of whether he is administrator or not.
+    permissionBackend.user(userProvider).check(permission(pluginName));
 
     final VerifyStatusQueryShell shell = factory.create(in, out);
     shell.setOutputFormat(format);
@@ -65,26 +69,6 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
       shell.execute(query);
     } else {
       shell.run();
-    }
-  }
-
-  /**
-   * Assert that the current user is permitted to perform raw queries.
-   * <p>
-   * As the @RequireCapability guards at various entry points of internal
-   * commands implicitly add administrators (which we want to avoid), we also
-   * check permissions within QueryShell and grant access only to those who
-   * canPerformRawQuery, regardless of whether they are administrators or not.
-   *
-   * @throws PermissionDeniedException
-   */
-  private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + AccessCiDatabaseCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new AccessCiDatabaseCapability().getDescription()));
     }
   }
 }
