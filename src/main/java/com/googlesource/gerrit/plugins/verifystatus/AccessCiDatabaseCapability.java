@@ -14,10 +14,15 @@
 
 package com.googlesource.gerrit.plugins.verifystatus;
 
+import com.google.gerrit.extensions.api.access.PluginPermission;
 import com.google.gerrit.extensions.config.CapabilityDefinition;
 
 class AccessCiDatabaseCapability extends CapabilityDefinition {
   static final String ID = "accessCiDatabase";
+
+  static PluginPermission permission(String plugin) {
+    return new PluginPermission(plugin, ID);
+  }
 
   @Override
   public String getDescription() {
