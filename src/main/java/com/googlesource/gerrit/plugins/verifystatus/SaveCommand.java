@@ -19,14 +19,13 @@ import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
-import com.google.gerrit.common.errors.PermissionDeniedException;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.account.CapabilityControl;
 import com.google.gerrit.server.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.change.Revisions;
@@ -51,7 +50,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@RequiresCapability(SaveReportCapability.ID)
+@RequiresCapability(
+    value = SaveReportCapability.ID,
+    fallBackToAdmin = false
+)
 @CommandMetaData(name = "save", description = "Save patchset verification data")
 public class SaveCommand extends SshCommand {
   private static final Logger log =
@@ -143,13 +145,8 @@ public class SaveCommand extends SshCommand {
   private Map<String, VerificationInfo> jobResult = Maps.newHashMap();
 
   @Override
-  protected void run() throws UnloggedFailure {
+  protected void run() throws AuthException, UnloggedFailure {
     boolean ok = true;
-    try {
-      checkPermission();
-    } catch (PermissionDeniedException err) {
-      throw new UnloggedFailure("fatal: " + err.getMessage());
-    }
 
     for (PatchSet patchSet : patchSets) {
       try {
@@ -167,8 +164,7 @@ public class SaveCommand extends SshCommand {
   }
 
   private void applyVerification(PatchSet patchSet, VerifyInput verify)
-      throws RestApiException, OrmException,
-      IOException {
+      throws RestApiException, OrmException, IOException {
     RevisionResource revResource = revisions.parse(
         changes.parse(patchSet.getId().getParentKey()),
         IdString.fromUrl(patchSet.getId().getId()));
@@ -190,27 +186,6 @@ public class SaveCommand extends SshCommand {
     try {
       err.write(msg.getBytes(ENC));
     } catch (IOException e) {
-    }
-  }
-
-  /**
-   * Assert that the current user is permitted to perform saving of verification
-   * reports.
-   * <p>
-   * As the @RequireCapability guards at various entry points of internal
-   * commands implicitly add administrators (which we want to avoid), we also
-   * check permissions within QueryShell and grant access only to those who
-   * canPerformRawQuery, regardless of whether they are administrators or not.
-   *
-   * @throws PermissionDeniedException
-   */
-  private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + SaveReportCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new SaveReportCapability().getDescription()));
     }
   }
 }
