@@ -21,6 +21,7 @@ import com.google.gerrit.common.TimeUtil;
 import com.google.gerrit.common.errors.PermissionDeniedException;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.api.access.PluginPermission;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.BadRequestException;
 import com.google.gerrit.extensions.restapi.Response;
@@ -31,6 +32,9 @@ import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.account.CapabilityControl;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gwtorm.server.OrmException;
+import com.google.gerrit.server.permissions.GlobalPermission;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gwtorm.server.SchemaFactory;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -59,14 +63,17 @@ public class PostVerification
   private final SchemaFactory<CiDb> schemaFactory;
   private final String pluginName;
   private final Provider<CurrentUser> userProvider;
+  private final PermissionBackend permissionBackend;
 
   @Inject
   PostVerification(@PluginName String pluginName,
       Provider<CurrentUser> userProvider,
-      SchemaFactory<CiDb> schemaFactory) {
+      SchemaFactory<CiDb> schemaFactory,
+      PermissionBackend permissionBackend) {
     this.pluginName = pluginName;
     this.userProvider = userProvider;
     this.schemaFactory = schemaFactory;
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
@@ -204,8 +211,7 @@ public class PostVerification
    * @throws PermissionDeniedException
    */
   private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(SaveReportCapability.getName(pluginName))) {
+    if (!permissionBackend.user(userProvider).test(pluginName)) {
       throw new PermissionDeniedException(String.format(
           "%s does not have \"%s\" capability.",
           userProvider.get().getUserName(),
