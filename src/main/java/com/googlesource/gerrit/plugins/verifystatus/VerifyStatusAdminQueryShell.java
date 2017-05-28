@@ -17,8 +17,9 @@ package com.googlesource.gerrit.plugins.verifystatus;
 import com.google.gerrit.common.errors.PermissionDeniedException;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.api.access.PluginPermission;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.account.CapabilityControl;
+import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.sshd.AdminHighPriorityCommand;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -34,6 +35,7 @@ import org.kohsuke.args4j.Option;
 public class VerifyStatusAdminQueryShell extends SshCommand {
   private final String pluginName;
   private final Provider<CurrentUser> userProvider;
+  private final PermissionBackend permissionBackend;
 
   @Inject
   private VerifyStatusQueryShell.Factory factory;
@@ -46,9 +48,11 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
 
   @Inject
   VerifyStatusAdminQueryShell(@PluginName String pluginName,
-      Provider<CurrentUser> userProvider) {
+      Provider<CurrentUser> userProvider,
+      PermissionBackend permissionBackend) {
     this.pluginName = pluginName;
     this.userProvider = userProvider;
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
@@ -79,12 +83,7 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
    * @throws PermissionDeniedException
    */
   private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + AccessCiDatabaseCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new AccessCiDatabaseCapability().getDescription()));
-    }
+    permissionBackend.user(userProvider).check(
+      new PluginPermission(pluginName, AccessCiDatabaseCapability.ID));
   }
 }
