@@ -22,14 +22,17 @@ import com.google.common.collect.Maps;
 import com.google.gerrit.common.errors.PermissionDeniedException;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.api.access.PluginPermission;
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.account.CapabilityControl;
 import com.google.gerrit.server.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.change.Revisions;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -60,12 +63,15 @@ public class SaveCommand extends SshCommand {
   private final Set<PatchSet> patchSets = new HashSet<>();
   private final String pluginName;
   private final Provider<CurrentUser> userProvider;
+  private final PermissionBackend permissionBackend;
 
   @Inject
   SaveCommand(@PluginName String pluginName,
-      Provider<CurrentUser> userProvider) {
+      Provider<CurrentUser> userProvider,
+      PermissionBackend permissionBackend) {
     this.pluginName = pluginName;
     this.userProvider = userProvider;
+    this.permissionBackend = permissionBackend;
   }
 
   @Argument(index = 0, required = true, multiValued = true,
@@ -143,7 +149,7 @@ public class SaveCommand extends SshCommand {
   private Map<String, VerificationInfo> jobResult = Maps.newHashMap();
 
   @Override
-  protected void run() throws UnloggedFailure {
+  protected void run() throws AuthException, PermissionBackendException, UnloggedFailure {
     boolean ok = true;
     try {
       checkPermission();
@@ -167,15 +173,14 @@ public class SaveCommand extends SshCommand {
   }
 
   private void applyVerification(PatchSet patchSet, VerifyInput verify)
-      throws RestApiException, OrmException,
-      IOException {
+      throws RestApiException, OrmException, IOException, PermissionBackendException {
     RevisionResource revResource = revisions.parse(
         changes.parse(patchSet.getId().getParentKey()),
         IdString.fromUrl(patchSet.getId().getId()));
     postVerification.apply(revResource, verify);
   }
 
-  private void verifyOne(PatchSet patchSet) throws UnloggedFailure {
+  private void verifyOne(PatchSet patchSet) throws PermissionBackendException, UnloggedFailure {
     VerifyInput verify = new VerifyInput();
     verify.verifications = jobResult;
     try {
@@ -202,15 +207,10 @@ public class SaveCommand extends SshCommand {
    * check permissions within QueryShell and grant access only to those who
    * canPerformRawQuery, regardless of whether they are administrators or not.
    *
-   * @throws PermissionDeniedException
+   * @throws AuthException, PermissionBackendException
    */
-  private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + SaveReportCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new SaveReportCapability().getDescription()));
-    }
+  private void checkPermission() throws AuthException, PermissionBackendException {
+    permissionBackend.user(userProvider).check(
+      new PluginPermission(pluginName, SaveReportCapability.ID));
   }
 }
