@@ -22,6 +22,7 @@ import com.google.common.collect.Maps;
 import com.google.gerrit.common.errors.PermissionDeniedException;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
+import com.google.gerrit.extensions.api.access.PluginPermission;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.reviewdb.client.PatchSet;
@@ -30,6 +31,9 @@ import com.google.gerrit.server.account.CapabilityControl;
 import com.google.gerrit.server.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.change.Revisions;
+import com.google.gerrit.server.permissions.GlobalPermission;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -60,12 +64,15 @@ public class SaveCommand extends SshCommand {
   private final Set<PatchSet> patchSets = new HashSet<>();
   private final String pluginName;
   private final Provider<CurrentUser> userProvider;
+  private final PermissionBackend permissionBackend;
 
   @Inject
   SaveCommand(@PluginName String pluginName,
-      Provider<CurrentUser> userProvider) {
+      Provider<CurrentUser> userProvider,
+      PermissionBackend permissionBackend) {
     this.pluginName = pluginName;
     this.userProvider = userProvider;
+    this.permissionBackend = permissionBackend;
   }
 
   @Argument(index = 0, required = true, multiValued = true,
@@ -205,12 +212,7 @@ public class SaveCommand extends SshCommand {
    * @throws PermissionDeniedException
    */
   private void checkPermission() throws PermissionDeniedException {
-    CapabilityControl ctl = userProvider.get().getCapabilities();
-    if (!ctl.canPerform(pluginName + "-" + SaveReportCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new SaveReportCapability().getDescription()));
-    }
+    permissionBackend.user(userProvider).check(
+      new PluginPermission(pluginName, SaveReportCapability.ID));
   }
 }
