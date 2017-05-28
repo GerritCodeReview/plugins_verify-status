@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.verifystatus;
 
+import com.google.gerrit.extensions.api.access.PluginPermission;
 import com.google.gerrit.extensions.config.CapabilityDefinition;
 
 class AccessCiDatabaseCapability extends CapabilityDefinition {
