@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "355486c1_6748e87a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:12:06Z",
+      "side": 1,
+      "message": "Ah, thanks, done.",
+      "parentUuid": "f5c3bb17_4d38846b",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "3192bb1ec71578f0e1fd75de989a344570c4793b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ff24453_e58ed5d3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-29T18:07:49Z",
       "side": 1,
       "message": "Same here, do the check in place, and preserve the comment.",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 5
+      },
+      "revId": "3192bb1ec71578f0e1fd75de989a344570c4793b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ee83e14_57ca0c62",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:12:06Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "1ff24453_e58ed5d3",
       "range": {
         "startLine": 154,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2a624ed9_8806c123",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:12:06Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "2f94332f_c7918d33",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "3192bb1ec71578f0e1fd75de989a344570c4793b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caddee17_5b1ab4e8",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-29T18:07:49Z",
       "side": 1,
       "message": "checkPermission doesn\u0027t throw this exception any more.",
+      "range": {
+        "startLine": 64,
+        "startChar": 13,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "3192bb1ec71578f0e1fd75de989a344570c4793b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354a1ab3_86bc4405",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:12:06Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "caddee17_5b1ab4e8",
       "range": {
         "startLine": 64,
         "startChar": 13,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "34875ecc_a1e5947f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:12:06Z",
+      "side": 1,
+      "message": "This void was removed instead per your comment above.",
+      "parentUuid": "efb59d24_fd5b005f",
+      "range": {
+        "startLine": 85,
+        "startChar": 13,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "3192bb1ec71578f0e1fd75de989a344570c4793b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3558e9e_c5d2b9ba",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2017-05-29T18:07:49Z",
       "side": 1,
       "message": "Not thrown.",
+      "range": {
+        "startLine": 88,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 31
+      },
+      "revId": "3192bb1ec71578f0e1fd75de989a344570c4793b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a23cdf1_36b94b51",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:12:06Z",
+      "side": 1,
+      "message": "This void was removed instead per your comment above.",
+      "parentUuid": "f3558e9e_c5d2b9ba",
       "range": {
         "startLine": 88,
         "startChar": 6,
