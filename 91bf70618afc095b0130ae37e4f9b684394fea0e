@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e51d521_0058d374",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "Too long line.",
+      "range": {
+        "startLine": 78,
+        "startChar": 78,
+        "endLine": 78,
+        "endChar": 92
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bf849ff_81f9926a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be thrown. Don\u0027t forget to remove the imports too.",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 77
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3df38e6f_4994457e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be thrown.",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8df00a52_c432a9a6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "PermissionDeniedException is not used any more.",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7ef453d_0474c3df",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "Wrong indentation. 4 spaces on line continuation.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 6
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cffb8d8_a1e463a2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "PermissionDeniedException is not used any more.",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "094b9b10_a739568a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "UnloggedFailure is not thrown any more.",
+      "range": {
+        "startLine": 61,
+        "startChar": 73,
+        "endLine": 61,
+        "endChar": 88
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f40e05c1_6afd5fda",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "Typo, here and in other places.",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8321e155_7e4388d1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T18:23:46Z",
+      "side": 1,
+      "message": "Wrong indentation.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
