@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "61414e64_c3104efa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T17:54:38Z",
+      "side": 1,
+      "message": "They look in the correct order for me.\n\nNot sure what you mean.",
+      "parentUuid": "ccb35b3f_ccba390d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 71
+      },
+      "revId": "c6b8d08728cae0875b284ea887affd228676ee67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8e123dc_b01792ab",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2017-05-29T17:43:08Z",
       "side": 1,
       "message": "checkPermission() method doesn\u0027t throw PermissionDeniedException any more.\n\nSo now, that we reduced the permission checking to one line only, i think, we should replace the method invocation with a single statement, but preserve the explanation, as for why we are explicitly checking here the permission, despite that this class already annotated with:\n\n  @RequiresCapability(SaveReportCapability.ID)\n\nannotation. We do it because the corresponding check in the permission backend considers admin capability as well:\n\n  /** Do not use unless inside DefaultPermissionBackend. */\n  public boolean doCanForDefaultPermissionBackend(GlobalOrPluginPermission perm)\n      throws PermissionBackendException {\n    if (perm instanceof GlobalPermission) {\n      return can((GlobalPermission) perm);\n    } else if (perm instanceof PluginPermission) {\n      return canPerform(perm.permissionName()) || isAdmin_DoNotUse();\n    }\n    throw new PermissionBackendException(perm + \" unsupported\");\n  }\n\nAnd for some reasons we prefer to not allow administrators to publish Ci reports here.\n\nSo may be add this comment and just call the check here directly:\n\n  // Explictly check that current user was granted plugin\u0027s own capability,\n  // regardless of whether he is administrator or not.\n  permissionBackend.user(userProvider).check(\n      new PluginPermission(pluginName, SaveReportCapability.ID));\n\nAnd remove the whole method: checkPermission() below. When we do it here, we should do the same in other places.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 5
+      },
+      "revId": "c6b8d08728cae0875b284ea887affd228676ee67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf0d44fc_c3eb6bcc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T17:54:38Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "c8e123dc_b01792ab",
       "range": {
         "startLine": 84,
         "startChar": 4,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6e9d509d_8f9b3646",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T17:54:38Z",
+      "side": 1,
+      "message": "I\u0027ve removed this void per your comment above.",
+      "parentUuid": "b5e559d4_92ca833d",
+      "range": {
+        "startLine": 209,
+        "startChar": 13,
+        "endLine": 209,
+        "endChar": 38
+      },
+      "revId": "c6b8d08728cae0875b284ea887affd228676ee67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325bbedf_81be746e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
         "patchSetId": 6
@@ -105,6 +177,30 @@
       "writtenOn": "2017-05-29T17:43:08Z",
       "side": 1,
       "message": "Not thrown.",
+      "range": {
+        "startLine": 212,
+        "startChar": 6,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "c6b8d08728cae0875b284ea887affd228676ee67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a30e416b_b4e46e9f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T17:54:38Z",
+      "side": 1,
+      "message": "I\u0027ve removed this void per your comment above.",
+      "parentUuid": "325bbedf_81be746e",
       "range": {
         "startLine": 212,
         "startChar": 6,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "89646e6e_beeb33bc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T17:54:38Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "25d6687e_8d6f8349",
+      "range": {
+        "startLine": 210,
+        "startChar": 56,
+        "endLine": 210,
+        "endChar": 81
+      },
+      "revId": "c6b8d08728cae0875b284ea887affd228676ee67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2d081ec_31b57800",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
         "patchSetId": 6
@@ -151,6 +271,30 @@
       "writtenOn": "2017-05-29T17:43:08Z",
       "side": 1,
       "message": "Not thrown.",
+      "range": {
+        "startLine": 213,
+        "startChar": 6,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "c6b8d08728cae0875b284ea887affd228676ee67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c575fdc_80b6552d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T17:54:38Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "d2d081ec_31b57800",
       "range": {
         "startLine": 213,
         "startChar": 6,
