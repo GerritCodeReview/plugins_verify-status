@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "bdeb29c9_e27958bf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Will be shorter as i\u0027ve removed UnprocessableEntityException so the line will be shorter.",
+      "parentUuid": "6e51d521_0058d374",
+      "range": {
+        "startLine": 78,
+        "startChar": 78,
+        "endLine": 78,
+        "endChar": 92
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6392b3ca_4ff97f14",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "1bf849ff_81f9926a",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 77
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3df38e6f_4994457e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-29T18:23:46Z",
       "side": 1,
       "message": "Doesn\u0027t seem to be thrown.",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6138a4c9_ea13a77b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "3df38e6f_4994457e",
       "range": {
         "startLine": 79,
         "startChar": 6,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "21bb24c1_c8becda7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "8df00a52_c432a9a6",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7ef453d_0474c3df",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
         "patchSetId": 11
@@ -105,6 +201,30 @@
       "writtenOn": "2017-05-29T18:23:46Z",
       "side": 1,
       "message": "Wrong indentation. 4 spaces on line continuation.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 6
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d08f08_d2d25652",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "d7ef453d_0474c3df",
       "range": {
         "startLine": 158,
         "startChar": 4,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0e0eadcc_cc168989",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "5cffb8d8_a1e463a2",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "094b9b10_a739568a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
         "patchSetId": 11
@@ -151,6 +295,30 @@
       "writtenOn": "2017-05-29T18:23:46Z",
       "side": 1,
       "message": "UnloggedFailure is not thrown any more.",
+      "range": {
+        "startLine": 61,
+        "startChar": 73,
+        "endLine": 61,
+        "endChar": 88
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cfcd85c_9fedda3d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "094b9b10_a739568a",
       "range": {
         "startLine": 61,
         "startChar": 73,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "d128fb85_6b9d947a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "f40e05c1_6afd5fda",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8321e155_7e4388d1",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
         "patchSetId": 11
@@ -197,6 +389,30 @@
       "writtenOn": "2017-05-29T18:23:46Z",
       "side": 1,
       "message": "Wrong indentation.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "91bf70618afc095b0130ae37e4f9b684394fea0e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3a4dd02_e5ed3fe8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-05-29T18:36:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "8321e155_7e4388d1",
       "range": {
         "startLine": 65,
         "startChar": 4,
