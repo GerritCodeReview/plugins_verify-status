@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9effeca_e3609493",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T21:24:03Z",
+      "side": 1,
+      "message": "You have imported this statically, but missed to remove SaveReportCapability:\n\n  permissionBackend.user(userProvider).check(permission(pluginName));",
+      "range": {
+        "startLine": 157,
+        "startChar": 47,
+        "endLine": 157,
+        "endChar": 78
+      },
+      "revId": "992eb9209a58aba3d0bfba813b91bccec1f2ae30",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e00f63c8_169fa7d3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T21:24:03Z",
+      "side": 1,
+      "message": "Forgot to replace this too with static import and this construct:\n\n  permissionBackend.user(userProvider).check(permission(pluginName));\n\nOne important thing to watch for here is to be consistent. If we started to use one construct, it should be used in all places. In the same way.",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "992eb9209a58aba3d0bfba813b91bccec1f2ae30",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
