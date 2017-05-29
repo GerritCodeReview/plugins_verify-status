@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b3d4fb9_0fc49282",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/AccessCiDatabaseCapability.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T22:09:06Z",
+      "side": 1,
+      "message": "AccessCiDatabaseCapability is not needed here, use just ID.",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "3e87a41428cca2924dfc3e842525ea0c11d51253",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eede9594_f15f02d8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveReportCapability.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T22:09:06Z",
+      "side": 1,
+      "message": "SaveReportCapability is not needed here, use just ID.",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "3e87a41428cca2924dfc3e842525ea0c11d51253",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
