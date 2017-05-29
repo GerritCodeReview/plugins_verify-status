@@ -46,6 +46,29 @@
       "revId": "bd7e843722d16e0f5d06e5044b6dd95b69f2f3de",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc83993a_09e9166c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveReportCapability.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T19:31:06Z",
+      "side": 0,
+      "message": "Turns out this method is used in the tests and still needed.\n\n   bazel test plugins/verify-status:verify-status-tests \nINFO: Found 1 test target...\nERROR: /home/davido/projects/gerrit/plugins/verify-status/BUILD:27:1: Building plugins/verify-status/verify-status-tests.jar (1 source file) failed: Worker process sent response with exit code: 1.\nplugins/verify-status/src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java:78: error: cannot find symbol\n        SaveReportCapability.getName(NAME));\n                            ^\n  symbol:   method getName(String)\n  location: class SaveReportCapability",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "bd7e843722d16e0f5d06e5044b6dd95b69f2f3de",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
