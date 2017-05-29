@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39cd0d4e_b863af9c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-05-29T19:55:23Z",
+      "side": 1,
+      "message": "Optional: extract this to SaveReportCapability.permission() method, e.g:\n\n  static PluginPermission permission(String plugin) {\n    return new PluginPermission(plugin, SaveReportCapability.ID);\n  }\n\nThen after importing statically of SaveReportCapability.permission() you could say:\n\n  permissionBackend.user(userProvider).check(permission(pluginName));\n\nAnd in other places.",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "0f2a73cf436fd350849e6ecab7382feb2eb436b0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
