@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc481893_7f288159",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/AccessCiDatabaseCapability.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T12:20:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "17096cbb7831dc4f130ea0afcbb32fe209e8d0b2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd9f92b5_e58701e1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T12:20:19Z",
+      "side": 1,
+      "message": "This is not needed now and can be removed.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "17096cbb7831dc4f130ea0afcbb32fe209e8d0b2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1d52322_f846bb6d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T12:20:19Z",
+      "side": 1,
+      "message": "Not needed, and should be removed. Here and in other files.",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "17096cbb7831dc4f130ea0afcbb32fe209e8d0b2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
