@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc9eea19_2bd060b7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "Not used.",
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f614b089_f877d889",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "Remove here and below.",
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac3438a2_eed411ff",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "Why was this added?",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 72
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69207d02_59452953",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "And this?",
+      "range": {
+        "startLine": 169,
+        "startChar": 58,
+        "endLine": 169,
+        "endChar": 84
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0223a630_a76785d7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "And this?",
+      "range": {
+        "startLine": 176,
+        "startChar": 51,
+        "endLine": 176,
+        "endChar": 77
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37936c2d_72fdd1b6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "Not used.",
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5442298_e7e58ebb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T16:17:36Z",
+      "side": 1,
+      "message": "Why was this added?",
+      "range": {
+        "startLine": 60,
+        "startChar": 30,
+        "endLine": 60,
+        "endChar": 71
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
