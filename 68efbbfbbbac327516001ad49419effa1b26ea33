@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "46d8c4d3_48c1532e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/AccessCiDatabaseCapability.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:09:37Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "db864aea_2f4e8837",
+      "revId": "68efbbfbbbac327516001ad49419effa1b26ea33",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9c8d3b6_fe9dae69",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
         "patchSetId": 22
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a28056db_49f164f8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:09:37Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "e9c8d3b6_fe9dae69",
+      "revId": "68efbbfbbbac327516001ad49419effa1b26ea33",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b00ca2b_ee88f11f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
         "patchSetId": 22
@@ -47,6 +83,30 @@
       "writtenOn": "2017-06-08T15:41:06Z",
       "side": 1,
       "message": "Not used any more.",
+      "range": {
+        "startLine": 76,
+        "startChar": 28,
+        "endLine": 76,
+        "endChar": 47
+      },
+      "revId": "68efbbfbbbac327516001ad49419effa1b26ea33",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c193fb4_0dbeaf53",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:09:37Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "3b00ca2b_ee88f11f",
       "range": {
         "startLine": 76,
         "startChar": 28,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9ef1af60_8e8457be",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:09:37Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "b5029d3d_a51d04de",
+      "range": {
+        "startLine": 77,
+        "startChar": 6,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "68efbbfbbbac327516001ad49419effa1b26ea33",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92edfd5a_5a044bb3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveReportCapability.java",
         "patchSetId": 22
@@ -93,6 +177,24 @@
       "writtenOn": "2017-06-08T15:41:06Z",
       "side": 1,
       "message": "Not used.",
+      "revId": "68efbbfbbbac327516001ad49419effa1b26ea33",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac9637e_2ef588c5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveReportCapability.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:09:37Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "92edfd5a_5a044bb3",
       "revId": "68efbbfbbbac327516001ad49419effa1b26ea33",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
