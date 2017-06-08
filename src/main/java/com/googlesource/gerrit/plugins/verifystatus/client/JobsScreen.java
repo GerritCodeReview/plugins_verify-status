@@ -22,9 +22,9 @@ import com.google.gerrit.plugin.client.screen.Screen;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
 
 public class JobsScreen extends VerticalPanel {
   static class Factory implements Screen.EntryPoint {
@@ -42,22 +42,26 @@ public class JobsScreen extends VerticalPanel {
   }
 
   JobsScreen(String changeNumber, String revisionNumber) {
-    new RestApi("changes").id(changeNumber).view("revisions").id(revisionNumber)
+    new RestApi("changes")
+        .id(changeNumber)
+        .view("revisions")
+        .id(revisionNumber)
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "DATE")
-        .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
-          @Override
-          public void onSuccess(NativeMap<VerificationInfo> result) {
-            if (!result.isEmpty()) {
-              display(result);
-            }
-          }
+        .get(
+            new AsyncCallback<NativeMap<VerificationInfo>>() {
+              @Override
+              public void onSuccess(NativeMap<VerificationInfo> result) {
+                if (!result.isEmpty()) {
+                  display(result);
+                }
+              }
 
-          @Override
-          public void onFailure(Throwable caught) {
-            // never invoked
-          }
-        });
+              @Override
+              public void onFailure(Throwable caught) {
+                // never invoked
+              }
+            });
   }
 
   private void display(NativeMap<VerificationInfo> jobs) {
@@ -90,8 +94,7 @@ public class JobsScreen extends VerticalPanel {
       }
       short vote = vi.value();
       if (vote > 0) {
-        t.setWidget(row, 0,
-            new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
+        t.setWidget(row, 0, new Image(VerifyStatusPlugin.RESOURCES.greenCheck()));
       } else if (vote < 0) {
         t.setWidget(row, 0, new Image(VerifyStatusPlugin.RESOURCES.redNot()));
       } else if (vote == 0) {

@@ -19,20 +19,15 @@ import com.google.gerrit.sshd.AdminHighPriorityCommand;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
 import com.google.inject.Inject;
-
 import org.kohsuke.args4j.Option;
 
 /** Opens a query processor. */
 @AdminHighPriorityCommand
-@RequiresCapability(
-    value = AccessCiDatabaseCapability.ID,
-    fallBackToAdmin = false
-)
+@RequiresCapability(value = AccessCiDatabaseCapability.ID, fallBackToAdmin = false)
 @CommandMetaData(name = "gsql", description = "Administrative interface to CI database")
 public class VerifyStatusAdminQueryShell extends SshCommand {
 
-  @Inject
-  private VerifyStatusQueryShell.Factory factory;
+  @Inject private VerifyStatusQueryShell.Factory factory;
 
   @Option(name = "--format", usage = "Set output format")
   private VerifyStatusQueryShell.OutputFormat format = VerifyStatusQueryShell.OutputFormat.PRETTY;

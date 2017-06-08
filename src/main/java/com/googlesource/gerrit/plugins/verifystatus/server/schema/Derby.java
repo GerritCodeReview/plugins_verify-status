@@ -19,21 +19,18 @@ import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.inject.Inject;
 import com.google.inject.ProvisionException;
-
+import java.io.File;
+import java.io.IOException;
 import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.storage.file.FileBasedConfig;
 import org.eclipse.jgit.util.FS;
-
-import java.io.File;
-import java.io.IOException;
 
 class Derby extends CiBaseDataSourceType {
   private final SitePaths site;
   private final PluginConfig config;
 
   @Inject
-  Derby(SitePaths site,
-      @PluginName String pluginName) {
+  Derby(SitePaths site, @PluginName String pluginName) {
     super("org.apache.derby.jdbc.EmbeddedDriver");
     this.site = site;
     File file = site.gerrit_config.toFile();

@@ -36,5 +36,4 @@ public interface Resources extends ClientBundle {
 
   @Source("donut.png")
   public ImageResource rerun();
-
 }

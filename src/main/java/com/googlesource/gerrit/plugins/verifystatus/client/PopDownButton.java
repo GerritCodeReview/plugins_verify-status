@@ -32,12 +32,11 @@ import com.google.gwtexpui.safehtml.client.SafeHtmlBuilder;
 /**
  * Pop down button for header line in change screen.
  *
- * This class implements a button that on click opens a pop down panel with the
- * provided widget, similar to the "Patch Sets", "Download" or "Included In" pop
- * down panels on the change screen.
+ * <p>This class implements a button that on click opens a pop down panel with the provided widget,
+ * similar to the "Patch Sets", "Download" or "Included In" pop down panels on the change screen.
  *
- * This class can *only* be used within a panel that extends the header line of
- * the change screen, but will not work standalone.
+ * <p>This class can *only* be used within a panel that extends the header line of the change
+ * screen, but will not work standalone.
  */
 public class PopDownButton extends Button {
   private final Widget widget;
@@ -48,12 +47,13 @@ public class PopDownButton extends Button {
     // in the context of the change screen.
     super((new SafeHtmlBuilder()).openDiv().append(text).closeDiv());
     getElement().removeClassName("gwt-Button");
-    addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        show();
-      }
-    });
+    addClickHandler(
+        new ClickHandler() {
+          @Override
+          public void onClick(ClickEvent event) {
+            show();
+          }
+        });
     this.widget = widget;
   }
 
@@ -65,33 +65,35 @@ public class PopDownButton extends Button {
     }
 
     final Widget relativeTo = getParent();
-    final PopupPanel p = new PopupPanel(true) {
-      @Override
-      public void setPopupPosition(int left, int top) {
-        top -= Document.get().getBodyOffsetTop();
+    final PopupPanel p =
+        new PopupPanel(true) {
+          @Override
+          public void setPopupPosition(int left, int top) {
+            top -= Document.get().getBodyOffsetTop();
 
-        int w = Window.getScrollLeft() + Window.getClientWidth();
-        int r = relativeTo.getAbsoluteLeft() + relativeTo.getOffsetWidth();
-        int right = w - r;
-        Style style = getElement().getStyle();
-        style.clearProperty("left");
-        style.setPropertyPx("right", right);
-        style.setPropertyPx("top", top);
-      }
-    };
+            int w = Window.getScrollLeft() + Window.getClientWidth();
+            int r = relativeTo.getAbsoluteLeft() + relativeTo.getOffsetWidth();
+            int right = w - r;
+            Style style = getElement().getStyle();
+            style.clearProperty("left");
+            style.setPropertyPx("right", right);
+            style.setPropertyPx("top", top);
+          }
+        };
     Style popupStyle = p.getElement().getStyle();
     popupStyle.setBorderWidth(0, Unit.PX);
     popupStyle.setBackgroundColor("#EEEEEE");
     p.addAutoHidePartner(getElement());
-    p.addCloseHandler(new CloseHandler<PopupPanel>() {
-      @Override
-      public void onClose(CloseEvent<PopupPanel> event) {
-        if (popup == p) {
-          getElement().getStyle().clearFontWeight();
-          popup = null;
-        }
-      }
-    });
+    p.addCloseHandler(
+        new CloseHandler<PopupPanel>() {
+          @Override
+          public void onClose(CloseEvent<PopupPanel> event) {
+            if (popup == p) {
+              getElement().getStyle().clearFontWeight();
+              popup = null;
+            }
+          }
+        });
     p.add(widget);
     p.showRelativeTo(relativeTo);
     GlobalKey.dialog(p);

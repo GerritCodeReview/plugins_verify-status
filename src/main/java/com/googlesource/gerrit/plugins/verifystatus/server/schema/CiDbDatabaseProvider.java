@@ -14,8 +14,6 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server.schema;
 
-import javax.sql.DataSource;
-
 import com.google.gwtorm.jdbc.Database;
 import com.google.gwtorm.server.OrmException;
 import com.google.inject.Inject;
@@ -23,6 +21,7 @@ import com.google.inject.Provider;
 import com.google.inject.ProvisionException;
 import com.google.inject.name.Named;
 import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
+import javax.sql.DataSource;
 
 /** Provides the {@code Database<CiDb>} database handle. */
 final class CiDbDatabaseProvider implements Provider<Database<CiDb>> {

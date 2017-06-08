@@ -25,18 +25,14 @@ import com.google.gerrit.server.config.ConfigResource;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.inject.Inject;
-
 import com.googlesource.gerrit.plugins.verifystatus.server.PutConfig.Input;
-
+import java.io.IOException;
 import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.storage.file.FileBasedConfig;
 import org.eclipse.jgit.util.FS;
 
-import java.io.IOException;
-
-@RequiresCapability(
-    value = GlobalCapability.ADMINISTRATE_SERVER, scope = CapabilityScope.CORE)
-public class PutConfig implements RestModifyView<ConfigResource, Input>{
+@RequiresCapability(value = GlobalCapability.ADMINISTRATE_SERVER, scope = CapabilityScope.CORE)
+public class PutConfig implements RestModifyView<ConfigResource, Input> {
   public static class Input {
     public Boolean showJobsPanel;
     public Boolean showJobsDropDownPanel;
@@ -48,9 +44,7 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
   private final String pluginName;
 
   @Inject
-  PutConfig(PluginConfigFactory cfgFactory,
-      SitePaths sitePaths,
-      @PluginName String pluginName) {
+  PutConfig(PluginConfigFactory cfgFactory, SitePaths sitePaths, @PluginName String pluginName) {
     this.cfgFactory = cfgFactory;
     this.sitePaths = sitePaths;
     this.pluginName = pluginName;
@@ -62,25 +56,21 @@ public class PutConfig implements RestModifyView<ConfigResource, Input>{
     if (input == null) {
       input = new Input();
     }
-    FileBasedConfig cfg =
-        new FileBasedConfig(sitePaths.gerrit_config.toFile(), FS.DETECTED);
+    FileBasedConfig cfg = new FileBasedConfig(sitePaths.gerrit_config.toFile(), FS.DETECTED);
     cfg.load();
 
     if (input.showJobsPanel != null) {
-      cfg.setBoolean("plugin", pluginName, "showJobsPanel",
-          input.showJobsPanel);
+      cfg.setBoolean("plugin", pluginName, "showJobsPanel", input.showJobsPanel);
     } else {
       cfg.unset("plugin", pluginName, "showJobsPanel");
     }
     if (input.showJobsDropDownPanel != null) {
-      cfg.setBoolean("plugin", pluginName, "showJobsDropDownPanel",
-          input.showJobsDropDownPanel);
+      cfg.setBoolean("plugin", pluginName, "showJobsDropDownPanel", input.showJobsDropDownPanel);
     } else {
       cfg.unset("plugin", pluginName, "showJobsDropDownPanel");
     }
     if (input.showJobsSummaryPanel != null) {
-      cfg.setBoolean("plugin", pluginName, "showJobsSummaryPanel",
-          input.showJobsSummaryPanel);
+      cfg.setBoolean("plugin", pluginName, "showJobsSummaryPanel", input.showJobsSummaryPanel);
     } else {
       cfg.unset("plugin", pluginName, "showJobsSummaryPanel");
     }

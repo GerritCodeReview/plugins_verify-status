@@ -22,8 +22,8 @@ import com.google.gwtorm.server.PrimaryKey;
 import com.google.gwtorm.server.Query;
 import com.google.gwtorm.server.ResultSet;
 
-public interface PatchSetVerificationAccess extends
- Access<PatchSetVerification, PatchSetVerification.Key> {
+public interface PatchSetVerificationAccess
+    extends Access<PatchSetVerification, PatchSetVerification.Key> {
   @Override
   @PrimaryKey("key")
   PatchSetVerification get(PatchSetVerification.Key key) throws OrmException;

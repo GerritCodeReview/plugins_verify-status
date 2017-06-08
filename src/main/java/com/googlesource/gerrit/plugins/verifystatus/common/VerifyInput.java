@@ -15,10 +15,8 @@
 package com.googlesource.gerrit.plugins.verifystatus.common;
 
 import com.google.gerrit.extensions.restapi.DefaultInput;
-
 import java.util.Map;
 
 public class VerifyInput {
-  @DefaultInput
-  public Map<String, VerificationInfo> verifications;
+  @DefaultInput public Map<String, VerificationInfo> verifications;
 }

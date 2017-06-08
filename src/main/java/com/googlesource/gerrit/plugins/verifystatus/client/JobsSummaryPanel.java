@@ -26,18 +26,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
-
 import com.google.gwt.user.client.ui.Label;
 
-/**
- * Extension for change screen that displays job summary table.
- */
+/** Extension for change screen that displays job summary table. */
 public class JobsSummaryPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
     @Override
     public void onLoad(Panel panel) {
-      RevisionInfo rev =
-          panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+      RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
       if (rev.isEdit()) {
         return;
       }
@@ -46,31 +42,34 @@ public class JobsSummaryPanel extends FlowPanel {
     }
   }
 
-  private final static String COLOR_GREEN = "#060";
-  private final static String COLOR_RED = "#F00";
+  private static final String COLOR_GREEN = "#060";
+  private static final String COLOR_RED = "#F00";
 
   JobsSummaryPanel(Panel panel) {
-    final ChangeInfo change =
-        panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
+    final ChangeInfo change = panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     String decodedChangeId = URL.decodePathSegment(change.id());
-    final RevisionInfo rev =
-        panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
-    new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
+    final RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+    new RestApi("changes")
+        .id(decodedChangeId)
+        .view("revisions")
+        .id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("sort", "REPORTER").addParameter("filter", "CURRENT")
-        .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
-          @Override
-          public void onSuccess(NativeMap<VerificationInfo> result) {
-            if (!result.isEmpty()) {
-              display(result);
-            }
-          }
+        .addParameter("sort", "REPORTER")
+        .addParameter("filter", "CURRENT")
+        .get(
+            new AsyncCallback<NativeMap<VerificationInfo>>() {
+              @Override
+              public void onSuccess(NativeMap<VerificationInfo> result) {
+                if (!result.isEmpty()) {
+                  display(result);
+                }
+              }
 
-          @Override
-          public void onFailure(Throwable caught) {
-            // never invoked
-          }
-        });
+              @Override
+              public void onFailure(Throwable caught) {
+                // never invoked
+              }
+            });
   }
 
   private void display(NativeMap<VerificationInfo> jobs) {

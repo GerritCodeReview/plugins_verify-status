@@ -21,11 +21,12 @@ import com.google.inject.ProvisionException;
 public class Schema_1 extends SchemaVersion {
   @Inject
   Schema_1() {
-    super(new Provider<SchemaVersion>() {
-      @Override
-      public SchemaVersion get() {
-        throw new ProvisionException("initial version");
-      }
-    });
+    super(
+        new Provider<SchemaVersion>() {
+          @Override
+          public SchemaVersion get() {
+            throw new ProvisionException("initial version");
+          }
+        });
   }
 }

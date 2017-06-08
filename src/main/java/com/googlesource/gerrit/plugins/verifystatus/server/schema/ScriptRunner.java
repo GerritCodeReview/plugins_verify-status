@@ -16,6 +16,11 @@ package com.googlesource.gerrit.plugins.verifystatus.server.schema;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import com.google.common.base.CharMatcher;
+import com.google.gwtorm.jdbc.JdbcSchema;
+import com.google.gwtorm.schema.sql.SqlDialect;
+import com.google.gwtorm.server.OrmException;
+import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,22 +31,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.CharMatcher;
-import com.google.gwtorm.jdbc.JdbcSchema;
-import com.google.gwtorm.schema.sql.SqlDialect;
-import com.google.gwtorm.server.OrmException;
-import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
-
 /** Parses an SQL script from a resource file and later runs it. */
 class ScriptRunner {
   private final String name;
   private final List<String> commands;
 
-  static final ScriptRunner NOOP = new ScriptRunner(null, null) {
-    @Override
-    void run(CiDb db) {
-    }
-  };
+  static final ScriptRunner NOOP =
+      new ScriptRunner(null, null) {
+        @Override
+        void run(CiDb db) {}
+      };
 
   ScriptRunner(String scriptName, InputStream script) {
     this.name = scriptName;

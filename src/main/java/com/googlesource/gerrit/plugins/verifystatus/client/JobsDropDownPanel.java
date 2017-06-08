@@ -31,15 +31,12 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineLabel;
 
-/**
- * Extension for change screen that displays a status in the header bar.
- */
+/** Extension for change screen that displays a status in the header bar. */
 public class JobsDropDownPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
     @Override
     public void onLoad(Panel panel) {
-      RevisionInfo rev =
-          panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+      RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
       if (rev.isEdit()) {
         return;
       }
@@ -49,28 +46,30 @@ public class JobsDropDownPanel extends FlowPanel {
   }
 
   JobsDropDownPanel(Panel panel) {
-    ChangeInfo change =
-        panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
+    ChangeInfo change = panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     String decodedChangeId = URL.decodePathSegment(change.id());
-    RevisionInfo rev =
-        panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
-    new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
+    RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+    new RestApi("changes")
+        .id(decodedChangeId)
+        .view("revisions")
+        .id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", "REPORTER")
         .addParameter("filter", "CURRENT")
-        .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
-          @Override
-          public void onSuccess(NativeMap<VerificationInfo> result) {
-            if (!result.isEmpty()) {
-              display(result);
-            }
-          }
+        .get(
+            new AsyncCallback<NativeMap<VerificationInfo>>() {
+              @Override
+              public void onSuccess(NativeMap<VerificationInfo> result) {
+                if (!result.isEmpty()) {
+                  display(result);
+                }
+              }
 
-          @Override
-          public void onFailure(Throwable caught) {
-            // never invoked
-          }
-        });
+              @Override
+              public void onFailure(Throwable caught) {
+                // never invoked
+              }
+            });
   }
 
   private void display(NativeMap<VerificationInfo> jobs) {
@@ -111,8 +110,7 @@ public class JobsDropDownPanel extends FlowPanel {
       InlineLabel repLabel = new InlineLabel(jobs.get(key).reporter());
       repLabel.setTitle("reporter");
       grid.setWidget(row, 3, repLabel);
-      InlineLabel grLabel = new InlineLabel(
-          FormatUtil.shortFormat(jobs.get(key).granted()));
+      InlineLabel grLabel = new InlineLabel(FormatUtil.shortFormat(jobs.get(key).granted()));
       grLabel.setTitle("date saved");
       grid.setWidget(row, 4, grLabel);
       row++;

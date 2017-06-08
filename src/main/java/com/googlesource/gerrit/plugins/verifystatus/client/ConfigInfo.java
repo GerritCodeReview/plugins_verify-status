@@ -17,19 +17,25 @@ package com.googlesource.gerrit.plugins.verifystatus.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 public class ConfigInfo extends JavaScriptObject {
-  final native boolean showJobsSummaryPanel() /*-{ return this.show_jobs_summary_panel ? true : false; }-*/;
+  final native boolean
+      showJobsSummaryPanel() /*-{ return this.show_jobs_summary_panel ? true : false; }-*/;
+
   final native boolean showJobsPanel() /*-{ return this.show_jobs_panel ? true : false; }-*/;
-  final native boolean showJobsDropDownPanel() /*-{ return this.show_jobs_drop_down_panel ? true : false; }-*/;
+
+  final native boolean
+      showJobsDropDownPanel() /*-{ return this.show_jobs_drop_down_panel ? true : false; }-*/;
 
   final native void setShowJobsSummaryPanel(boolean s) /*-{ this.show_jobs_summary_panel = s; }-*/;
+
   final native void setShowJobsPanel(boolean s) /*-{ this.show_jobs_panel = s; }-*/;
-  final native void setShowJobsDropDownPanel(boolean s) /*-{ this.show_jobs_drop_down_panel = s; }-*/;
+
+  final native void setShowJobsDropDownPanel(
+      boolean s) /*-{ this.show_jobs_drop_down_panel = s; }-*/;
 
   static ConfigInfo create() {
     ConfigInfo g = (ConfigInfo) createObject();
     return g;
   }
 
-  protected ConfigInfo() {
-  }
+  protected ConfigInfo() {}
 }

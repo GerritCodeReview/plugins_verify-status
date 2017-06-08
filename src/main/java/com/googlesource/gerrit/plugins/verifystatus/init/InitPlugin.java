@@ -43,7 +43,6 @@ import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
-
 import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceModule;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceProvider;
@@ -52,14 +51,12 @@ import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceTy
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDatabaseModule;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.SchemaVersion;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.UpdateUI;
-
 import java.lang.annotation.Annotation;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
 import javax.sql.DataSource;
 
 @Singleton
@@ -72,7 +69,8 @@ public class InitPlugin implements InitStep {
   private Provider<SchemaVersion> updater;
 
   @Inject
-  InitPlugin(Section.Factory sections,
+  InitPlugin(
+      Section.Factory sections,
       @PluginName String pluginName,
       ConsoleUI ui,
       SitePaths site,
@@ -88,8 +86,7 @@ public class InitPlugin implements InitStep {
     ui.header("SQL Database for CI plugin");
 
     Set<String> allowedValues = Sets.newTreeSet();
-    Injector i = Guice.createInjector(PRODUCTION,
-        new DatabaseConfigModule(site));
+    Injector i = Guice.createInjector(PRODUCTION, new DatabaseConfigModule(site));
 
     List<Binding<DatabaseConfigInitializer>> dbConfigBindings =
         i.findBindingsByType(new TypeLiteral<DatabaseConfigInitializer>() {});
@@ -105,28 +102,19 @@ public class InitPlugin implements InitStep {
       configSection.set("dbType", "h2");
     }
 
-    String dbType =
-        configSection.select("Database server type", "dbType", "h2",
-            allowedValues);
+    String dbType = configSection.select("Database server type", "dbType", "h2", allowedValues);
 
     DatabaseConfigInitializer dci =
-        i.getInstance(Key.get(DatabaseConfigInitializer.class,
-            Names.named(dbType.toLowerCase())));
+        i.getInstance(Key.get(DatabaseConfigInitializer.class, Names.named(dbType.toLowerCase())));
 
-    /** TODO(davido): We probably don't need that, as
-     * CI database would be from the same type as
-     * ReviewDb. So we expect that the needed libraries
-     * were already installed.
+    /**
+     * TODO(davido): We probably don't need that, as CI database would be from the same type as
+     * ReviewDb. So we expect that the needed libraries were already installed.
      *
-    if (dci instanceof MySqlInitializer) {
-      libraries.mysqlDriver.downloadRequired();
-    } else if (dci instanceof OracleInitializer) {
-      libraries.oracleDriver.downloadRequired();
-    } else if (dci instanceof DB2Initializer) {
-      libraries.db2Driver.downloadRequired();
-    }
-    **/
-
+     * <p>if (dci instanceof MySqlInitializer) { libraries.mysqlDriver.downloadRequired(); } else if
+     * (dci instanceof OracleInitializer) { libraries.oracleDriver.downloadRequired(); } else if
+     * (dci instanceof DB2Initializer) { libraries.db2Driver.downloadRequired(); }
+     */
     dci.initConfig(configSection);
   }
 
@@ -134,81 +122,85 @@ public class InitPlugin implements InitStep {
   public void postRun() throws Exception {
     Injector i = buildInjector(parent);
     updater = i.getProvider(SchemaVersion.class);
-    this.dbFactory = i.getInstance(
-        Key.get(
-            new TypeLiteral<SchemaFactory<CiDb>>() {}));
+    this.dbFactory = i.getInstance(Key.get(new TypeLiteral<SchemaFactory<CiDb>>() {}));
     upgradeSchema();
   }
 
   private Injector buildInjector(final Injector parent) {
     List<Module> modules = new ArrayList<>();
 
-    modules.add(new LifecycleModule() {
-      @Override
-      protected void configure() {
-        // For bootstrap we need to retrieve the ds type first
-        CiDataSourceTypeGuesser guesser =
-            parent.createChildInjector(
-                new CiDataSourceModule()).getInstance(
-                    Key.get(CiDataSourceTypeGuesser.class));
+    modules.add(
+        new LifecycleModule() {
+          @Override
+          protected void configure() {
+            // For bootstrap we need to retrieve the ds type first
+            CiDataSourceTypeGuesser guesser =
+                parent
+                    .createChildInjector(new CiDataSourceModule())
+                    .getInstance(Key.get(CiDataSourceTypeGuesser.class));
 
-        // For the ds type we retrieve the underlying implementation
-        CiDataSourceType dst = parent.createChildInjector(
-            new CiDataSourceModule()).getInstance(
-                Key.get(CiDataSourceType.class,
-                    Names.named(guesser.guessDataSourceType())));
+            // For the ds type we retrieve the underlying implementation
+            CiDataSourceType dst =
+                parent
+                    .createChildInjector(new CiDataSourceModule())
+                    .getInstance(
+                        Key.get(
+                            CiDataSourceType.class, Names.named(guesser.guessDataSourceType())));
 
-        // Bind the type to the retrieved instance
-        bind(CiDataSourceType.class).toInstance(dst);
-        bind(CiDataSourceProvider.Context.class).toInstance(
-            CiDataSourceProvider.Context.MULTI_USER);
-        bind(Key.get(DataSource.class, Names.named("CiDb"))).toProvider(
-            CiDataSourceProvider.class).in(SINGLETON);
+            // Bind the type to the retrieved instance
+            bind(CiDataSourceType.class).toInstance(dst);
+            bind(CiDataSourceProvider.Context.class)
+                .toInstance(CiDataSourceProvider.Context.MULTI_USER);
+            bind(Key.get(DataSource.class, Names.named("CiDb")))
+                .toProvider(CiDataSourceProvider.class)
+                .in(SINGLETON);
 
-        listener().to(CiDataSourceProvider.class);
-      }
-    });
+            listener().to(CiDataSourceProvider.class);
+          }
+        });
 
     modules.add(new CiDatabaseModule());
 
-    modules.add(new AbstractModule() {
-      @Override
-      protected void configure() {
-        bind(SchemaVersion.class).to(SchemaVersion.C);
-      }
-    });
+    modules.add(
+        new AbstractModule() {
+          @Override
+          protected void configure() {
+            bind(SchemaVersion.class).to(SchemaVersion.C);
+          }
+        });
 
     return parent.createChildInjector(modules);
   }
 
   private void upgradeSchema() throws OrmException {
     final List<String> pruneList = new ArrayList<>();
-    update(new UpdateUI() {
-      @Override
-      public void message(String msg) {
-        System.err.println(msg);
-        System.err.flush();
-      }
-
-      @Override
-      public boolean yesno(boolean def, String msg) {
-        return ui.yesno(def, msg);
-      }
-
-      @Override
-      public boolean isBatch() {
-        return ui.isBatch();
-      }
-
-      @Override
-      public void pruneSchema(StatementExecutor e, List<String> prune) {
-        for (String p : prune) {
-          if (!pruneList.contains(p)) {
-            pruneList.add(p);
+    update(
+        new UpdateUI() {
+          @Override
+          public void message(String msg) {
+            System.err.println(msg);
+            System.err.flush();
           }
-        }
-      }
-    });
+
+          @Override
+          public boolean yesno(boolean def, String msg) {
+            return ui.yesno(def, msg);
+          }
+
+          @Override
+          public boolean isBatch() {
+            return ui.isBatch();
+          }
+
+          @Override
+          public void pruneSchema(StatementExecutor e, List<String> prune) {
+            for (String p : prune) {
+              if (!pruneList.contains(p)) {
+                pruneList.add(p);
+              }
+            }
+          }
+        });
 
     if (!pruneList.isEmpty()) {
       StringBuilder msg = new StringBuilder();
@@ -240,12 +232,12 @@ public class InitPlugin implements InitStep {
       SchemaVersion u = updater.get();
       CurrentSchemaVersion version = getSchemaVersion(db);
       if (version == null) {
-          try (JdbcExecutor e = new JdbcExecutor((JdbcSchema) db)) {
-            ((JdbcSchema) db).updateSchema(e);
-          }
-          final CurrentSchemaVersion sVer = CurrentSchemaVersion.create();
-          sVer.versionNbr = SchemaVersion.getBinaryVersion();
-          db.schemaVersion().insert(Collections.singleton(sVer));
+        try (JdbcExecutor e = new JdbcExecutor((JdbcSchema) db)) {
+          ((JdbcSchema) db).updateSchema(e);
+        }
+        final CurrentSchemaVersion sVer = CurrentSchemaVersion.create();
+        sVer.versionNbr = SchemaVersion.getBinaryVersion();
+        db.schemaVersion().insert(Collections.singleton(sVer));
       } else {
         try {
           u.check(ui, version, db);

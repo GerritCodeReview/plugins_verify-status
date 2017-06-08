@@ -20,16 +20,15 @@ import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gwtorm.jdbc.Database;
 import com.google.gwtorm.server.SchemaFactory;
 import com.google.inject.TypeLiteral;
-
 import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
 
 /** Loads the database with standard dependencies. */
 public class CiDatabaseModule extends FactoryModule {
   @Override
   protected void configure() {
-    bind(new TypeLiteral<SchemaFactory<CiDb>>() {}).to(
-        new TypeLiteral<Database<CiDb>>() {}).in(SINGLETON);
-    bind(new TypeLiteral<Database<CiDb>>() {}).toProvider(
-        CiDbDatabaseProvider.class).in(SINGLETON);
+    bind(new TypeLiteral<SchemaFactory<CiDb>>() {})
+        .to(new TypeLiteral<Database<CiDb>>() {})
+        .in(SINGLETON);
+    bind(new TypeLiteral<Database<CiDb>>() {}).toProvider(CiDbDatabaseProvider.class).in(SINGLETON);
   }
 }
