@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46924830_52703ad1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T18:53:34Z",
+      "side": 1,
+      "message": "Well, this subject doesn\u0027t match any more. May be:\n\n  Simplify permission checks using RequiresCapability annotation",
+      "revId": "ab03fc2a31bc83373f16d328797d26ea1166a5ba",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
