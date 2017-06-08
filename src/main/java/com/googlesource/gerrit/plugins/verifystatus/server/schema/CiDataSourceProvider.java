@@ -153,23 +153,21 @@ public class CiDataSourceProvider implements Provider<DataSource>,
       ds.setInitialSize(ds.getMinIdle());
       exportPoolMetrics(ds);
       return intercept(interceptor, ds);
-    } else {
-      // Don't use the connection pool.
-      //
-      try {
-        Properties p = new Properties();
-        p.setProperty("driver", driver);
-        p.setProperty("url", url);
-        if (username != null) {
-          p.setProperty("user", username);
-        }
-        if (password != null) {
-          p.setProperty("password", password);
-        }
-        return intercept(interceptor, new SimpleDataSource(p));
-      } catch (SQLException se) {
-        throw new ProvisionException("Database unavailable", se);
+    }
+    // Don't use the connection pool.
+    try {
+      Properties p = new Properties();
+      p.setProperty("driver", driver);
+      p.setProperty("url", url);
+      if (username != null) {
+        p.setProperty("user", username);
       }
+      if (password != null) {
+        p.setProperty("password", password);
+      }
+      return intercept(interceptor, new SimpleDataSource(p));
+    } catch (SQLException se) {
+      throw new ProvisionException("Database unavailable", se);
     }
   }
 
