@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f8ed08d_900500b6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "I would prefer to put it on one line:\n\n  @RequiresCapability(value \u003d SaveReportCapability.ID, fallBackToAdmin \u003d false)",
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28aadd9a_56429adf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not used anymore.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07696dbb_a1b60695",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not need to be injected.",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99630990_42656744",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32550919_feee5292",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "One line:\n\n  @RequiresCapability(value \u003d SaveReportCapability.ID, fallBackToAdmin \u003d false)",
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d316c2a5_08d7af13",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not used anymore.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b09e242_ca0ea247",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 40
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04949df_6b8ee174",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 148,
+        "startChar": 30,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42625f7_0b0435c3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 51
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975721a3_d84deb45",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not need to be injected. Remove the ctor entirely.",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2b62cb6_bfc3be62",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T17:44:30Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "a5fe603070a479df2e3a0fb69b3160ccc18351a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
