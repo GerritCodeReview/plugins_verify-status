@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5a00bb4_6a588007",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/PostVerification.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "bc9eea19_2bd060b7",
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f614b089_f877d889",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
         "patchSetId": 23
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d8f579ba_f14554ef",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "f614b089_f877d889",
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac3438a2_eed411ff",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
         "patchSetId": 23
@@ -47,6 +83,30 @@
       "writtenOn": "2017-06-08T16:17:36Z",
       "side": 1,
       "message": "Why was this added?",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 72
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ef80d81_8793f934",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "It was failing. Probaly due to when i added PermissionBackend. \n\nCan probaly remove PermissionBackendException but not sure about AuthException.",
+      "parentUuid": "ac3438a2_eed411ff",
       "range": {
         "startLine": 150,
         "startChar": 30,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "7ec9b36c_baa9c3ee",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "I can remove this. Thanks, done.",
+      "parentUuid": "69207d02_59452953",
+      "range": {
+        "startLine": 169,
+        "startChar": 58,
+        "endLine": 169,
+        "endChar": 84
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0223a630_a76785d7",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
         "patchSetId": 23
@@ -93,6 +177,30 @@
       "writtenOn": "2017-06-08T16:17:36Z",
       "side": 1,
       "message": "And this?",
+      "range": {
+        "startLine": 176,
+        "startChar": 51,
+        "endLine": 176,
+        "endChar": 77
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b0ed7e_f2ee5486",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "I can remove this. Thanks, done.",
+      "parentUuid": "0223a630_a76785d7",
       "range": {
         "startLine": 176,
         "startChar": 51,
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "55a5bbc1_529e84d0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "37936c2d_72fdd1b6",
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5442298_e7e58ebb",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
         "patchSetId": 23
@@ -133,6 +259,30 @@
       "writtenOn": "2017-06-08T16:17:36Z",
       "side": 1,
       "message": "Why was this added?",
+      "range": {
+        "startLine": 60,
+        "startChar": 30,
+        "endLine": 60,
+        "endChar": 71
+      },
+      "revId": "ba2723e17d65e8e3e94cf810eb03d1407f04e60c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab2d0fa_3beed152",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T16:45:27Z",
+      "side": 1,
+      "message": "Same reason described in https://gerrit-review.googlesource.com/#/c/108125/23/src/main/java/com/googlesource/gerrit/plugins/verifystatus/SaveCommand.java\n\nI can remove PermissionBackendException",
+      "parentUuid": "b5442298_e7e58ebb",
       "range": {
         "startLine": 60,
         "startChar": 30,
