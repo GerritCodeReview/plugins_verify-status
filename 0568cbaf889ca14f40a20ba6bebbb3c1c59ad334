@@ -118,6 +118,30 @@
       "revId": "0568cbaf889ca14f40a20ba6bebbb3c1c59ad334",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddd09efe_93acc152",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-06-08T12:05:34Z",
+      "side": 1,
+      "message": "Thanks, done.\n\nI\u0027ve done it in the other classes too.",
+      "parentUuid": "e652f2eb_401b28a6",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "0568cbaf889ca14f40a20ba6bebbb3c1c59ad334",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
