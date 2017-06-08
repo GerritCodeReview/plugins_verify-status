@@ -94,6 +94,30 @@
       "revId": "0568cbaf889ca14f40a20ba6bebbb3c1c59ad334",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e652f2eb_401b28a6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusAdminQueryShell.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-06-08T11:37:11Z",
+      "side": 1,
+      "message": "This change was submitted. So now you can remove all that mess in all files and adapt the class annotation line from:\n\n  @RequiresCapability(AccessCiDatabaseCapability.ID)\n\nto:\n\n  @RequiresCapability(\n      value \u003d AccessCiDatabaseCapability.ID,\n      fallBackToAdmin \u003d false\n  )",
+      "parentUuid": "2512ba12_87d3fee3",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "0568cbaf889ca14f40a20ba6bebbb3c1c59ad334",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
