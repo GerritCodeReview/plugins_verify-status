@@ -37,17 +37,20 @@ public class VerifyStatusPlugin extends PluginEntryPoint {
             if (info.showJobsSummaryPanel()) {
               Plugin.get().panel(
                   GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
-                  new JobsSummaryPanel.Factory());
+                  new JobsSummaryPanel.Factory(),
+                  "VerifyStatusJobsSummaryPanel");
             }
             if (info.showJobsPanel()) {
               Plugin.get().panel(
                   GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
-                  new JobsPanel.Factory());
+                  new JobsPanel.Factory(),
+                  "VerifyStatusJobsPanel");
             }
             if (info.showJobsDropDownPanel()) {
               Plugin.get().panel(
                   GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
-                  new JobsDropDownPanel.Factory());
+                  new JobsDropDownPanel.Factory(),
+                  "VerifyStatusJobsDropDownPanel");
             }
           }
 
