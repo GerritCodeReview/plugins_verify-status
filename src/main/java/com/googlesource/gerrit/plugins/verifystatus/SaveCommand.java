@@ -26,6 +26,7 @@ import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gerrit.server.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.change.Revisions;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -148,7 +149,7 @@ public class SaveCommand extends SshCommand {
   }
 
   private void applyVerification(PatchSet patchSet, VerifyInput verify)
-      throws RestApiException, OrmException, IOException {
+      throws RestApiException, OrmException, IOException, PermissionBackendException {
     RevisionResource revResource =
         revisions.parse(
             changes.parse(patchSet.getId().getParentKey()),
@@ -161,7 +162,7 @@ public class SaveCommand extends SshCommand {
     verify.verifications = jobResult;
     try {
       applyVerification(patchSet, verify);
-    } catch (RestApiException | OrmException | IOException e) {
+    } catch (RestApiException | OrmException | IOException | PermissionBackendException e) {
       throw PatchSetParser.error(e.getMessage());
     }
   }
