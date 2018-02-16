@@ -3,31 +3,31 @@ workspace(name = "verify_status")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "696f59e1b591c23469433cd7a8e5933c738682c5",
+    commit = "d9abef15db0f934bfe9adcb40b0c475807fd12bf",
     # local_path = "/home/<user>/projects/bazlets",
 )
 
 # Snapshot Plugin API
-load(
-    "@com_googlesource_gerrit_bazlets//:gerrit_api_maven_local.bzl",
-    "gerrit_api_maven_local",
-)
+#load(
+#    "@com_googlesource_gerrit_bazlets//:gerrit_api_maven_local.bzl",
+#    "gerrit_api_maven_local",
+#)
 
 # Release Plugin API
-#load(
-#    "@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
-#    "gerrit_api",
-#)
+load(
+    "@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
+    "gerrit_api",
+)
 load(
     "@com_googlesource_gerrit_bazlets//:gerrit_gwt.bzl",
     "gerrit_gwt",
 )
 
 # Load release Plugin API
-#gerrit_api()
+gerrit_api()
 
 # Load snapshot Plugin API
-gerrit_api_maven_local()
+#gerrit_api_maven_local()
 
 gerrit_gwt()
 
