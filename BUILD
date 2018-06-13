@@ -19,7 +19,7 @@ gerrit_plugin(
         "Implementation-URL: https://gerrit-review.googlesource.com/#/admin/projects/plugins/verify-status",
     ],
     provided_deps = [
-        "@commons_dbcp//jar:neverlink",
+        "@commons-dbcp//jar:neverlink",
     ],
     resources = glob(["src/main/**/*"]),
 )
