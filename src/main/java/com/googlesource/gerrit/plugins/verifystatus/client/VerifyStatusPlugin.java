@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.verifystatus.client;
 
 import com.google.gerrit.client.GerritUiExtensionPoint;
-
 import com.google.gerrit.plugin.client.Plugin;
 import com.google.gerrit.plugin.client.PluginEntryPoint;
 import com.google.gerrit.plugin.client.rpc.RestApi;
@@ -28,34 +27,39 @@ public class VerifyStatusPlugin extends PluginEntryPoint {
   @Override
   public void onPluginLoad() {
     Plugin.get().screenRegex("jobs/(.*)", new JobsScreen.Factory());
-    new RestApi("config").view("server")
+    new RestApi("config")
+        .view("server")
         .view(Plugin.get().getPluginName(), "config")
-        .get(new AsyncCallback<ConfigInfo>() {
-          @Override
-          public void onSuccess(ConfigInfo info) {
-            if (info.showJobsSummaryPanel()) {
-              Plugin.get().panel(
-                  GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
-                  new JobsSummaryPanel.Factory());
-            }
-            if (info.showJobsPanel()) {
-              Plugin.get().panel(
-                  info.showJobsBelowRelatedInfoBlock()
-                      ? GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_RELATED_INFO_BLOCK
-                      : GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
-                  new JobsPanel.Factory(info));
-            }
-            if (info.showJobsDropDownPanel()) {
-              Plugin.get().panel(
-                  GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
-                  new JobsDropDownPanel.Factory(info));
-            }
-          }
+        .get(
+            new AsyncCallback<ConfigInfo>() {
+              @Override
+              public void onSuccess(ConfigInfo info) {
+                if (info.showJobsSummaryPanel()) {
+                  Plugin.get()
+                      .panel(
+                          GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
+                          new JobsSummaryPanel.Factory());
+                }
+                if (info.showJobsPanel()) {
+                  Plugin.get()
+                      .panel(
+                          info.showJobsBelowRelatedInfoBlock()
+                              ? GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_RELATED_INFO_BLOCK
+                              : GerritUiExtensionPoint.CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK,
+                          new JobsPanel.Factory(info));
+                }
+                if (info.showJobsDropDownPanel()) {
+                  Plugin.get()
+                      .panel(
+                          GerritUiExtensionPoint.CHANGE_SCREEN_HEADER_RIGHT_OF_POP_DOWNS,
+                          new JobsDropDownPanel.Factory(info));
+                }
+              }
 
-          @Override
-          public void onFailure(Throwable caught) {
-            // never invoked
-          }
-        });
+              @Override
+              public void onFailure(Throwable caught) {
+                // never invoked
+              }
+            });
   }
 }

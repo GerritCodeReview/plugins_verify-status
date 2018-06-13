@@ -26,8 +26,7 @@ public class GetConfig implements RestReadView<ConfigResource> {
   private final PluginConfig cfg;
 
   @Inject
-  public GetConfig(PluginConfigFactory cfgFactory,
-      @PluginName String pluginName) {
+  public GetConfig(PluginConfigFactory cfgFactory, @PluginName String pluginName) {
     this.cfg = cfgFactory.getFromGerritConfig(pluginName);
   }
 
@@ -37,14 +36,11 @@ public class GetConfig implements RestReadView<ConfigResource> {
     info.showJobsPanel = cfg.getBoolean("showJobsPanel", true);
     info.showJobsDropDownPanel = cfg.getBoolean("showJobsDropDownPanel", true);
     info.showJobsSummaryPanel = cfg.getBoolean("showJobsSummaryPanel", true);
-    info.showJobsBelowRelatedInfoBlock = cfg.getBoolean(
-        "showJobsBelowRelatedInfoBlock", false);
-    info.enableInProgressStatus = cfg.getBoolean(
-        "enableInProgressStatus", false);
-    info.sortJobsPanel = cfg.getEnum(JobsSorting.values(),
-        "sortJobsPanel", JobsSorting.REPORTER);
-    info.sortJobsDropDownPanel = cfg.getEnum(JobsSorting.values(),
-        "sortJobsDropDownPanel", JobsSorting.REPORTER);
+    info.showJobsBelowRelatedInfoBlock = cfg.getBoolean("showJobsBelowRelatedInfoBlock", false);
+    info.enableInProgressStatus = cfg.getBoolean("enableInProgressStatus", false);
+    info.sortJobsPanel = cfg.getEnum(JobsSorting.values(), "sortJobsPanel", JobsSorting.REPORTER);
+    info.sortJobsDropDownPanel =
+        cfg.getEnum(JobsSorting.values(), "sortJobsDropDownPanel", JobsSorting.REPORTER);
     return info;
   }
 

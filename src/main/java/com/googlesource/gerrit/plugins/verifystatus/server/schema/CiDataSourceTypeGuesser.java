@@ -20,21 +20,18 @@ import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.inject.Inject;
 import com.google.inject.ProvisionException;
-
+import java.io.File;
+import java.io.IOException;
 import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.storage.file.FileBasedConfig;
 import org.eclipse.jgit.util.FS;
-
-import java.io.File;
-import java.io.IOException;
 
 public class CiDataSourceTypeGuesser {
 
   private final PluginConfig config;
 
   @Inject
-  CiDataSourceTypeGuesser(SitePaths site,
-      @PluginName String pluginName) {
+  CiDataSourceTypeGuesser(SitePaths site, @PluginName String pluginName) {
     File file = site.gerrit_config.toFile();
     FileBasedConfig cfg = new FileBasedConfig(file, FS.DETECTED);
     try {
@@ -48,8 +45,7 @@ public class CiDataSourceTypeGuesser {
   public String guessDataSourceType() {
     String dbType = config.getString("dbType");
     if (Strings.isNullOrEmpty(dbType)) {
-      throw new ProvisionException(
-          String.format("'dbType' must be defined in config file"));
+      throw new ProvisionException(String.format("'dbType' must be defined in config file"));
     }
     return dbType.toLowerCase();
   }

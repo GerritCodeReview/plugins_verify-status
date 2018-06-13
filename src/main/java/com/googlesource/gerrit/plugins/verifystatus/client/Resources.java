@@ -39,5 +39,4 @@ public interface Resources extends ClientBundle {
 
   @Source("loader.gif")
   public ImageResource progress();
-
 }

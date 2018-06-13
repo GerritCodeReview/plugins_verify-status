@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.verifystatus;
 
 import com.google.gerrit.sshd.PluginCommandModule;
 
-
 class SshModule extends PluginCommandModule {
   @Override
   protected void configureCommands() {

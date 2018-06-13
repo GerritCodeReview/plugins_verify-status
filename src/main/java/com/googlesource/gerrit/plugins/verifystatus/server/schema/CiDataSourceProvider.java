@@ -34,25 +34,21 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.ProvisionException;
 import com.google.inject.Singleton;
-
-import org.apache.commons.dbcp.BasicDataSource;
-import org.eclipse.jgit.errors.ConfigInvalidException;
-import org.eclipse.jgit.storage.file.FileBasedConfig;
-import org.eclipse.jgit.util.FS;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Properties;
-
 import javax.sql.DataSource;
+import org.apache.commons.dbcp.BasicDataSource;
+import org.eclipse.jgit.errors.ConfigInvalidException;
+import org.eclipse.jgit.storage.file.FileBasedConfig;
+import org.eclipse.jgit.util.FS;
 
 /** Provides access to the DataSource. */
 @Singleton
-public class CiDataSourceProvider implements Provider<DataSource>,
-    LifecycleListener {
+public class CiDataSourceProvider implements Provider<DataSource>, LifecycleListener {
   public static final int DEFAULT_POOL_LIMIT = 8;
 
   private final MetricMaker metrics;
@@ -62,7 +58,8 @@ public class CiDataSourceProvider implements Provider<DataSource>,
   private DataSource ds;
 
   @Inject
-  protected CiDataSourceProvider(SitePaths site,
+  protected CiDataSourceProvider(
+      SitePaths site,
       @PluginName String pluginName,
       @Nullable MetricMaker metrics,
       Context ctx,
@@ -89,8 +86,7 @@ public class CiDataSourceProvider implements Provider<DataSource>,
   }
 
   @Override
-  public void start() {
-  }
+  public void start() {}
 
   @Override
   public synchronized void stop() {
@@ -104,11 +100,12 @@ public class CiDataSourceProvider implements Provider<DataSource>,
   }
 
   public static enum Context {
-    SINGLE_USER, MULTI_USER
+    SINGLE_USER,
+    MULTI_USER
   }
 
   private DataSource open(Context context, CiDataSourceType dst) {
-    //ConfigSection dbs = new ConfigSection(cfg, "database");
+    // ConfigSection dbs = new ConfigSection(cfg, "database");
     String driver = config.getString("driver");
     if (Strings.isNullOrEmpty(driver)) {
       driver = dst.getDriver();
@@ -147,8 +144,8 @@ public class CiDataSourceProvider implements Provider<DataSource>,
       if (Strings.isNullOrEmpty(valueString)) {
         ds.setMaxWait(MILLISECONDS.convert(30, SECONDS));
       } else {
-        ds.setMaxWait(ConfigUtil.getTimeUnit(
-            valueString, MILLISECONDS.convert(30, SECONDS), MILLISECONDS));
+        ds.setMaxWait(
+            ConfigUtil.getTimeUnit(valueString, MILLISECONDS.convert(30, SECONDS), MILLISECONDS));
       }
       ds.setInitialSize(ds.getMinIdle());
       exportPoolMetrics(ds);
@@ -174,22 +171,23 @@ public class CiDataSourceProvider implements Provider<DataSource>,
   }
 
   private void exportPoolMetrics(final BasicDataSource pool) {
-    final CallbackMetric1<Boolean, Integer> cnt = metrics.newCallbackMetric(
-        "sql/connection_pool/connections",
-        Integer.class,
-        new Description("SQL database connections")
-          .setGauge()
-          .setUnit("connections"),
-        Field.ofBoolean("active"));
-    metrics.newTrigger(cnt, new Runnable() {
-      @Override
-      public void run() {
-        synchronized (pool) {
-          cnt.set(true, pool.getNumActive());
-          cnt.set(false, pool.getNumIdle());
-        }
-      }
-    });
+    final CallbackMetric1<Boolean, Integer> cnt =
+        metrics.newCallbackMetric(
+            "sql/connection_pool/connections",
+            Integer.class,
+            new Description("SQL database connections").setGauge().setUnit("connections"),
+            Field.ofBoolean("active"));
+    metrics.newTrigger(
+        cnt,
+        new Runnable() {
+          @Override
+          public void run() {
+            synchronized (pool) {
+              cnt.set(true, pool.getNumActive());
+              cnt.set(false, pool.getNumIdle());
+            }
+          }
+        });
   }
 
   private DataSource intercept(String interceptor, DataSource ds) {
@@ -198,12 +196,15 @@ public class CiDataSourceProvider implements Provider<DataSource>,
     }
     try {
       Constructor<?> c = Class.forName(interceptor).getConstructor();
-      DataSourceInterceptor datasourceInterceptor =
-          (DataSourceInterceptor) c.newInstance();
+      DataSourceInterceptor datasourceInterceptor = (DataSourceInterceptor) c.newInstance();
       return datasourceInterceptor.intercept("CiDb", ds);
-    } catch (ClassNotFoundException | SecurityException | NoSuchMethodException
-        | IllegalArgumentException | InstantiationException
-        | IllegalAccessException | InvocationTargetException e) {
+    } catch (ClassNotFoundException
+        | SecurityException
+        | NoSuchMethodException
+        | IllegalArgumentException
+        | InstantiationException
+        | IllegalAccessException
+        | InvocationTargetException e) {
       throw new ProvisionException("Cannot intercept datasource", e);
     }
   }

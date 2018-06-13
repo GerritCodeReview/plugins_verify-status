@@ -24,7 +24,6 @@ import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-
 import org.kohsuke.args4j.Option;
 
 /** Opens a query processor. */
@@ -35,8 +34,7 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
   private final String pluginName;
   private final Provider<CurrentUser> userProvider;
 
-  @Inject
-  private VerifyStatusQueryShell.Factory factory;
+  @Inject private VerifyStatusQueryShell.Factory factory;
 
   @Option(name = "--format", usage = "Set output format")
   private VerifyStatusQueryShell.OutputFormat format = VerifyStatusQueryShell.OutputFormat.PRETTY;
@@ -45,8 +43,7 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
   private String query;
 
   @Inject
-  VerifyStatusAdminQueryShell(@PluginName String pluginName,
-      Provider<CurrentUser> userProvider) {
+  VerifyStatusAdminQueryShell(@PluginName String pluginName, Provider<CurrentUser> userProvider) {
     this.pluginName = pluginName;
     this.userProvider = userProvider;
   }
@@ -70,21 +67,21 @@ public class VerifyStatusAdminQueryShell extends SshCommand {
 
   /**
    * Assert that the current user is permitted to perform raw queries.
-   * <p>
-   * As the @RequireCapability guards at various entry points of internal
-   * commands implicitly add administrators (which we want to avoid), we also
-   * check permissions within QueryShell and grant access only to those who
-   * canPerformRawQuery, regardless of whether they are administrators or not.
+   *
+   * <p>As the @RequireCapability guards at various entry points of internal commands implicitly add
+   * administrators (which we want to avoid), we also check permissions within QueryShell and grant
+   * access only to those who canPerformRawQuery, regardless of whether they are administrators or
+   * not.
    *
    * @throws PermissionDeniedException
    */
   private void checkPermission() throws PermissionDeniedException {
     CapabilityControl ctl = userProvider.get().getCapabilities();
     if (!ctl.canPerform(pluginName + "-" + AccessCiDatabaseCapability.ID)) {
-      throw new PermissionDeniedException(String.format(
-          "%s does not have \"%s\" capability.",
-          userProvider.get().getUserName(),
-          new AccessCiDatabaseCapability().getDescription()));
+      throw new PermissionDeniedException(
+          String.format(
+              "%s does not have \"%s\" capability.",
+              userProvider.get().getUserName(), new AccessCiDatabaseCapability().getDescription()));
     }
   }
 }

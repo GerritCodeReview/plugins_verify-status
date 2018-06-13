@@ -14,10 +14,9 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server.schema;
 
+import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
 import java.io.IOException;
 import java.io.InputStream;
-
-import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
 
 public abstract class CiBaseDataSourceType implements CiDataSourceType {
 

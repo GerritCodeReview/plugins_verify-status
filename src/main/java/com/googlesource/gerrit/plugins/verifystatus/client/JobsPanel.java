@@ -31,11 +31,10 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHyperlink;
 import com.google.gwt.user.client.ui.InlineLabel;
 
-/**
- * Extension for change screen that displays a status below the label info.
- */
+/** Extension for change screen that displays a status below the label info. */
 public class JobsPanel extends FlowPanel {
   private final ConfigInfo info;
+
   static class Factory implements Panel.EntryPoint {
     private final ConfigInfo info;
 
@@ -45,8 +44,7 @@ public class JobsPanel extends FlowPanel {
 
     @Override
     public void onLoad(Panel panel) {
-      RevisionInfo rev =
-          panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+      RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
       if (rev.isEdit()) {
         return;
       }
@@ -57,29 +55,31 @@ public class JobsPanel extends FlowPanel {
 
   JobsPanel(Panel panel, ConfigInfo info) {
     this.info = info;
-    final ChangeInfo change =
-        panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
+    final ChangeInfo change = panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     String decodedChangeId = URL.decodePathSegment(change.id());
-    final RevisionInfo rev =
-        panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
-    new RestApi("changes").id(decodedChangeId).view("revisions").id(rev.id())
+    final RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
+    new RestApi("changes")
+        .id(decodedChangeId)
+        .view("revisions")
+        .id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
         .addParameter("sort", info.sortJobsPanel())
         .addParameter("filter", "CURRENT")
-        .get(new AsyncCallback<NativeMap<VerificationInfo>>() {
-          @Override
-          public void onSuccess(NativeMap<VerificationInfo> result) {
-            if (!result.isEmpty()) {
-              final String patchsetId = change._number() + "/" + rev.id();
-              display(patchsetId, result);
-            }
-          }
+        .get(
+            new AsyncCallback<NativeMap<VerificationInfo>>() {
+              @Override
+              public void onSuccess(NativeMap<VerificationInfo> result) {
+                if (!result.isEmpty()) {
+                  final String patchsetId = change._number() + "/" + rev.id();
+                  display(patchsetId, result);
+                }
+              }
 
-          @Override
-          public void onFailure(Throwable caught) {
-            // never invoked
-          }
-        });
+              @Override
+              public void onFailure(Throwable caught) {
+                // never invoked
+              }
+            });
   }
 
   private void display(String patchsetId, NativeMap<VerificationInfo> jobs) {
@@ -90,22 +90,20 @@ public class JobsPanel extends FlowPanel {
       HorizontalPanel p = new HorizontalPanel();
       short vote = jobs.get(key).value();
       if (vote > 0) {
-        p.add(new Image(
+        p.add(
+            new Image(
                 ((vote == 2) && info.enableInProgressStatus())
                     ? VerifyStatusPlugin.RESOURCES.progress()
-                    : VerifyStatusPlugin.RESOURCES.greenCheck()
-                ));
+                    : VerifyStatusPlugin.RESOURCES.greenCheck()));
       } else if (vote < 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.redNot()));
       } else if (vote == 0) {
         p.add(new Image(VerifyStatusPlugin.RESOURCES.warning()));
       }
-      Anchor anchor =
-          new Anchor(jobs.get(key).name(), jobs.get(key).url());
+      Anchor anchor = new Anchor(jobs.get(key).name(), jobs.get(key).url());
       anchor.setTitle("view logs");
       p.add(anchor);
-      InlineLabel label =
-          new InlineLabel(" (" + jobs.get(key).duration() + ")");
+      InlineLabel label = new InlineLabel(" (" + jobs.get(key).duration() + ")");
       label.setTitle("duration");
       p.add(label);
       if (jobs.get(key).rerun()) {
@@ -123,8 +121,9 @@ public class JobsPanel extends FlowPanel {
       row++;
     }
     HorizontalPanel p = new HorizontalPanel();
-    InlineHyperlink all = new InlineHyperlink("Show All Reports",
-        "/x/" + Plugin.get().getName() + "/jobs/" + patchsetId);
+    InlineHyperlink all =
+        new InlineHyperlink(
+            "Show All Reports", "/x/" + Plugin.get().getName() + "/jobs/" + patchsetId);
     p.add(all);
     grid.insertRow(row);
     grid.setWidget(row, 0, p);

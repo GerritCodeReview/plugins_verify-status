@@ -22,20 +22,17 @@ import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.inject.Inject;
 import com.google.inject.ProvisionException;
-
+import java.io.File;
+import java.io.IOException;
 import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.storage.file.FileBasedConfig;
 import org.eclipse.jgit.util.FS;
-
-import java.io.File;
-import java.io.IOException;
 
 class PostgreSQL extends CiBaseDataSourceType {
   private final PluginConfig config;
 
   @Inject
-  public PostgreSQL(SitePaths site,
-      @PluginName String pluginName) {
+  public PostgreSQL(SitePaths site, @PluginName String pluginName) {
     super("org.postgresql.Driver");
     File file = site.gerrit_config.toFile();
     FileBasedConfig cfg = new FileBasedConfig(file, FS.DETECTED);

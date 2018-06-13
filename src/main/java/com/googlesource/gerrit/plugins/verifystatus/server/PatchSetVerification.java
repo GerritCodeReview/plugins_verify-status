@@ -14,13 +14,12 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
-import java.sql.Timestamp;
-import java.util.Objects;
-
 import com.google.gerrit.reviewdb.client.LabelId;
 import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gwtorm.client.Column;
 import com.google.gwtorm.client.CompoundKey;
+import java.sql.Timestamp;
+import java.util.Objects;
 
 public class PatchSetVerification {
 
@@ -91,11 +90,9 @@ public class PatchSetVerification {
   @Column(id = 11)
   protected boolean rerun;
 
-  protected PatchSetVerification() {
-  }
+  protected PatchSetVerification() {}
 
-  public PatchSetVerification(PatchSetVerification.Key k, short v,
-      Timestamp ts) {
+  public PatchSetVerification(PatchSetVerification.Key k, short v, Timestamp ts) {
     key = k;
     setValue(v);
     setGranted(ts);
@@ -199,15 +196,21 @@ public class PatchSetVerification {
 
   @Override
   public String toString() {
-    return new StringBuilder().append('[').append(key).append(": ")
-        .append(value).append(']').toString();
+    return new StringBuilder()
+        .append('[')
+        .append(key)
+        .append(": ")
+        .append(value)
+        .append(']')
+        .toString();
   }
 
   @Override
   public boolean equals(Object o) {
     if (o instanceof PatchSetVerification) {
       PatchSetVerification p = (PatchSetVerification) o;
-      return Objects.equals(key, p.key) && Objects.equals(value, p.value)
+      return Objects.equals(key, p.key)
+          && Objects.equals(value, p.value)
           && Objects.equals(granted, p.granted);
     }
     return false;

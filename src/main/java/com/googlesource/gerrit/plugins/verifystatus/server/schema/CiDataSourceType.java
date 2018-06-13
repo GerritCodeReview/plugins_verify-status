@@ -26,8 +26,8 @@ public interface CiDataSourceType {
   public boolean usePool();
 
   /**
-   * Return a ScriptRunner that runs the index script. Must not return
-   * {@code null}, but may return a ScriptRunner that does nothing.
+   * Return a ScriptRunner that runs the index script. Must not return {@code null}, but may return
+   * a ScriptRunner that does nothing.
    *
    * @throws IOException
    */

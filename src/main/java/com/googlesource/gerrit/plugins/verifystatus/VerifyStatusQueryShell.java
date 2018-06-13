@@ -26,9 +26,7 @@ import com.google.gwtorm.server.OrmException;
 import com.google.gwtorm.server.SchemaFactory;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
-
 import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,7 +53,9 @@ public class VerifyStatusQueryShell {
   }
 
   public static enum OutputFormat {
-    PRETTY, JSON, JSON_SINGLE
+    PRETTY,
+    JSON,
+    JSON_SINGLE
   }
 
   private final BufferedReader in;
@@ -68,9 +68,8 @@ public class VerifyStatusQueryShell {
   private Statement statement;
 
   @Inject
-  VerifyStatusQueryShell(SchemaFactory<CiDb> dbFactory,
-      @Assisted InputStream in,
-      @Assisted OutputStream out) {
+  VerifyStatusQueryShell(
+      SchemaFactory<CiDb> dbFactory, @Assisted InputStream in, @Assisted OutputStream out) {
     this.dbFactory = dbFactory;
     this.in = new BufferedReader(new InputStreamReader(in, UTF_8));
     this.out = new PrintWriter(new OutputStreamWriter(out, UTF_8));
@@ -134,7 +133,7 @@ public class VerifyStatusQueryShell {
   private void readEvalPrintLoop() {
     final StringBuilder buffer = new StringBuilder();
     boolean executed = false;
-    for (;;) {
+    for (; ; ) {
       if (outputFormat == OutputFormat.PRETTY) {
         print(buffer.length() == 0 || executed ? "gerrit> " : "     -> ");
       }
@@ -179,13 +178,14 @@ public class VerifyStatusQueryShell {
           final String msg = "'\\" + line + "' not supported";
           switch (outputFormat) {
             case JSON_SINGLE:
-            case JSON: {
-              final JsonObject err = new JsonObject();
-              err.addProperty("type", "error");
-              err.addProperty("message", msg);
-              println(err.toString());
-              break;
-            }
+            case JSON:
+              {
+                final JsonObject err = new JsonObject();
+                err.addProperty("type", "error");
+                err.addProperty("message", msg);
+                println(err.toString());
+                break;
+              }
             case PRETTY:
             default:
               println("ERROR: " + msg);
@@ -227,7 +227,10 @@ public class VerifyStatusQueryShell {
       if (outputFormat == OutputFormat.PRETTY) {
         println("                     List of relations");
       }
-      showResultSet(rs, false, 0,
+      showResultSet(
+          rs,
+          false,
+          0,
           Identity.create(rs, "TABLE_SCHEM"),
           Identity.create(rs, "TABLE_NAME"),
           Identity.create(rs, "TABLE_TYPE"));
@@ -261,7 +264,10 @@ public class VerifyStatusQueryShell {
       if (outputFormat == OutputFormat.PRETTY) {
         println("                     Table " + tableName);
       }
-      showResultSet(rs, true, 0,
+      showResultSet(
+          rs,
+          true,
+          0,
           Identity.create(rs, "COLUMN_NAME"),
           new Function("TYPE") {
             @Override
@@ -358,14 +364,15 @@ public class VerifyStatusQueryShell {
         final long ms = TimeUtil.nowMs() - start;
         switch (outputFormat) {
           case JSON_SINGLE:
-          case JSON: {
-            final JsonObject tail = new JsonObject();
-            tail.addProperty("type", "update-stats");
-            tail.addProperty("rowCount", updateCount);
-            tail.addProperty("runTimeMilliseconds", ms);
-            println(tail.toString());
-            break;
-          }
+          case JSON:
+            {
+              final JsonObject tail = new JsonObject();
+              tail.addProperty("type", "update-stats");
+              tail.addProperty("rowCount", updateCount);
+              tail.addProperty("runTimeMilliseconds", ms);
+              println(tail.toString());
+              break;
+            }
 
           case PRETTY:
           default:
@@ -382,20 +389,19 @@ public class VerifyStatusQueryShell {
    * Outputs a result set to stdout.
    *
    * @param rs ResultSet to show.
-   * @param alreadyOnRow true if rs is already on the first row. false
-   *     otherwise.
-   * @param start Timestamp in milliseconds when executing the statement
-   *     started. This timestamp is used to compute statistics about the
-   *     statement. If no statistics should be shown, set it to 0.
+   * @param alreadyOnRow true if rs is already on the first row. false otherwise.
+   * @param start Timestamp in milliseconds when executing the statement started. This timestamp is
+   *     used to compute statistics about the statement. If no statistics should be shown, set it to
+   *     0.
    * @param show Functions to map columns
    * @throws SQLException
    */
-  private void showResultSet(final ResultSet rs, boolean alreadyOnRow,
-      long start, Function... show) throws SQLException {
+  private void showResultSet(final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
+      throws SQLException {
     switch (outputFormat) {
       case JSON_SINGLE:
       case JSON:
-        showResultSetJson(rs, alreadyOnRow,  start, show);
+        showResultSetJson(rs, alreadyOnRow, start, show);
         break;
       case PRETTY:
       default:
@@ -408,16 +414,15 @@ public class VerifyStatusQueryShell {
    * Outputs a result set to stdout in Json format.
    *
    * @param rs ResultSet to show.
-   * @param alreadyOnRow true if rs is already on the first row. false
-   *     otherwise.
-   * @param start Timestamp in milliseconds when executing the statement
-   *     started. This timestamp is used to compute statistics about the
-   *     statement. If no statistics should be shown, set it to 0.
+   * @param alreadyOnRow true if rs is already on the first row. false otherwise.
+   * @param start Timestamp in milliseconds when executing the statement started. This timestamp is
+   *     used to compute statistics about the statement. If no statistics should be shown, set it to
+   *     0.
    * @param show Functions to map columns
    * @throws SQLException
    */
-  private void showResultSetJson(final ResultSet rs, boolean alreadyOnRow,
-      long start, Function... show) throws SQLException {
+  private void showResultSetJson(
+      final ResultSet rs, boolean alreadyOnRow, long start, Function... show) throws SQLException {
     JsonArray collector = new JsonArray();
     final ResultSetMetaData meta = rs.getMetaData();
     final Function[] columnMap;
@@ -498,16 +503,15 @@ public class VerifyStatusQueryShell {
    * Outputs a result set to stdout in plain text format.
    *
    * @param rs ResultSet to show.
-   * @param alreadyOnRow true if rs is already on the first row. false
-   *     otherwise.
-   * @param start Timestamp in milliseconds when executing the statement
-   *     started. This timestamp is used to compute statistics about the
-   *     statement. If no statistics should be shown, set it to 0.
+   * @param alreadyOnRow true if rs is already on the first row. false otherwise.
+   * @param start Timestamp in milliseconds when executing the statement started. This timestamp is
+   *     used to compute statistics about the statement. If no statistics should be shown, set it to
+   *     0.
    * @param show Functions to map columns
    * @throws SQLException
    */
-  private void showResultSetPretty(final ResultSet rs, boolean alreadyOnRow,
-      long start, Function... show) throws SQLException {
+  private void showResultSetPretty(
+      final ResultSet rs, boolean alreadyOnRow, long start, Function... show) throws SQLException {
     final ResultSetMetaData meta = rs.getMetaData();
 
     final Function[] columnMap;
@@ -609,21 +613,21 @@ public class VerifyStatusQueryShell {
     if (start != 0) {
       final int rowCount = rows.size();
       final long ms = TimeUtil.nowMs() - start;
-      println("(" + rowCount + (rowCount == 1 ? " row" : " rows")
-          + "; " + ms + " ms)");
+      println("(" + rowCount + (rowCount == 1 ? " row" : " rows") + "; " + ms + " ms)");
     }
   }
 
   private void warning(final String msg) {
     switch (outputFormat) {
       case JSON_SINGLE:
-      case JSON: {
-        final JsonObject obj = new JsonObject();
-        obj.addProperty("type", "warning");
-        obj.addProperty("message", msg);
-        println(obj.toString());
-        break;
-      }
+      case JSON:
+        {
+          final JsonObject obj = new JsonObject();
+          obj.addProperty("type", "warning");
+          obj.addProperty("message", msg);
+          println(obj.toString());
+          break;
+        }
 
       case PRETTY:
       default:
@@ -635,13 +639,14 @@ public class VerifyStatusQueryShell {
   private void error(final SQLException err) {
     switch (outputFormat) {
       case JSON_SINGLE:
-      case JSON: {
-        final JsonObject obj = new JsonObject();
-        obj.addProperty("type", "error");
-        obj.addProperty("message", err.getMessage());
-        println(obj.toString());
-        break;
-      }
+      case JSON:
+        {
+          final JsonObject obj = new JsonObject();
+          obj.addProperty("type", "error");
+          obj.addProperty("message", err.getMessage());
+          println(obj.toString());
+          break;
+        }
 
       case PRETTY:
       default:
@@ -718,8 +723,7 @@ public class VerifyStatusQueryShell {
   }
 
   private static class Identity extends Function {
-    static Identity create(final ResultSet rs, final String name)
-        throws SQLException {
+    static Identity create(final ResultSet rs, final String name) throws SQLException {
       return new Identity(rs.findColumn(name), name);
     }
 

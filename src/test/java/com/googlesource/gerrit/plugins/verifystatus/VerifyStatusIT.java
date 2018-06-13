@@ -26,56 +26,52 @@ import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.UseLocalDisk;
 import com.google.gson.reflect.TypeToken;
 import com.google.gwtorm.jdbc.SimpleDataSource;
-
 import com.googlesource.gerrit.plugins.verifystatus.common.VerificationInfo;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerifyInput;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import org.junit.Before;
+import org.junit.Test;
 
 @TestPlugin(
     name = "verify-status",
     sysModule = "com.googlesource.gerrit.plugins.verifystatus.GlobalModule",
     httpModule = "com.googlesource.gerrit.plugins.verifystatus.HttpModule",
-    sshModule = "com.googlesource.gerrit.plugins.verifystatus.SshModule"
-)
+    sshModule = "com.googlesource.gerrit.plugins.verifystatus.SshModule")
 public class VerifyStatusIT extends LightweightPluginDaemonTest {
-  private final static String NAME = "verify-status";
-  private final static String DB_TYPE_CONFIG = "plugin." + NAME + ".dbType";
-  private final static String DB_URL_CONFIG = "plugin." + NAME + ".dbUrl";
-  private final static String H2 = "h2";
-  private final static String URL = "jdbc:h2:mem:TestCiDB;DB_CLOSE_DELAY=-1";
-  private final static String TABLE = "PATCH_SET_VERIFICATIONS";
+  private static final String NAME = "verify-status";
+  private static final String DB_TYPE_CONFIG = "plugin." + NAME + ".dbType";
+  private static final String DB_URL_CONFIG = "plugin." + NAME + ".dbUrl";
+  private static final String H2 = "h2";
+  private static final String URL = "jdbc:h2:mem:TestCiDB;DB_CLOSE_DELAY=-1";
+  private static final String TABLE = "PATCH_SET_VERIFICATIONS";
   private static final String CREATE_TABLE =
-      "CREATE       TABLE IF NOT EXISTS " + TABLE + " (" +
-      "VALUE        SMALLINT DEFAULT 0 NOT NULL," +
-      "GRANTED      TIMESTAMP NOT NULL," +
-      "URL          VARCHAR(255)," +
-      "REPORTER     VARCHAR(255)," +
-      "COMMENT      VARCHAR(255)," +
-      "CATEGORY     VARCHAR(255)," +
-      "DURATION     VARCHAR(255)," +
-      "ABSTAIN      CHAR(1) DEFAULT 'N' NOT NULL," +
-      "RERUN        CHAR(1) DEFAULT 'N' NOT NULL," +
-      "NAME         VARCHAR(255)," +
-      "CHANGE_ID    INTEGER DEFAULT 0 NOT NULL," +
-      "PATCH_SET_ID INTEGER DEFAULT 0 NOT NULL," +
-      "JOB_ID       VARCHAR(255) DEFAULT '' NOT NULL)";
-  private static final String DELETE_TABLE =
-      "DELETE FROM " + TABLE;
+      "CREATE       TABLE IF NOT EXISTS "
+          + TABLE
+          + " ("
+          + "VALUE        SMALLINT DEFAULT 0 NOT NULL,"
+          + "GRANTED      TIMESTAMP NOT NULL,"
+          + "URL          VARCHAR(255),"
+          + "REPORTER     VARCHAR(255),"
+          + "COMMENT      VARCHAR(255),"
+          + "CATEGORY     VARCHAR(255),"
+          + "DURATION     VARCHAR(255),"
+          + "ABSTAIN      CHAR(1) DEFAULT 'N' NOT NULL,"
+          + "RERUN        CHAR(1) DEFAULT 'N' NOT NULL,"
+          + "NAME         VARCHAR(255),"
+          + "CHANGE_ID    INTEGER DEFAULT 0 NOT NULL,"
+          + "PATCH_SET_ID INTEGER DEFAULT 0 NOT NULL,"
+          + "JOB_ID       VARCHAR(255) DEFAULT '' NOT NULL)";
+  private static final String DELETE_TABLE = "DELETE FROM " + TABLE;
 
   @Before
   @Override
   public void setUp() throws Exception {
     super.setUp();
-    allowGlobalCapabilities(REGISTERED_USERS,
-        SaveReportCapability.getName(NAME));
+    allowGlobalCapabilities(REGISTERED_USERS, SaveReportCapability.getName(NAME));
 
     Properties p = new Properties();
     p.setProperty("driver", "org.h2.Driver");
@@ -193,8 +189,7 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
     assertVerification(Iterables.getOnlyElement(infos.values()), i);
   }
 
-  private Map<String, VerificationInfo> getVerifications(Result c, String filter)
-      throws Exception {
+  private Map<String, VerificationInfo> getVerifications(Result c, String filter) throws Exception {
     String endPoint = url(c);
     if (filter != null) {
       endPoint += "/?filter=" + filter;
@@ -202,20 +197,19 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
     RestResponse r = adminRestSession.get(endPoint);
     r.assertOK();
 
-    return newGson().fromJson(r.getReader(),
-        new TypeToken<Map<String, VerificationInfo>>() {}.getType());
+    return newGson()
+        .fromJson(r.getReader(), new TypeToken<Map<String, VerificationInfo>>() {}.getType());
   }
 
   private String url(Result c) throws Exception {
-    return "/changes/" +
-        c.getChangeId() +
-        "/revisions/" +
-        c.getPatchSetId().get() +
-        "/verify-status~verifications";
+    return "/changes/"
+        + c.getChangeId()
+        + "/revisions/"
+        + c.getPatchSetId().get()
+        + "/verify-status~verifications";
   }
 
-  private static void assertVerification(VerificationInfo r,
-      VerificationInfo e) {
+  private static void assertVerification(VerificationInfo r, VerificationInfo e) {
     assertThat(r.value).isEqualTo(e.value);
     assertThat(r.reporter).isEqualTo(e.reporter);
     assertThat(r.comment).isEqualTo(e.comment);
