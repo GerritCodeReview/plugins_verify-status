@@ -52,12 +52,11 @@ public class SaveCommand extends SshCommand {
   private final Set<PatchSet> patchSets = new HashSet<>();
 
   @Argument(
-    index = 0,
-    required = true,
-    multiValued = true,
-    metaVar = "{COMMIT | CHANGE,PATCHSET}",
-    usage = "list of commits or patch sets to verify"
-  )
+      index = 0,
+      required = true,
+      multiValued = true,
+      metaVar = "{COMMIT | CHANGE,PATCHSET}",
+      usage = "list of commits or patch sets to verify")
   void addPatchSetId(String token) {
     try {
       PatchSet ps = psParser.parsePatchSet(token, projectControl, branch);
@@ -70,21 +69,19 @@ public class SaveCommand extends SshCommand {
   }
 
   @Option(
-    name = "--project",
-    aliases = "-p",
-    usage = "project containing the specified patch set(s)"
-  )
+      name = "--project",
+      aliases = "-p",
+      usage = "project containing the specified patch set(s)")
   private ProjectControl projectControl;
 
   @Option(name = "--branch", aliases = "-b", usage = "branch containing the specified patch set(s)")
   private String branch;
 
   @Option(
-    name = "--verification",
-    aliases = "-v",
-    usage = "verification to set the result for",
-    metaVar = "VERIFY=OUTCOME"
-  )
+      name = "--verification",
+      aliases = "-v",
+      usage = "verification to set the result for",
+      metaVar = "VERIFY=OUTCOME")
   void addJob(String token) {
     parseWithEquals(token);
   }
