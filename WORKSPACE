@@ -34,7 +34,7 @@ gerrit_gwt()
 load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl", "maven_jar")
 
 maven_jar(
-    name = "commons_dbcp",
+    name = "commons-dbcp",
     artifact = "commons-dbcp:commons-dbcp:1.4",
     sha1 = "30be73c965cc990b153a100aaaaafcf239f82d39",
 )
