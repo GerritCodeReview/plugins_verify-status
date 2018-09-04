@@ -37,11 +37,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 @TestPlugin(
-  name = "verify-status",
-  sysModule = "com.googlesource.gerrit.plugins.verifystatus.GlobalModule",
-  httpModule = "com.googlesource.gerrit.plugins.verifystatus.HttpModule",
-  sshModule = "com.googlesource.gerrit.plugins.verifystatus.SshModule"
-)
+    name = "verify-status",
+    sysModule = "com.googlesource.gerrit.plugins.verifystatus.GlobalModule",
+    httpModule = "com.googlesource.gerrit.plugins.verifystatus.HttpModule",
+    sshModule = "com.googlesource.gerrit.plugins.verifystatus.SshModule")
 public class VerifyStatusIT extends LightweightPluginDaemonTest {
   private static final String NAME = "verify-status";
   private static final String DB_TYPE_CONFIG = "plugin." + NAME + ".dbType";

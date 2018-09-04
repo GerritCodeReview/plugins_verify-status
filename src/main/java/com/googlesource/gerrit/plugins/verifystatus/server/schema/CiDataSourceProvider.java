@@ -105,7 +105,7 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
   }
 
   private DataSource open(Context context, CiDataSourceType dst) {
-    //ConfigSection dbs = new ConfigSection(cfg, "database");
+    // ConfigSection dbs = new ConfigSection(cfg, "database");
     String driver = config.getString("driver");
     if (Strings.isNullOrEmpty(driver)) {
       driver = dst.getDriver();

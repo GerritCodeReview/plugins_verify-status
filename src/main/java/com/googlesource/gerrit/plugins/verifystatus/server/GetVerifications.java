@@ -43,21 +43,19 @@ public class GetVerifications implements RestReadView<RevisionResource> {
   private String filter;
 
   @Option(
-    name = "--sort",
-    aliases = {"-s"},
-    metaVar = "SORT",
-    usage = "Sort the list by an entry"
-  )
+      name = "--sort",
+      aliases = {"-s"},
+      metaVar = "SORT",
+      usage = "Sort the list by an entry")
   public void setSort(String sort) {
     this.sort = sort.toUpperCase();
   }
 
   @Option(
-    name = "--filter",
-    aliases = {"-f"},
-    metaVar = "FILTER",
-    usage = "filter the results"
-  )
+      name = "--filter",
+      aliases = {"-f"},
+      metaVar = "FILTER",
+      usage = "filter the results")
   public void setFilter(String filter) {
     this.filter = filter.toUpperCase();
   }

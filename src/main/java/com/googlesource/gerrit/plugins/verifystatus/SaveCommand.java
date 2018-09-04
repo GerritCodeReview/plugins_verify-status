@@ -26,6 +26,7 @@ import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gerrit.server.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.change.Revisions;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
@@ -51,12 +52,11 @@ public class SaveCommand extends SshCommand {
   private final Set<PatchSet> patchSets = new HashSet<>();
 
   @Argument(
-    index = 0,
-    required = true,
-    multiValued = true,
-    metaVar = "{COMMIT | CHANGE,PATCHSET}",
-    usage = "list of commits or patch sets to verify"
-  )
+      index = 0,
+      required = true,
+      multiValued = true,
+      metaVar = "{COMMIT | CHANGE,PATCHSET}",
+      usage = "list of commits or patch sets to verify")
   void addPatchSetId(String token) {
     try {
       PatchSet ps = psParser.parsePatchSet(token, projectControl, branch);
@@ -69,21 +69,19 @@ public class SaveCommand extends SshCommand {
   }
 
   @Option(
-    name = "--project",
-    aliases = "-p",
-    usage = "project containing the specified patch set(s)"
-  )
+      name = "--project",
+      aliases = "-p",
+      usage = "project containing the specified patch set(s)")
   private ProjectControl projectControl;
 
   @Option(name = "--branch", aliases = "-b", usage = "branch containing the specified patch set(s)")
   private String branch;
 
   @Option(
-    name = "--verification",
-    aliases = "-v",
-    usage = "verification to set the result for",
-    metaVar = "VERIFY=OUTCOME"
-  )
+      name = "--verification",
+      aliases = "-v",
+      usage = "verification to set the result for",
+      metaVar = "VERIFY=OUTCOME")
   void addJob(String token) {
     parseWithEquals(token);
   }
@@ -148,7 +146,7 @@ public class SaveCommand extends SshCommand {
   }
 
   private void applyVerification(PatchSet patchSet, VerifyInput verify)
-      throws RestApiException, OrmException, IOException {
+      throws RestApiException, OrmException, IOException, PermissionBackendException {
     RevisionResource revResource =
         revisions.parse(
             changes.parse(patchSet.getId().getParentKey()),
@@ -161,7 +159,7 @@ public class SaveCommand extends SshCommand {
     verify.verifications = jobResult;
     try {
       applyVerification(patchSet, verify);
-    } catch (RestApiException | OrmException | IOException e) {
+    } catch (RestApiException | OrmException | IOException | PermissionBackendException e) {
       throw PatchSetParser.error(e.getMessage());
     }
   }
