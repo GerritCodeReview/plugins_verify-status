@@ -69,8 +69,8 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
 
   @Before
   @Override
-  public void setUp() throws Exception {
-    super.setUp();
+  public void setUpTestPlugin() throws Exception {
+    super.setUpTestPlugin();
     allowGlobalCapabilities(REGISTERED_USERS, SaveReportCapability.getName(NAME));
 
     Properties p = new Properties();
