@@ -23,11 +23,11 @@ import com.google.gerrit.extensions.annotations.RequiresCapability;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.reviewdb.client.PatchSet;
-import com.google.gerrit.server.change.ChangesCollection;
+import com.google.gerrit.server.restapi.change.ChangesCollection;
 import com.google.gerrit.server.change.RevisionResource;
-import com.google.gerrit.server.change.Revisions;
+import com.google.gerrit.server.restapi.change.Revisions;
 import com.google.gerrit.server.permissions.PermissionBackendException;
-import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectState;
 import com.google.gerrit.sshd.CommandMetaData;
 import com.google.gerrit.sshd.SshCommand;
 import com.google.gerrit.sshd.commands.PatchSetParser;
@@ -59,7 +59,7 @@ public class SaveCommand extends SshCommand {
       usage = "list of commits or patch sets to verify")
   void addPatchSetId(String token) {
     try {
-      PatchSet ps = psParser.parsePatchSet(token, projectControl, branch);
+      PatchSet ps = psParser.parsePatchSet(token, projectState, branch);
       patchSets.add(ps);
     } catch (UnloggedFailure e) {
       throw new IllegalArgumentException(e.getMessage(), e);
@@ -72,7 +72,7 @@ public class SaveCommand extends SshCommand {
       name = "--project",
       aliases = "-p",
       usage = "project containing the specified patch set(s)")
-  private ProjectControl projectControl;
+  private ProjectState projectState;
 
   @Option(name = "--branch", aliases = "-b", usage = "branch containing the specified patch set(s)")
   private String branch;
