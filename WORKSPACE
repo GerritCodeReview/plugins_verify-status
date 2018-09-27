@@ -33,8 +33,6 @@ gerrit_gwt()
 
 load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl", "maven_jar")
 
-maven_jar(
-    name = "commons-dbcp",
-    artifact = "commons-dbcp:commons-dbcp:1.4",
-    sha1 = "30be73c965cc990b153a100aaaaafcf239f82d39",
-)
+load("//:external_plugin_deps.bzl", "external_plugin_deps")
+
+external_plugin_deps()
