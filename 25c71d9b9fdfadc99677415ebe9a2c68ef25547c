@@ -22,6 +22,30 @@
       "revId": "25c71d9b9fdfadc99677415ebe9a2c68ef25547c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6682184_3b867f50",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-10-11T02:25:19Z",
+      "side": 1,
+      "message": "No, it\u0027s not.  This is a glitch in my automation that needs to be fixed.",
+      "parentUuid": "fc261620_af834b38",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "25c71d9b9fdfadc99677415ebe9a2c68ef25547c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
