@@ -3,7 +3,7 @@ workspace(name = "verify_status")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "88570121c377a8a94c76915566114bf02113a7d9",
+    commit = "6d3fd710ea4ca44805bb8c858d72b53bd3a500f3",
     # local_path = "/home/<user>/projects/bazlets",
 )
 
@@ -36,5 +36,5 @@ load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl", "maven_jar")
 maven_jar(
     name = "commons-dbcp",
     artifact = "commons-dbcp:commons-dbcp:1.4",
-    sha1 = "30be73c965cc990b153a100aaaaafcf239f82d39",
+    sha1 = "6d3fd710ea4ca44805bb8c858d72b53bd3a500f3",
 )
