@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f0ec73a_18c96678",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-12-05T07:20:44Z",
+      "side": 1,
+      "message": "\"Merge branch stable-2.14 into stable-2.15",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 66
+      },
+      "revId": "420340d839c9a4141a831a63e960243342239a82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0095aa_8d5f1431",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-12-05T07:20:44Z",
+      "side": 1,
+      "message": "Please let git automatically generate the change log by using the --log option on git merge",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "420340d839c9a4141a831a63e960243342239a82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
