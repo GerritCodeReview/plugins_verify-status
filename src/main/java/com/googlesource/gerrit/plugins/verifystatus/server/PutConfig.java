@@ -37,6 +37,10 @@ public class PutConfig implements RestModifyView<ConfigResource, Input> {
     public Boolean showJobsPanel;
     public Boolean showJobsDropDownPanel;
     public Boolean showJobsSummaryPanel;
+    public Boolean showJobsBelowRelatedInfoBlock;
+    public Boolean enableInProgressStatus;
+    public String sortJobsPanel;
+    public String sortJobsDropDownPanel;
   }
 
   private final PluginConfigFactory cfgFactory;
@@ -73,6 +77,34 @@ public class PutConfig implements RestModifyView<ConfigResource, Input> {
       cfg.setBoolean("plugin", pluginName, "showJobsSummaryPanel", input.showJobsSummaryPanel);
     } else {
       cfg.unset("plugin", pluginName, "showJobsSummaryPanel");
+    }
+    if (input.showJobsBelowRelatedInfoBlock != null) {
+      cfg.setBoolean(
+          "plugin",
+          pluginName,
+          "showJobsBelowRelatedInfoBlock",
+          input.showJobsBelowRelatedInfoBlock);
+    } else {
+      cfg.unset("plugin", pluginName, "showJobsBelowRelatedInfoBlock");
+    }
+    if (input.enableInProgressStatus != null) {
+      cfg.setBoolean("plugin", pluginName, "enableInProgressStatus", input.enableInProgressStatus);
+    } else {
+      cfg.unset("plugin", pluginName, "enableInProgressStatus");
+    }
+    if (input.sortJobsPanel != null) {
+      cfg.setEnum("plugin", pluginName, "sortJobsPanel", JobsSorting.valueOf(input.sortJobsPanel));
+    } else {
+      cfg.unset("plugin", pluginName, "sortJobsPanel");
+    }
+    if (input.sortJobsDropDownPanel != null) {
+      cfg.setEnum(
+          "plugin",
+          pluginName,
+          "sortJobsDropDownPanel",
+          JobsSorting.valueOf(input.sortJobsDropDownPanel));
+    } else {
+      cfg.unset("plugin", pluginName, "sortJobsDropDownPanel");
     }
 
     cfg.save();

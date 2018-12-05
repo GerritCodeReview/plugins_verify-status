@@ -47,9 +47,8 @@ public class PostVerification implements RestModifyView<RevisionResource, Verify
 
   @Inject
   PostVerification(SchemaFactory<CiDb> schemaFactory) {
-    this.schemaFactory = schemaFactory;
+          this.schemaFactory = schemaFactory;
   }
-
   @Override
   public Response<?> apply(RevisionResource revision, VerifyInput input)
       throws BadRequestException, OrmException {
