@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.InlineLabel;
 /** Extension for change screen that displays a status in the header bar. */
 public class JobsDropDownPanel extends FlowPanel {
   static class Factory implements Panel.EntryPoint {
+    private final ConfigInfo info;
+
+    public Factory(ConfigInfo info) {
+      this.info = info;
+    }
+
     @Override
     public void onLoad(Panel panel) {
       RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
@@ -41,11 +47,11 @@ public class JobsDropDownPanel extends FlowPanel {
         return;
       }
 
-      panel.setWidget(new JobsDropDownPanel(panel));
+      panel.setWidget(new JobsDropDownPanel(panel, info));
     }
   }
 
-  JobsDropDownPanel(Panel panel) {
+  JobsDropDownPanel(Panel panel, ConfigInfo info) {
     ChangeInfo change = panel.getObject(GerritUiExtensionPoint.Key.CHANGE_INFO).cast();
     String decodedChangeId = URL.decodePathSegment(change.id());
     RevisionInfo rev = panel.getObject(GerritUiExtensionPoint.Key.REVISION_INFO).cast();
@@ -54,7 +60,7 @@ public class JobsDropDownPanel extends FlowPanel {
         .view("revisions")
         .id(rev.id())
         .view(Plugin.get().getPluginName(), "verifications")
-        .addParameter("sort", "REPORTER")
+        .addParameter("sort", info.sortJobsDropDownPanel())
         .addParameter("filter", "CURRENT")
         .get(
             new AsyncCallback<NativeMap<VerificationInfo>>() {
