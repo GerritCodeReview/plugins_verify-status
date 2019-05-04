@@ -16,6 +16,24 @@
       "revId": "7d5cd1e54d79f2608cad1d8fd8eaa3954f2dcb1a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe671710_c97bf117",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-05-04T00:56:02Z",
+      "side": 1,
+      "message": "Never mind.  This plugin is not yet buildable with master.",
+      "parentUuid": "f7ae8bf3_01176996",
+      "revId": "7d5cd1e54d79f2608cad1d8fd8eaa3954f2dcb1a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
