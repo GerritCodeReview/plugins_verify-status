@@ -27,7 +27,16 @@ java_test(
     srcs = ["src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java"],
     tags = ["verify-status"],
     test_class = "com.googlesource.gerrit.plugins.verifystatus.VerifyStatusIT",
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+    deps = [
+        ":verify-status__plugin_test_deps",
+    ],
+)
+
+java_library(
+    name = "verify-status__plugin_test_deps",
+    testonly = 1,
+    visibility = ["//visibility:public"],
+    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":verify-status__plugin",
     ],
 )
