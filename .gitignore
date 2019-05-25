@@ -7,3 +7,4 @@ bazel-genfiles
 bazel-out
 bazel-testlogs
 bazel-verify-status
+eclipse-out
