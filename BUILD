@@ -22,7 +22,7 @@ gerrit_plugin(
 )
 
 java_test(
-    name = "verify-status-tests",
+    name = "verify-status_tests",
     size = "small",
     srcs = ["src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java"],
     tags = ["verify-status"],
