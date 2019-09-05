@@ -1,9 +1,11 @@
+load("@rules_java//java:defs.bzl", "java_library")
 load(
     "//tools/bzl:plugin.bzl",
     "PLUGIN_DEPS",
     "PLUGIN_TEST_DEPS",
     "gerrit_plugin",
 )
+load("//tools/bzl:junit.bzl", "junit_tests")
 
 gerrit_plugin(
     name = "verify-status",
@@ -21,12 +23,11 @@ gerrit_plugin(
     resources = glob(["src/main/**/*"]),
 )
 
-java_test(
+junit_tests(
     name = "verify-status_tests",
     size = "small",
     srcs = ["src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java"],
     tags = ["verify-status"],
-    test_class = "com.googlesource.gerrit.plugins.verifystatus.VerifyStatusIT",
     deps = [
         ":verify-status__plugin_test_deps",
     ],
