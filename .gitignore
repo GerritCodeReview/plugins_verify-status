@@ -3,7 +3,6 @@
 /.settings
 *.pyc
 bazel-bin
-bazel-genfiles
 bazel-out
 bazel-testlogs
 bazel-verify-status
