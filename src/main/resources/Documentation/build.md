@@ -27,7 +27,7 @@ The output is created in
 To execute the tests run:
 
 ```
-  bazel test verify_status_tests
+  bazel test verify-status_tests
 ```
 
 ### Build in Gerrit tree
@@ -64,7 +64,7 @@ and issue the command:
 To execute the tests run:
 
 ```
-  bazel test plugins/verify-status:verify_status_tests
+  bazel test plugins/verify-status:verify-status_tests
 ```
 
 How to build the Gerrit Plugin API is described in the [Gerrit
