@@ -27,7 +27,7 @@ The output is created in
 To execute the tests run:
 
 ```
-  bazel test verify_status_tests
+  bazel test verify-status_tests
 ```
 
 ### Build in Gerrit tree
