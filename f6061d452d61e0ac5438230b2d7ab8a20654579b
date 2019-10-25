@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e30dc69_adf035cc",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2019-10-25T14:23:52Z",
+      "side": 1,
+      "message": "\u003cspan class",
+      "range": {
+        "startLine": 39,
+        "startChar": 70,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "f6061d452d61e0ac5438230b2d7ab8a20654579b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
