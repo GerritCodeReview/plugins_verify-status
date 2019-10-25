@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fbd2742_53a8aaad",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce049f20_2d0e40fd",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e00a60_1fa3c73d",
         "filename": "gr-verify-status-plugin.html",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddbdb846_4a9dabf7",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e00a60_1fa3c73d",
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "92fa795c_e027280e",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1db7e7fd_af8d1cc5",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f985873_75c453d6",
         "filename": "gr-verify-status-plugin.html",
         "patchSetId": 5
@@ -85,6 +151,30 @@
       "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2900d120_fba5db28",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f985873_75c453d6",
+      "range": {
+        "startLine": 40,
+        "startChar": 70,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4142ea7d_c9b25086",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae67fc7e_f0c4a0de",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e4f797_6e83b25e",
         "filename": "gr-verify-status-plugin.html",
         "patchSetId": 5
@@ -131,6 +245,30 @@
       "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4d401f_74e27d00",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e4f797_6e83b25e",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "12fae660_aa8d35b7",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a83cf35_7727ca0d",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90719e2b_f2c3cef4",
         "filename": "gr-verify-status-plugin.html",
         "patchSetId": 5
@@ -177,6 +339,30 @@
       "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d3b298_e586797f",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90719e2b_f2c3cef4",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "64bd6e8f_69694468",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00ea00c_ddc0799a",
+      "range": {
+        "startLine": 118,
+        "startChar": 32,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69fb7ef9_2848ecd5",
         "filename": "gr-verify-status-plugin.html",
         "patchSetId": 5
@@ -223,6 +433,30 @@
       "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "955e8f80_d3a6db7a",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-10-25T08:36:04Z",
+      "side": 1,
+      "message": "It actually the Polymer({ on line 71. The whole body is not indented enough.\nThe extra indent is from the commented out anonymous wrapper, that is in the examples, but did not work for me here. \nFixed by dedenting Polymer",
+      "parentUuid": "69fb7ef9_2848ecd5",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "acfe786d7aefd8850c374725bbdaa840cbcdb5b7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
