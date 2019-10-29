@@ -22,6 +22,29 @@
       "revId": "f6061d452d61e0ac5438230b2d7ab8a20654579b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70345c2_8f2d194a",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1036584
+      },
+      "writtenOn": "2019-10-29T19:41:00Z",
+      "side": 1,
+      "message": "Sorting order has a configurable option introduced here\nhttps://gerrit.googlesource.com/plugins/verify-status/+/d5b39321eaed68f8d52be06bcbea7d3dda499a88\n\nBack to then I added that option and would like to have it working here as well. So I want to prepare a patch for it but I don\u0027t see any nice way how to get that option value from inside this file. Do you have any advice how to implement it?",
+      "range": {
+        "startLine": 88,
+        "startChar": 56,
+        "endLine": 88,
+        "endChar": 64
+      },
+      "revId": "f6061d452d61e0ac5438230b2d7ab8a20654579b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
