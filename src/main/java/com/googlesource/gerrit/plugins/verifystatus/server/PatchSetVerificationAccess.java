@@ -14,8 +14,6 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
-import com.google.gerrit.reviewdb.client.Change;
-import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gwtorm.server.Access;
 import com.google.gwtorm.server.OrmException;
 import com.google.gwtorm.server.PrimaryKey;
@@ -29,8 +27,8 @@ public interface PatchSetVerificationAccess
   PatchSetVerification get(PatchSetVerification.Key key) throws OrmException;
 
   @Query("WHERE key.patchSetId.changeId = ?")
-  ResultSet<PatchSetVerification> byChange(Change.Id id) throws OrmException;
+  ResultSet<PatchSetVerification> byChange(DbChangeId id) throws OrmException;
 
   @Query("WHERE key.patchSetId = ?")
-  ResultSet<PatchSetVerification> byPatchSet(PatchSet.Id id) throws OrmException;
+  ResultSet<PatchSetVerification> byPatchSet(DbPatchSetId id) throws OrmException;
 }

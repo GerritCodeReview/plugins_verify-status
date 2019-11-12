@@ -22,6 +22,9 @@ gerrit_plugin(
         "Implementation-Title: Verify Status Plugin",
         "Implementation-URL: https://gerrit-review.googlesource.com/#/admin/projects/plugins/verify-status",
     ],
+    deps = [
+        "@gwtorm//jar",
+    ],
     resource_jars = [":gr-verify-status-static"],
     resources = glob(["src/main/**/*"]),
 )

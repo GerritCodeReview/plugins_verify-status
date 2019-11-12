@@ -15,17 +15,13 @@
 package com.googlesource.gerrit.plugins.verifystatus.server.schema;
 
 import com.google.common.collect.Lists;
-import com.google.gerrit.reviewdb.client.CurrentSchemaVersion;
-import com.google.gerrit.reviewdb.server.ReviewDb;
 import com.google.gwtorm.jdbc.JdbcExecutor;
 import com.google.gwtorm.jdbc.JdbcSchema;
 import com.google.gwtorm.server.OrmException;
 import com.google.gwtorm.server.StatementExecutor;
 import com.google.inject.Provider;
 import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collections;
 import java.util.List;
 
@@ -55,7 +51,7 @@ public abstract class SchemaVersion {
     return Integer.parseInt(n);
   }
 
-  /** @return the {@link CurrentSchemaVersion#versionNbr} this step targets. */
+  /** @return the version number this step targets. */
   public final int getVersionNbr() {
     return versionNbr;
   }
@@ -161,44 +157,5 @@ public abstract class SchemaVersion {
   protected void finish(CurrentSchemaVersion curr, CiDb db) throws OrmException {
     curr.versionNbr = versionNbr;
     db.schemaVersion().update(Collections.singleton(curr));
-  }
-
-  /** Rename an existing table. */
-  protected static void renameTable(ReviewDb db, String from, String to) throws OrmException {
-    JdbcSchema s = (JdbcSchema) db;
-    try (JdbcExecutor e = new JdbcExecutor(s)) {
-      s.renameTable(e, from, to);
-    }
-  }
-
-  /** Rename an existing column. */
-  protected static void renameColumn(ReviewDb db, String table, String from, String to)
-      throws OrmException {
-    JdbcSchema s = (JdbcSchema) db;
-    try (JdbcExecutor e = new JdbcExecutor(s)) {
-      s.renameField(e, table, from, to);
-    }
-  }
-
-  /** Execute an SQL statement. */
-  protected static void execute(ReviewDb db, String sql) throws SQLException {
-    try (Statement s = newStatement(db)) {
-      s.execute(sql);
-    }
-  }
-
-  /** Open a new single statement. */
-  protected static Statement newStatement(ReviewDb db) throws SQLException {
-    return ((JdbcSchema) db).getConnection().createStatement();
-  }
-
-  /** Open a new prepared statement. */
-  protected static PreparedStatement prepareStatement(ReviewDb db, String sql) throws SQLException {
-    return ((JdbcSchema) db).getConnection().prepareStatement(sql);
-  }
-
-  /** Open a new statement executor. */
-  protected static JdbcExecutor newExecutor(ReviewDb db) throws OrmException {
-    return new JdbcExecutor(((JdbcSchema) db).getConnection());
   }
 }

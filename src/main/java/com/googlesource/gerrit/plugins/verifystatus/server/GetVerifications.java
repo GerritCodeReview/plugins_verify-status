@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.verifystatus.server;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gerrit.common.Nullable;
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gwtorm.server.OrmException;
@@ -124,12 +125,16 @@ public class GetVerifications implements RestReadView<RevisionResource> {
   }
 
   @Override
-  public Map<String, VerificationInfo> apply(RevisionResource rsrc)
+  public Response<Map<String, VerificationInfo>> apply(RevisionResource rsrc)
       throws IOException, OrmException {
     Map<String, VerificationInfo> out = Maps.newLinkedHashMap();
     try (CiDb db = schemaFactory.open()) {
-      ResultSet<PatchSetVerification> rs =
-          db.patchSetVerifications().byPatchSet(rsrc.getPatchSet().getId());
+      DbPatchSetId id =
+          new DbPatchSetId(
+              new DbChangeId(rsrc.getPatchSet().id().changeId().get()),
+              rsrc.getPatchSet().id().get());
+
+      ResultSet<PatchSetVerification> rs = db.patchSetVerifications().byPatchSet(id);
       List<PatchSetVerification> result = rs.toList();
       List<PatchSetVerification> jobs = Lists.newLinkedList();
 
@@ -179,6 +184,6 @@ public class GetVerifications implements RestReadView<RevisionResource> {
         out.put(v.getJobId().get(), createVerificationInfo(v));
       }
     }
-    return out;
+    return Response.ok(out);
   }
 }

@@ -1,4 +1,4 @@
-// Copyright (C) 2015 The Android Open Source Project
+// Copyright (C) 2009 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,14 +14,15 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
-import com.google.gwtorm.server.Relation;
-import com.google.gwtorm.server.Schema;
+import com.google.gwtorm.server.Access;
+import com.google.gwtorm.server.OrmException;
+import com.google.gwtorm.server.PrimaryKey;
+import com.googlesource.gerrit.plugins.verifystatus.server.schema.CurrentSchemaVersion;
 
-public interface CiDb extends Schema {
-
-  @Relation(id = 1)
-  SchemaVersionAccess schemaVersion();
-
-  @Relation(id = 2)
-  PatchSetVerificationAccess patchSetVerifications();
+/** Access interface for {@link CurrentSchemaVersion}. */
+public interface SchemaVersionAccess
+    extends Access<CurrentSchemaVersion, CurrentSchemaVersion.Key> {
+  @Override
+  @PrimaryKey("singleton")
+  CurrentSchemaVersion get(CurrentSchemaVersion.Key key) throws OrmException;
 }
