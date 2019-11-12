@@ -21,7 +21,6 @@ import com.google.common.base.Strings;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.events.LifecycleListener;
-import com.google.gerrit.extensions.persistence.DataSourceInterceptor;
 import com.google.gerrit.metrics.CallbackMetric1;
 import com.google.gerrit.metrics.Description;
 import com.google.gerrit.metrics.Field;
@@ -29,6 +28,7 @@ import com.google.gerrit.metrics.MetricMaker;
 import com.google.gerrit.server.config.ConfigUtil;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.SitePaths;
+import com.google.gerrit.server.logging.Metadata;
 import com.google.gwtorm.jdbc.SimpleDataSource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -36,8 +36,6 @@ import com.google.inject.ProvisionException;
 import com.google.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -118,7 +116,6 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
 
     String username = config.getString("username");
     String password = config.getString("password");
-    String interceptor = config.getString("dataSourceInterceptorClass");
 
     boolean usePool;
     if (context == Context.SINGLE_USER) {
@@ -149,7 +146,7 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
       }
       ds.setInitialSize(ds.getMinIdle());
       exportPoolMetrics(ds);
-      return intercept(interceptor, ds);
+      return ds;
     }
     // Don't use the connection pool.
     try {
@@ -162,7 +159,7 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
       if (password != null) {
         p.setProperty("password", password);
       }
-      return intercept(interceptor, new SimpleDataSource(p));
+      return new SimpleDataSource(p);
     } catch (SQLException se) {
       throw new ProvisionException("Database unavailable", se);
     }
@@ -174,7 +171,7 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
             "sql/connection_pool/connections",
             Integer.class,
             new Description("SQL database connections").setGauge().setUnit("connections"),
-            Field.ofBoolean("active"));
+            Field.ofBoolean("active", Metadata.Builder::partial).build());
     metrics.newTrigger(
         cnt,
         new Runnable() {
@@ -186,24 +183,5 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
             }
           }
         });
-  }
-
-  private DataSource intercept(String interceptor, DataSource ds) {
-    if (interceptor == null) {
-      return ds;
-    }
-    try {
-      Constructor<?> c = Class.forName(interceptor).getConstructor();
-      DataSourceInterceptor datasourceInterceptor = (DataSourceInterceptor) c.newInstance();
-      return datasourceInterceptor.intercept("CiDb", ds);
-    } catch (ClassNotFoundException
-        | SecurityException
-        | NoSuchMethodException
-        | IllegalArgumentException
-        | InstantiationException
-        | IllegalAccessException
-        | InvocationTargetException e) {
-      throw new ProvisionException("Cannot intercept datasource", e);
-    }
   }
 }

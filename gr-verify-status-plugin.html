@@ -21,7 +21,8 @@ limitations under the License.
 </script>
 </dom-module>
 
-<dom-module id="gr-verify-status-panel"> <template>
+<dom-module id="gr-verify-status-panel">
+<template>
 <style include="gr-form-styles" type="text/css"></style>
 <style type="text/css">
     .u-green {
@@ -33,7 +34,6 @@ limitations under the License.
     }
 </style>
 
-<gr-verifiy-status-panel>
 <div id="verify-status">
     <span class="u-green">Passed:[[verifystatus.summary.passed]]</span>,
     <span class="u-red">Failed:[[verifystatus.summary.failed]]</span>, <span
@@ -53,7 +53,7 @@ limitations under the License.
     </table>
 </div>
 
-</gr-verifiy-status-panel> </template>
+</template>
 <script type="text/javascript">
 /*(function() {
   'use strict';*/
@@ -74,20 +74,21 @@ Polymer({
             /** @type {Defs.verifystatus} */
             type: Object,
         },
-        _verifystatus: {
-             /** @type {Defs.verifystatus} */
-             type: Object,
-             computed: '_fetchData(revision)',
+        revision: {
+            type: Object,
         },
+        change: {
+            type: Object,
+        }
     },
     attached() {
-        this.plugin.attributeHelper(this).bind('revision', this._onRevisionChanged.bind(this));
+        this._fetchData(this.revision);
     },
 
     _fetchData(revision) {
         const query ='/verify-status~verifications?sort=REPORTER&filter=CURRENT';
         const endpoint = '/changes/' + this.change.id + '/revisions/' +
-                         this.__data__.revision._number + query;
+                         revision._number + query;
 
         const errFn = response => {
             this.fire('page-error', {response});
@@ -109,11 +110,8 @@ Polymer({
                 results.push(check);
             };
 
-            this.set('verifystatus', {summary:summary, results: results});
+            this.verifystatus = {summary:summary, results: results};
         });
-    },
-    _onRevisionChanged(value) {
-        console.log(`(attributeHelper.bind) revision number: ${value._number}`);
     },
 });
 /*}());*/
