@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
 import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.config.ConfigResource;
 import com.google.gerrit.server.config.PluginConfig;
@@ -31,7 +32,7 @@ public class GetConfig implements RestReadView<ConfigResource> {
   }
 
   @Override
-  public ConfigInfo apply(ConfigResource resource) {
+  public Response<ConfigInfo> apply(ConfigResource resource) {
     ConfigInfo info = new ConfigInfo();
     info.showJobsPanel = cfg.getBoolean("showJobsPanel", true);
     info.showJobsDropDownPanel = cfg.getBoolean("showJobsDropDownPanel", true);
@@ -41,7 +42,7 @@ public class GetConfig implements RestReadView<ConfigResource> {
     info.sortJobsPanel = cfg.getEnum(JobsSorting.values(), "sortJobsPanel", JobsSorting.REPORTER);
     info.sortJobsDropDownPanel =
         cfg.getEnum(JobsSorting.values(), "sortJobsDropDownPanel", JobsSorting.REPORTER);
-    return info;
+    return Response.ok(info);
   }
 
   public static class ConfigInfo {

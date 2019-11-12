@@ -19,10 +19,11 @@ import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
+import com.google.gerrit.entities.PatchSet;
+import com.google.gerrit.exceptions.StorageException;
 import com.google.gerrit.extensions.annotations.RequiresCapability;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestApiException;
-import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectState;
@@ -63,7 +64,7 @@ public class SaveCommand extends SshCommand {
       patchSets.add(ps);
     } catch (UnloggedFailure e) {
       throw new IllegalArgumentException(e.getMessage(), e);
-    } catch (OrmException e) {
+    } catch (StorageException e) {
       throw new IllegalArgumentException("database error", e);
     }
   }
@@ -149,8 +150,7 @@ public class SaveCommand extends SshCommand {
       throws RestApiException, OrmException, IOException, PermissionBackendException {
     RevisionResource revResource =
         revisions.parse(
-            changes.parse(patchSet.getId().getParentKey()),
-            IdString.fromUrl(patchSet.getId().getId()));
+            changes.parse(patchSet.id().changeId()), IdString.fromUrl(patchSet.id().getId()));
     postVerification.apply(revResource, verify);
   }
 
