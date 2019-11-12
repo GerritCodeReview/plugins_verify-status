@@ -14,9 +14,6 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server.schema;
 
-import static com.google.gerrit.server.schema.JdbcUtil.hostname;
-import static com.google.gerrit.server.schema.JdbcUtil.port;
-
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.SitePaths;
@@ -48,8 +45,8 @@ class PostgreSQL extends CiBaseDataSourceType {
   public String getUrl() {
     final StringBuilder b = new StringBuilder();
     b.append("jdbc:postgresql://");
-    b.append(hostname(config.getString("hostname")));
-    b.append(port(config.getString("port")));
+    b.append(JdbcUtil.hostname(config.getString("hostname")));
+    b.append(JdbcUtil.port(config.getString("port")));
     b.append("/");
     b.append(config.getString("database"));
     return b.toString();

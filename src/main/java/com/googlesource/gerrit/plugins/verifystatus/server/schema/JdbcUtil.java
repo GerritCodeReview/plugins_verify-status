@@ -1,4 +1,4 @@
-// Copyright (C) 2015 The Android Open Source Project
+// Copyright (C) 2012 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,16 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.verifystatus.server;
+package com.googlesource.gerrit.plugins.verifystatus.server.schema;
 
-import com.google.gwtorm.server.Relation;
-import com.google.gwtorm.server.Schema;
+public class JdbcUtil {
+  public static String hostname(String hostname) {
+    if (hostname == null || hostname.isEmpty()) {
+      hostname = "localhost";
 
-public interface CiDb extends Schema {
+    } else if (hostname.contains(":") && !hostname.startsWith("[")) {
+      hostname = "[" + hostname + "]";
+    }
+    return hostname;
+  }
 
-  @Relation(id = 1)
-  SchemaVersionAccess schemaVersion();
-
-  @Relation(id = 2)
-  PatchSetVerificationAccess patchSetVerifications();
+  public static String port(String port) {
+    if (port != null && !port.isEmpty()) {
+      return ":" + port;
+    }
+    return "";
+  }
 }
