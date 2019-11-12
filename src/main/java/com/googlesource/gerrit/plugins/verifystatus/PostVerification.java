@@ -21,7 +21,6 @@ import com.google.gerrit.extensions.annotations.RequiresCapability;
 import com.google.gerrit.extensions.restapi.BadRequestException;
 import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestModifyView;
-import com.google.gerrit.reviewdb.client.LabelId;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.util.time.TimeUtil;
 import com.google.gwtorm.server.OrmException;
@@ -31,6 +30,9 @@ import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerificationInfo;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerifyInput;
 import com.googlesource.gerrit.plugins.verifystatus.server.CiDb;
+import com.googlesource.gerrit.plugins.verifystatus.server.DbChangeId;
+import com.googlesource.gerrit.plugins.verifystatus.server.DbLabelId;
+import com.googlesource.gerrit.plugins.verifystatus.server.DbPatchSetId;
 import com.googlesource.gerrit.plugins.verifystatus.server.PatchSetVerification;
 import java.sql.Timestamp;
 import java.util.List;
@@ -131,11 +133,12 @@ public class PostVerification implements RestModifyView<RevisionResource, Verify
       } else {
         // add new result
         String job_id = UUID.randomUUID().toString();
-        c =
-            new PatchSetVerification(
-                new PatchSetVerification.Key(resource.getPatchSet().getId(), new LabelId(job_id)),
-                value,
-                ts);
+        DbPatchSetId patchSetId =
+            new DbPatchSetId(
+                new DbChangeId(resource.getPatchSet().id().changeId().get()),
+                resource.getPatchSet().id().get());
+        DbLabelId labelId = new DbLabelId(job_id);
+        c = new PatchSetVerification(new PatchSetVerification.Key(patchSetId, labelId), value, ts);
         c.setAbstain(ent.getValue().abstain);
         c.setRerun(ent.getValue().rerun);
         c.setUrl(ent.getValue().url);
@@ -153,11 +156,14 @@ public class PostVerification implements RestModifyView<RevisionResource, Verify
     return !ups.isEmpty();
   }
 
-  private Map<String, PatchSetVerification> scanLabels(RevisionResource resource, CiDb db)
+  private Map<String, PatchSetVerification> scanLabels(RevisionResource rsrc, CiDb db)
       throws OrmException {
     Map<String, PatchSetVerification> current = Maps.newHashMap();
-    for (PatchSetVerification v :
-        db.patchSetVerifications().byPatchSet(resource.getPatchSet().getId())) {
+    DbPatchSetId id =
+        new DbPatchSetId(
+            new DbChangeId(rsrc.getPatchSet().id().changeId().get()),
+            rsrc.getPatchSet().id().get());
+    for (PatchSetVerification v : db.patchSetVerifications().byPatchSet(id)) {
       current.put(v.getJobId().get(), v);
     }
     return current;

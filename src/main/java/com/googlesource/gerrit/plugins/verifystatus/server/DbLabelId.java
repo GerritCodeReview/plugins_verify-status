@@ -1,4 +1,4 @@
-// Copyright (C) 2015 The Android Open Source Project
+// Copyright (C) 2019 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,14 +14,28 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
-import com.google.gwtorm.server.Relation;
-import com.google.gwtorm.server.Schema;
+import com.google.gwtorm.client.Column;
+import com.google.gwtorm.client.StringKey;
 
-public interface CiDb extends Schema {
+public class DbLabelId extends StringKey<com.google.gwtorm.client.Key<?>> {
+  private static final long serialVersionUID = 1L;
 
-  @Relation(id = 1)
-  SchemaVersionAccess schemaVersion();
+  @Column(id = 1)
+  public String id;
 
-  @Relation(id = 2)
-  PatchSetVerificationAccess patchSetVerifications();
+  public DbLabelId() {}
+
+  public DbLabelId(String n) {
+    id = n;
+  }
+
+  @Override
+  public String get() {
+    return id;
+  }
+
+  @Override
+  protected void set(String newValue) {
+    id = newValue;
+  }
 }

@@ -12,7 +12,6 @@ load("//tools/bzl:js.bzl", "polygerrit_plugin")
 gerrit_plugin(
     name = "verify-status",
     srcs = glob(["src/main/java/**/*.java"]),
-    gwt_module = "com.googlesource.gerrit.plugins.verifystatus.VerifyStatusForm",
     manifest_entries = [
         "Gerrit-PluginName: verify-status",
         "Gerrit-Module: com.googlesource.gerrit.plugins.verifystatus.GlobalModule",
@@ -23,7 +22,8 @@ gerrit_plugin(
         "Implementation-URL: https://gerrit-review.googlesource.com/#/admin/projects/plugins/verify-status",
     ],
     resource_jars = [":gr-verify-status-static"],
-    resources = glob(["src/main/**/*"]),
+    resources = glob(["src/main/resources/**/*"]),
+    deps = ["@gwtorm//jar"],
 )
 
 junit_tests(

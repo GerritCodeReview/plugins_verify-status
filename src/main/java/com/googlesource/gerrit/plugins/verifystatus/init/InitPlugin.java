@@ -24,7 +24,6 @@ import com.google.gerrit.lifecycle.LifecycleModule;
 import com.google.gerrit.pgm.init.api.ConsoleUI;
 import com.google.gerrit.pgm.init.api.InitStep;
 import com.google.gerrit.pgm.init.api.Section;
-import com.google.gerrit.reviewdb.client.CurrentSchemaVersion;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.gwtorm.jdbc.JdbcExecutor;
 import com.google.gwtorm.jdbc.JdbcSchema;
@@ -49,6 +48,7 @@ import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourcePr
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceType;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDataSourceTypeGuesser;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.CiDatabaseModule;
+import com.googlesource.gerrit.plugins.verifystatus.server.schema.CurrentSchemaVersion;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.SchemaVersion;
 import com.googlesource.gerrit.plugins.verifystatus.server.schema.UpdateUI;
 import java.lang.annotation.Annotation;
