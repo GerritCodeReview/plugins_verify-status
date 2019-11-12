@@ -14,8 +14,6 @@
 
 package com.googlesource.gerrit.plugins.verifystatus.server;
 
-import com.google.gerrit.reviewdb.client.LabelId;
-import com.google.gerrit.reviewdb.client.PatchSet;
 import com.google.gwtorm.client.Column;
 import com.google.gwtorm.client.CompoundKey;
 import java.sql.Timestamp;
@@ -23,31 +21,31 @@ import java.util.Objects;
 
 public class PatchSetVerification {
 
-  public static class Key extends CompoundKey<PatchSet.Id> {
+  public static class Key extends CompoundKey<DbPatchSetId> {
     private static final long serialVersionUID = 1L;
 
     @Column(id = 1, name = Column.NONE)
-    protected PatchSet.Id patchSetId;
+    protected DbPatchSetId patchSetId;
 
     @Column(id = 2)
-    protected LabelId jobId;
+    protected DbLabelId jobId;
 
     protected Key() {
-      patchSetId = new PatchSet.Id();
-      jobId = new LabelId();
+      patchSetId = new DbPatchSetId();
+      jobId = new DbLabelId();
     }
 
-    public Key(PatchSet.Id ps, LabelId c) {
+    public Key(DbPatchSetId ps, DbLabelId c) {
       this.patchSetId = ps;
       this.jobId = c;
     }
 
     @Override
-    public PatchSet.Id getParentKey() {
+    public DbPatchSetId getParentKey() {
       return patchSetId;
     }
 
-    public LabelId getLabelId() {
+    public DbLabelId getLabelId() {
       return jobId;
     }
 
@@ -102,11 +100,11 @@ public class PatchSetVerification {
     return key;
   }
 
-  public PatchSet.Id getPatchSetId() {
+  public DbPatchSetId getPatchSetId() {
     return key.patchSetId;
   }
 
-  public LabelId getJobId() {
+  public DbLabelId getJobId() {
     return key.jobId;
   }
 
