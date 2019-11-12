@@ -24,6 +24,7 @@ gerrit_plugin(
     ],
     resource_jars = [":gr-verify-status-static"],
     resources = glob(["src/main/**/*"]),
+    deps = ["@gwtorm//jar"],
 )
 
 junit_tests(
