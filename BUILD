@@ -11,7 +11,6 @@ load("//tools/bzl:js.bzl", "polygerrit_plugin")
 gerrit_plugin(
     name = "verify-status",
     srcs = glob(["src/main/java/**/*.java"]),
-    gwt_module = "com.googlesource.gerrit.plugins.verifystatus.VerifyStatusForm",
     manifest_entries = [
         "Gerrit-PluginName: verify-status",
         "Gerrit-Module: com.googlesource.gerrit.plugins.verifystatus.GlobalModule",
