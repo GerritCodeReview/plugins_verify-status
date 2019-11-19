@@ -45,6 +45,30 @@
       "revId": "f6061d452d61e0ac5438230b2d7ab8a20654579b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7f128e_15de145f",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-11-19T15:14:40Z",
+      "side": 1,
+      "message": "You need to query the config api endpoint, see e.g. \nhttps://gerrit.googlesource.com/plugins/verify-status/+/d5b39321eaed68f8d52be06bcbea7d3dda499a88/src/main/resources/Documentation/rest-api-config.md",
+      "parentUuid": "d70345c2_8f2d194a",
+      "range": {
+        "startLine": 88,
+        "startChar": 56,
+        "endLine": 88,
+        "endChar": 64
+      },
+      "revId": "f6061d452d61e0ac5438230b2d7ab8a20654579b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
