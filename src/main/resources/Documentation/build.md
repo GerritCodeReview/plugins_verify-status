@@ -21,13 +21,13 @@ To build the plugin, issue the following command:
 The output is created in
 
 ```
-  bazel-genfiles/@PLUGIN@.jar
+  bazel-bin/@PLUGIN@.jar
 ```
 
 To execute the tests run:
 
 ```
-  bazel test verify_status_tests
+  bazel test verify-status_tests
 ```
 
 ### Build in Gerrit tree
@@ -42,7 +42,7 @@ tree, and issue the command:
 The output is created in
 
 ```
-  bazel-genfiles/plugins/@PLUGIN@/@PLUGIN@.jar
+  bazel-bin/plugins/@PLUGIN@/@PLUGIN@.jar
 ```
 
 This project can be imported into the Eclipse IDE. List the plugin in the
@@ -64,7 +64,7 @@ and issue the command:
 To execute the tests run:
 
 ```
-  bazel test plugins/verify-status:verify_status_tests
+  bazel test plugins/verify-status:verify-status_tests
 ```
 
 How to build the Gerrit Plugin API is described in the [Gerrit

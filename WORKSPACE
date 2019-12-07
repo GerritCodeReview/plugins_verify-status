@@ -3,8 +3,32 @@ workspace(name = "verify_status")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "d100b6aad6b37e7db8fa141020c882dc97fb7723",
+    commit = "23d849dfd1876c1b4b88efa55a4f716895e33fa3",
     #local_path = "/home/<user>/projects/bazlets",
+)
+
+# Polymer dependencies
+load(
+    "@com_googlesource_gerrit_bazlets//:gerrit_polymer.bzl",
+    "gerrit_polymer",
+)
+
+gerrit_polymer()
+
+# Load closure compiler with transitive dependencies
+load("@io_bazel_rules_closure//closure:defs.bzl", "closure_repositories")
+
+closure_repositories()
+
+# Load Gerrit npm_binary toolchain
+load("@com_googlesource_gerrit_bazlets//tools:js.bzl", "GERRIT", "npm_binary")
+npm_binary(
+    name = "polymer-bundler",
+    repository = GERRIT,
+)
+npm_binary(
+    name = "crisper",
+    repository = GERRIT,
 )
 
 # Snapshot Plugin API
