@@ -22,6 +22,103 @@
       "revId": "4f9787db47509ce6d377db0759b75ab29a6ee2eb",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e94185_bc7d2a49",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2019-12-26T23:03:51Z",
+      "side": 1,
+      "message": "Unrelated to this change, but this should be spaced out.",
+      "revId": "4f9787db47509ce6d377db0759b75ab29a6ee2eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec05aa89_93dbd70b",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2019-12-26T23:03:51Z",
+      "side": 1,
+      "message": "Unrelated to your change, but this should be either removed or the /**/ should be removed.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "4f9787db47509ce6d377db0759b75ab29a6ee2eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb24030a_b096cf08",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2019-12-26T23:03:51Z",
+      "side": 1,
+      "message": "Add an undefined check to revision for Polymer 2.x?",
+      "revId": "4f9787db47509ce6d377db0759b75ab29a6ee2eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3284a659_9a6f14c2",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2019-12-26T23:03:51Z",
+      "side": 1,
+      "message": "This can be simply: this.verifystatus \u003d {summary, results};",
+      "revId": "4f9787db47509ce6d377db0759b75ab29a6ee2eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabfa3a4_c67ae9e3",
+        "filename": "gr-verify-status-plugin.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2019-12-26T23:03:51Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "4f9787db47509ce6d377db0759b75ab29a6ee2eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
