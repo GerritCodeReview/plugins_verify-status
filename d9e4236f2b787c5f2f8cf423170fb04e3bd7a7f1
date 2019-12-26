@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51b144e8_3fc75f03",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/DbLabelId.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2019-12-26T22:37:02Z",
+      "side": 1,
+      "message": "id, \u0027value\u0027, or \u0027in\u0027? -Unless \u0027n\u0027 is used elsewhere(?)",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "d9e4236f2b787c5f2f8cf423170fb04e3bd7a7f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe33642_d4ba4ef5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/schema/CurrentSchemaVersion.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2019-12-26T22:37:02Z",
+      "side": 1,
+      "message": "Superfluous?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "d9e4236f2b787c5f2f8cf423170fb04e3bd7a7f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c459a336_f034a156",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/schema/CurrentSchemaVersion.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2019-12-26T22:37:02Z",
+      "side": 1,
+      "message": "Rename to \u0027instance\u0027?",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "d9e4236f2b787c5f2f8cf423170fb04e3bd7a7f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
