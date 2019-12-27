@@ -27,6 +27,7 @@ limitations under the License.
         <span class="u-red">Failed: [[verifyStatus.summary.failed]]</span>,
         <span class="u-black">Not done: [[verifyStatus.summary.notdone]]</span>
     </div>
+    <template is="dom-if" if="[[ verifyStatusConfig.options.show_jobs_panel ]]">
     <div class="separatedSection style-scope gr-change-metadata"
         style="margin-top: 0; padding: 0">
       <table class="test_result_table">
@@ -40,6 +41,7 @@ limitations under the License.
         </tbody>
       </table>
     </div>
+    </template>
   </template>
   <script src="gr-verify-status-panel.js"></script>
 </dom-module>

@@ -21,13 +21,23 @@
    * }}
    */
   Defs.verifyStatus;
+    /**
+   * @typedef {{
+   *   options: Object,
+   * }}
+   */
+  Defs.verifyStatusConfig;   
 
   Polymer({
     is: 'gr-verify-status-panel',
 
     properties: {
         verifyStatus: {
-            /** @type {Defs.verifystatus} */
+            /** @type {Defs.verifyStatus} */
+            type: Object,
+        },
+        verifyStatusConfig: {
+            /** @type {Defs.verifyStatusConfig} */
             type: Object,
         },
         revision: {
@@ -44,31 +54,37 @@
 
     _fetchData(revision) {
       if (!revision) return;
-      const query ='/verify-status~verifications?sort=REPORTER&filter=CURRENT';
-      const endpoint = '/changes/' + this.change.id + '/revisions/' +
-                       revision._number + query;
+      const configendpoint = '/config/server/verify-status~config';
 
       const errFn = response => {
           this.fire('page-error', {response});
       };
+      
+      this.plugin.restApi().get(configendpoint, errFn).then(r => {  
+          let options =r;
+          this.verifyStatusConfig = {options};
+          const query ='/verify-status~verifications?sort='+ 
+                        options.sort_jobs_panel+'&filter=CURRENT';
+          const endpoint = '/changes/' + this.change.id + '/revisions/' +
+                       revision._number + query;
+          this.plugin.restApi().get(endpoint, errFn).then(r => {
+              let summary = {failed:0, passed:0, notdone:0};
+              let results = [];
+              for (let checkid in r) {
+                  let check= r[checkid];
+                  if (check.value == '0') {
+                     summary.notdone +=1;}
+                  else if (check.value == 1) {
+                      summary.passed +=1;
+                  }
+                  else {
+                      summary.failed +=1;
+                  }
+                  results.push(check);
+             };
 
-      this.plugin.restApi().get(endpoint, errFn).then(r => {
-          let summary = {failed:0, passed:0, notdone:0};
-          let results = [];
-          for (let checkid in r) {
-              let check= r[checkid];
-              if (check.value == '0') {
-                  summary.notdone +=1;}
-              else if (check.value == 1) {
-                  summary.passed +=1;
-              }
-              else {
-                  summary.failed +=1;
-              }
-              results.push(check);
-          };
-
-          this.verifyStatus = {summary, results};
+             this.verifyStatus = {summary, results};
+         });
       });
     },
   });
