@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9fd7acd6_c8529217",
+        "filename": "BUILD",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2019-12-27T08:39:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "575dad54_644b7629",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "d9e4236f2b787c5f2f8cf423170fb04e3bd7a7f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51b144e8_3fc75f03",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/DbLabelId.java",
         "patchSetId": 5
