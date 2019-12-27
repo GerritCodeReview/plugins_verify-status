@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "be41e82f_43612a4b",
+        "filename": "BUILD",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011624
+      },
+      "writtenOn": "2019-12-27T08:34:06Z",
+      "side": 1,
+      "message": "This blocks the he build and should probably get  deleted.",
+      "revId": "d9e4236f2b787c5f2f8cf423170fb04e3bd7a7f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51b144e8_3fc75f03",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/DbLabelId.java",
         "patchSetId": 5
