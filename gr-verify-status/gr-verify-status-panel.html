@@ -16,30 +16,81 @@ limitations under the License.
     <style include="gr-form-styles"></style>
     <style>
         .u-green {
-            color: #388E3C;
+            color: rgb(56, 142, 60);
         }
         .u-red {
-            color: #D32F2F;
+            color: rgb(211, 47, 47);
+        }
+        .u-yellow {
+            color: rgb(255, 166, 47);
         }
     </style>
-    <div id="gr-verify-status">
-        <span class="u-green">Passed: [[verifyStatus.summary.passed]]</span>,
-        <span class="u-red">Failed: [[verifyStatus.summary.failed]]</span>,
-        <span class="u-black">Not done: [[verifyStatus.summary.notdone]]</span>
+    <template is="dom-if" if="[[ verifyStatusConfig.options.show_jobs_summary_panel ]]">
+    <div style="text-align:center" id="gr-verify-status">
+        <span class="u-green">Pass: [[verifyStatus.summary.passed]]</span>,
+        <span class="u-red">Fail: [[verifyStatus.summary.failed]]</span>,
+        <span class="u-yellow">Warn: [[verifyStatus.summary.warning]]</span>
+        <template is="dom-if" if="[[ verifyStatusConfig.options.enable_in_progress_status ]]">
+        ,<span class="u-yellow">Run: [[verifyStatus.summary.inprogress]]</span>
+        </template>
     </div>
+    </template>
+    <template is="dom-if" if="[[ verifyStatusConfig.options.show_jobs_panel ]]">
     <div class="separatedSection style-scope gr-change-metadata"
-        style="margin-top: 0; padding: 0">
+        style="margin-top: 0; padding-left: 9px">
       <table class="test_result_table">
         <tbody>
             <template is="dom-repeat" items="{{verifyStatus.results}}">
             <tr>
-                <td class="cell verifiedstatus"><a href$="[[item.url]]">[[item.name]]</a></td>
-                <td class="cell verifiedstatus verifiedstatus_value">[[item.value]]</td>
+                <td class="cell verifiedstatus">
+                    <span class="gr-change-requirements">
+                        <svg
+                            viewBox="0 0 24 24"
+                            preserveAspectRatio="xMidYMid meet"
+                            width="24px"
+                            height="24px">
+                                <g>
+                                    <path
+                                        d$="[[item.status_icon]]"
+                                        fill$="[[item.color]]">
+                                    </path>
+                                </g>
+                        </svg>
+                    </span>
+                </td>
+                <td class="cell verifiedstatus">
+                    <a
+                        class="gr-change-metadata"
+                        style="text-decoration: none; padding-left: 4px;"
+                        href$="[[item.url]]">
+                            [[item.name]]
+                    </a>
+                </td>
+                <td class="cell verifiedstatus" style="color: #757575; padding-left: 1em;">
+                    [[item.duration]]
+                </td>
+                <td class="cell verifiedstatus">
+                    <span class="gr-change-requirements">
+                        <svg
+                            viewBox="0 0 18 18"
+                            preserveAspectRatio="xMidYMid meet"
+                            width="18px"
+                            height="18px">
+                                <g class="style-scope iron-icon">
+                                    <path
+                                        d$="[[item.non_voting_icon]]"
+                                        fill="#BBBBBB">
+                                    </path>
+                                </g>
+                        </svg>
+                    </span>
+                </td>
             </tr>
             </template>
         </tbody>
       </table>
     </div>
+    </template>
   </template>
   <script src="gr-verify-status-panel.js"></script>
 </dom-module>
