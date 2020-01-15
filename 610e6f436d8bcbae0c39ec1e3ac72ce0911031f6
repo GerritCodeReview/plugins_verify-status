@@ -22,6 +22,30 @@
       "revId": "610e6f436d8bcbae0c39ec1e3ac72ce0911031f6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723b1953_db1ffb9b",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-01-15T23:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ed3b15_e19dca0b",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "610e6f436d8bcbae0c39ec1e3ac72ce0911031f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
