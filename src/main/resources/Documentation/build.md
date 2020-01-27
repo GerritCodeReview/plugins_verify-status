@@ -27,7 +27,7 @@ The output is created in
 To execute the tests run:
 
 ```
-  bazel test verify-status_tests
+  bazel test //...
 ```
 
 ### Build in Gerrit tree
@@ -61,10 +61,11 @@ and issue the command:
   ./tools/eclipse/project_bzl.py
 ```
 
-To execute the tests run:
+To execute the tests run either one of:
 
 ```
-  bazel test plugins/verify-status:verify-status_tests
+  bazel test --test_tag_filters=@PLUGIN@ //...
+  bazel test plugins/@PLUGIN@:@PLUGIN@_tests
 ```
 
 How to build the Gerrit Plugin API is described in the [Gerrit
