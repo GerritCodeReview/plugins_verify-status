@@ -59,5 +59,9 @@ genrule2(
 
 polygerrit_plugin(
     name = "gr-verify-status",
-    app = "gr-verify-status-plugin.html",
+    srcs = [
+        "gr-verify-status/gr-verify-status-panel.html",
+        "gr-verify-status/gr-verify-status-panel.js",
+    ],
+    app = "plugin.html",
 )

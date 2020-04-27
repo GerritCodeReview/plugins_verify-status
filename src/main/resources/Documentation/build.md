@@ -27,7 +27,7 @@ The output is created in
 To execute the tests run:
 
 ```
-  bazel test verify-status_tests
+  bazel test //...
 ```
 
 ### Build in Gerrit tree
@@ -43,6 +43,13 @@ The output is created in
 
 ```
   bazel-bin/plugins/@PLUGIN@/@PLUGIN@.jar
+```
+
+To execute the tests run either one of:
+
+```
+  bazel test --test_tag_filters=@PLUGIN@ //...
+  bazel test plugins/@PLUGIN@:@PLUGIN@_tests
 ```
 
 This project can be imported into the Eclipse IDE. List the plugin in the
@@ -61,11 +68,9 @@ and issue the command:
   ./tools/eclipse/project_bzl.py
 ```
 
-To execute the tests run:
-
-```
-  bazel test plugins/verify-status:verify-status_tests
-```
-
 How to build the Gerrit Plugin API is described in the [Gerrit
 documentation](../../../Documentation/dev-bazel.html#_extension_and_plugin_api_jar_files).
+
+[Back to @PLUGIN@ documentation index][index]
+
+[index]: index.html
