@@ -32,6 +32,7 @@ junit_tests(
     srcs = ["src/test/java/com/googlesource/gerrit/plugins/verifystatus/VerifyStatusIT.java"],
     tags = ["verify-status"],
     deps = [
+        "@gwtorm//jar",
         ":verify-status__plugin_test_deps",
     ],
 )

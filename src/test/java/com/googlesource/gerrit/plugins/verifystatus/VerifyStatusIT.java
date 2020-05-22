@@ -15,17 +15,19 @@
 package com.googlesource.gerrit.plugins.verifystatus;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.gerrit.server.group.SystemGroupBackend.REGISTERED_USERS;
+import static com.google.gerrit.acceptance.testsuite.project.TestProjectUpdate.allowCapability;
 
 import com.google.common.collect.Iterables;
-import com.google.gerrit.acceptance.GerritConfig;
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.PushOneCommit.Result;
 import com.google.gerrit.acceptance.RestResponse;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.UseLocalDisk;
+import com.google.gerrit.acceptance.config.GerritConfig;
+import com.google.gerrit.acceptance.testsuite.project.ProjectOperations;
 import com.google.gson.reflect.TypeToken;
 import com.google.gwtorm.jdbc.SimpleDataSource;
+import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerificationInfo;
 import com.googlesource.gerrit.plugins.verifystatus.common.VerifyInput;
 import java.sql.Connection;
@@ -67,11 +69,20 @@ public class VerifyStatusIT extends LightweightPluginDaemonTest {
           + "JOB_ID       VARCHAR(255) DEFAULT '' NOT NULL)";
   private static final String DELETE_TABLE = "DELETE FROM " + TABLE;
 
+  @Inject private ProjectOperations projectOperations;
+
   @Before
   @Override
   public void setUpTestPlugin() throws Exception {
     super.setUpTestPlugin();
-    allowGlobalCapabilities(REGISTERED_USERS, SaveReportCapability.getName(NAME));
+
+    projectOperations
+        .project(allProjects)
+        .forUpdate()
+        .add(
+            allowCapability("checks-administrateCheckers")
+                .group(group("Administrators").getGroupUUID()))
+        .update();
 
     Properties p = new Properties();
     p.setProperty("driver", "org.h2.Driver");
