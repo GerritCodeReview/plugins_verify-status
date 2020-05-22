@@ -33,6 +33,7 @@ junit_tests(
     tags = ["verify-status"],
     deps = [
         ":verify-status__plugin_test_deps",
+        "@gwtorm//jar",
     ],
 )
 
