@@ -6,34 +6,8 @@ This plugin can be built with Bazel.
 Bazel
 ----
 
-Two build modes are supported: Standalone and in Gerrit tree.
-The standalone build mode is recommended, as this mode doesn't require
-the Gerrit tree to exist locally.
-
-### Build standalone
-
-To build the plugin, issue the following command:
-
-```
-  bazel build verify-status
-```
-
-The output is created in
-
-```
-  bazel-bin/@PLUGIN@.jar
-```
-
-To execute the tests run:
-
-```
-  bazel test //...
-```
-
-### Build in Gerrit tree
-
-Clone or link this plugin to the plugins directory of Gerrit's source
-tree.
+To build in Gerrit tree clone or link this plugin to the plugins
+directory of Gerrit's source tree.
 
 Put the external dependency Bazel build file into the Gerrit /plugins
 directory, replacing the existing empty one.
@@ -76,11 +50,8 @@ CUSTOM_PLUGINS = [
 and issue the command:
 
 ```
-  ./tools/eclipse/project_bzl.py
+  ./tools/eclipse/project.py
 ```
-
-How to build the Gerrit Plugin API is described in the [Gerrit
-documentation](../../../Documentation/dev-bazel.html#_extension_and_plugin_api_jar_files).
 
 [Back to @PLUGIN@ documentation index][index]
 
