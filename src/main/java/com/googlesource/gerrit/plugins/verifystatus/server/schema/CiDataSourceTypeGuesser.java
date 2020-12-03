@@ -39,7 +39,7 @@ public class CiDataSourceTypeGuesser {
     } catch (IOException | ConfigInvalidException e) {
       throw new ProvisionException(e.getMessage(), e);
     }
-    this.config = new PluginConfig(pluginName, cfg);
+    this.config = PluginConfig.create(pluginName, cfg, null);
   }
 
   public String guessDataSourceType() {

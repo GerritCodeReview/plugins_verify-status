@@ -69,7 +69,7 @@ public class CiDataSourceProvider implements Provider<DataSource>, LifecycleList
     } catch (IOException | ConfigInvalidException e) {
       throw new ProvisionException(e.getMessage(), e);
     }
-    this.config = new PluginConfig(pluginName, cfg);
+    this.config = PluginConfig.create(pluginName, cfg, null);
     this.metrics = metrics;
     this.ctx = ctx;
     this.dst = dst;
