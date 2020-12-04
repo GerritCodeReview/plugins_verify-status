@@ -39,6 +39,30 @@
       },
       "revId": "daf37264cd9b1140cb30cd6e342101aaf5105129",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e44380_c150373f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/verifystatus/server/schema/CiDataSourceProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2020-12-04T08:31:28Z",
+      "side": 1,
+      "message": "Just because I didn\u0027t see much use of it. Which I guess this change disproves :-)",
+      "parentUuid": "dd7b176c_d1278b2e",
+      "range": {
+        "startLine": 72,
+        "startChar": 55,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "daf37264cd9b1140cb30cd6e342101aaf5105129",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
