@@ -1,3 +1,4 @@
+load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
 load("@rules_java//java:defs.bzl", "java_library")
 load(
     "//tools/bzl:plugin.bzl",
@@ -59,9 +60,18 @@ genrule2(
 
 polygerrit_plugin(
     name = "gr-verify-status",
-    srcs = [
-        "gr-verify-status/gr-verify-status-panel.html",
-        "gr-verify-status/gr-verify-status-panel.js",
+    app = "gr-verify-status-bundle.js",
+    plugin_name = "gr-verify-status",
+)
+
+rollup_bundle(
+    name = "gr-verify-status-bundle",
+    srcs = glob(["gr-verify-status/*.js"]),
+    entry_point = "gr-verify-status/plugin.js",
+    format = "iife",
+    rollup_bin = "//tools/node_tools:rollup-bin",
+    sourcemap = "hidden",
+    deps = [
+        "@tools_npm//rollup-plugin-node-resolve",
     ],
-    app = "plugin.html",
 )
