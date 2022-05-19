@@ -83,7 +83,7 @@ public class PostVerification implements RestModifyView<RevisionResource, Verify
     List<PatchSetVerification> ups = Lists.newArrayList();
     Map<String, PatchSetVerification> current = scanLabels(resource, db);
 
-    Timestamp ts = TimeUtil.nowTs();
+    Timestamp ts = Timestamp.from(TimeUtil.now());
     for (Map.Entry<String, VerificationInfo> ent : jobs.entrySet()) {
       String name = ent.getKey();
       if (name == null) {
